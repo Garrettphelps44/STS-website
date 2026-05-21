@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Resources | Strength Through Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --green: #4CAF50; --green-dark: #388E3C; --black: #0A0A0A; --dark: #111111; --mid: #1A1A1A; --border: #2A2A2A; --text: #E8E8E8; --muted: #888888; --white: #FFFFFF; --radius: 6px; --max: 1160px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); border: 1px solid var(--green); border-radius: 100px; padding: 4px 12px; }
+    .btn-primary { display: inline-block; background: var(--green); color: var(--black); font-weight: 800; font-size: 15px; letter-spacing: .04em; padding: 14px 32px; border-radius: var(--radius); transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline { display: inline-block; background: transparent; color: var(--text); font-weight: 700; font-size: 14px; letter-spacing: .04em; padding: 10px 20px; border-radius: var(--radius); border: 1.5px solid var(--border); transition: border-color .2s, color .2s; }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; line-height: 0; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: .03em; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .page-hero { padding: 96px 0 72px; border-bottom: 1px solid var(--border); }
+    .page-hero .tag { margin-bottom: 20px; display: inline-block; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    .page-hero p { font-size: 18px; color: var(--muted); max-width: 580px; line-height: 1.7; }
+
+    /* CATEGORY TABS */
+    .cat-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 64px; overflow-x: auto; }
+    .cat-tab { display: flex; align-items: center; gap: 10px; padding: 20px 32px; font-size: 15px; font-weight: 700; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none; font-family: inherit; }
+    .cat-tab:hover { color: var(--white); }
+    .cat-tab.active { color: var(--white); border-bottom-color: var(--green); }
+    .cat-tab-icon { font-size: 20px; }
+
+    /* PANELS */
+    .cat-panel { display: none; }
+    .cat-panel.active { display: block; }
+
+    /* APP BUILD PANEL */
+    .appbuild-hero { background: var(--dark); border: 1px solid var(--border); border-radius: 16px; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 40px; }
+    .appbuild-hero h2 { font-size: clamp(24px, 3vw, 38px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.2; }
+    .appbuild-hero p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 28px; }
+    .appbuild-steps { display: flex; flex-direction: column; gap: 16px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .step-num { font-size: 12px; font-weight: 800; color: var(--green); letter-spacing: .1em; min-width: 28px; padding-top: 2px; }
+    .step-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .step-body p { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 0; }
+    @media (max-width: 768px) { .appbuild-hero { grid-template-columns: 1fr; } }
+
+    /* ARTICLES PANEL */
+    .articles-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .article-item:first-child .article-row { border-radius: 12px 12px 0 0; }
+    .article-item:last-child .article-row { border-radius: 0 0 12px 12px; }
+    .article-item:last-child.open .article-row { border-radius: 0; }
+    .article-row { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; background: var(--mid); padding: 24px 28px; cursor: pointer; transition: background .2s; user-select: none; }
+    .article-row:hover { background: #212121; }
+    .article-item.open .article-row { background: #212121; border-bottom: 1px solid var(--border); }
+    .article-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+    .article-cat { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+    .article-date { font-size: 12px; color: var(--muted); }
+    .article-row h3 { font-size: 17px; font-weight: 700; line-height: 1.3; }
+    .article-arrow { font-size: 18px; color: var(--muted); transition: color .2s, transform .3s; flex-shrink: 0; }
+    .article-row:hover .article-arrow { color: var(--green); }
+    .article-item.open .article-arrow { color: var(--green); transform: rotate(180deg); }
+    .article-body { background: #181818; padding: 0 28px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; }
+    .article-item.open .article-body { max-height: 600px; padding: 24px 28px 28px; }
+    .article-body p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+    .article-body p:last-child { margin-bottom: 0; }
+
+    /* PDF DOWNLOADS PANEL */
+    .pdf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pdf-card { background: var(--mid); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; transition: border-color .2s, transform .2s; }
+    .pdf-card:hover { border-color: var(--green); transform: translateY(-2px); }
+    .pdf-thumb { aspect-ratio: 3/4; background: var(--dark); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); font-size: 36px; }
+    .pdf-thumb span { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .pdf-cat { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+    .pdf-card h3 { font-size: 16px; font-weight: 800; line-height: 1.3; }
+    .pdf-card p { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .pdf-size { font-size: 12px; color: var(--muted); }
+    @media (max-width: 960px) { .pdf-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .pdf-grid { grid-template-columns: 1fr; } }
+
+    /* VIDEOS PANEL */
+    .videos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .video-card { background: var(--mid); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color .2s, transform .2s; display: flex; flex-direction: column; }
+    .video-card:hover { border-color: var(--green); transform: translateY(-2px); }
+    .video-thumb { aspect-ratio: 16/9; background: var(--dark); display: flex; align-items: center; justify-content: center; position: relative; }
+    .video-play { width: 52px; height: 52px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: transform .2s; }
+    .video-card:hover .video-play { transform: scale(1.1); }
+    .video-duration { position: absolute; bottom: 10px; right: 12px; font-size: 12px; font-weight: 700; background: rgba(0,0,0,.75); padding: 3px 8px; border-radius: 4px; }
+    .video-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .video-cat { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+    .video-body h3 { font-size: 18px; font-weight: 800; line-height: 1.3; }
+    .video-body p { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .video-meta { font-size: 12px; color: var(--muted); }
+    @media (max-width: 768px) { .videos-grid { grid-template-columns: 1fr; } }
+
+    /* SHARED CONTENT AREA */
+    .content-section { padding: 64px 0 96px; }
+
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 8px; text-align: center; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="book.html">Book</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="consulting.html">Consulting</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
+        <li><a href="apps.html">Apps</a></li>
+        <li><a href="free-resources.html" class="active">Free Resources</a></li>
+      </ul>
+      <a href="book.html" class="btn-primary">Get the Book</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="tag">Free Resources</span>
+      <h1>Everything Free.<br>Nothing Watered Down.</h1>
+      <p>Apps, articles, downloads, and videos — built from the same frameworks as the book and courses, at zero cost.</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="container">
+
+      <!-- TABS -->
+      <div class="cat-tabs">
+        <button class="cat-tab active" onclick="showTab('articles', this)">
+          <span class="cat-tab-icon">📝</span> Articles
+        </button>
+        <button class="cat-tab" onclick="showTab('pdfs', this)">
+          <span class="cat-tab-icon">📄</span> PDF Downloads
+        </button>
+        <a class="cat-tab" href="https://www.youtube.com/@StrengthThroughSystems" target="_blank">
+          <span class="cat-tab-icon">▶️</span> Videos ↗
+        </a>
+      </div>
+
+      <!-- ARTICLES PANEL -->
+      <div class="cat-panel active" id="panel-articles">
+        <div class="articles-list">
+
+          <div class="article-item">
+            <div class="article-row" onclick="toggleArticle(this)">
+              <div>
+                <div class="article-meta">
+                  <span class="article-cat">Buy-In</span>
+                  <span class="article-date">May 2026</span>
+                </div>
+                <h3>Why Athlete Buy-In Isn't a Relationship Problem — It's a Systems Problem</h3>
+              </div>
+              <span class="article-arrow">↓</span>
+            </div>
+            <div class="article-body">
+              <p>Most coaches think buy-in is about being liked. Here's why that framing costs you time, energy, and results.</p>
+              <p>When buy-in is treated as a personality-driven outcome, you have no system to improve it. The coaches who consistently build cultures of commitment aren't more charismatic — they're more systematic. They've built structures that create buy-in automatically, before the first rep is ever taken.</p>
+              <p>This article breaks down the exact process: how to audit your current buy-in gaps, map them to a framework, and install repeatable routines that earn trust at scale.</p>
+            </div>
+          </div>
+
+          <div class="article-item">
+            <div class="article-row" onclick="toggleArticle(this)">
+              <div>
+                <div class="article-meta">
+                  <span class="article-cat">Programming</span>
+                  <span class="article-date">Apr 2026</span>
+                </div>
+                <h3>The IF/Then Framework: Stop Making the Same Programming Decision Twice</h3>
+              </div>
+              <span class="article-arrow">↓</span>
+            </div>
+            <div class="article-body">
+              <p>A breakdown of how to build decision rules into your program so you never have to wing it on the floor again.</p>
+              <p>Every time you make a programming adjustment on the fly, you're spending cognitive currency that should be going toward coaching. The IF/Then Framework converts those recurring decisions into preset rules — so the system thinks for you.</p>
+              <p>This article walks through how to identify your most common in-session decisions, convert them into IF/Then rules, and build them into your program so athletes and assistants can execute without waiting on you.</p>
+            </div>
+          </div>
+
+          <div class="article-item">
+            <div class="article-row" onclick="toggleArticle(this)">
+              <div>
+                <div class="article-meta">
+                  <span class="article-cat">Room Management</span>
+                  <span class="article-date">Mar 2026</span>
+                </div>
+                <h3>Room Flow: How to Run a Weight Room That Operates Without You Watching</h3>
+              </div>
+              <span class="article-arrow">↓</span>
+            </div>
+            <div class="article-body">
+              <p>The spatial, logistical, and communication structures that make your weight room feel organized before you say a word.</p>
+              <p>Room flow isn't about being loud or constantly correcting — it's about designing an environment where the right behavior is the path of least resistance. The best weight rooms run themselves because the coach built the structure, not because the coach is everywhere at once.</p>
+              <p>This article covers station design, transition protocols, verbal cue systems, and how to train your athletes to self-manage so you can focus on the athletes who need you most.</p>
+            </div>
+          </div>
+
+          <div class="article-item">
+            <div class="article-row" onclick="toggleArticle(this)">
+              <div>
+                <div class="article-meta">
+                  <span class="article-cat">Staff Development</span>
+                  <span class="article-date">Feb 2026</span>
+                </div>
+                <h3>How to Build an Intern Development Pipeline That Runs on Autopilot</h3>
+              </div>
+              <span class="article-arrow">↓</span>
+            </div>
+            <div class="article-body">
+              <p>Stop re-training every semester. A repeatable onboarding and development system for your coaching staff.</p>
+              <p>Most programs treat intern development as an afterthought — and then wonder why their staff keeps making the same mistakes. A real pipeline means every new intern enters the same structured onboarding, hits the same checkpoints, and exits with real coaching competency.</p>
+              <p>This article outlines how to build a 3-phase intern development system: orientation, supervised coaching, and independent operation — with checkpoints and feedback loops at every stage.</p>
+            </div>
+          </div>
+
+          <div class="article-item">
+            <div class="article-row" onclick="toggleArticle(this)">
+              <div>
+                <div class="article-meta">
+                  <span class="article-cat">Athlete Development</span>
+                  <span class="article-date">Jan 2026</span>
+                </div>
+                <h3>KPI-Driven Coaching: The Metrics That Actually Predict Athletic Development</h3>
+              </div>
+              <span class="article-arrow">↓</span>
+            </div>
+            <div class="article-body">
+              <p>Which numbers to track, how to track them, and how to use data to drive decisions without drowning in spreadsheets.</p>
+              <p>Most coaches either track nothing or track everything — and both approaches fail. The right KPIs are the ones that tell you whether your system is working before the season reveals it. Lagging indicators like performance outcomes matter, but leading indicators like training consistency and effort scores are what you can actually act on in real time.</p>
+              <p>This article identifies the six KPIs every strength coach should be tracking, how to collect them without adding administrative burden, and how to use them in your weekly coaching decisions.</p>
+            </div>
+          </div>
+
+          <div class="article-item">
+            <div class="article-row" onclick="toggleArticle(this)">
+              <div>
+                <div class="article-meta">
+                  <span class="article-cat">Mindset</span>
+                  <span class="article-date">Dec 2025</span>
+                </div>
+                <h3>The Continuous Improvement Loop: How Coaches Get Better Every Off-Season</h3>
+              </div>
+              <span class="article-arrow">↓</span>
+            </div>
+            <div class="article-body">
+              <p>A personal operating system for seasonal review, career growth, and building a program that compounds year over year.</p>
+              <p>Most coaches reset every off-season instead of compounding. They start fresh, make the same adjustments they made last year, and wonder why the ceiling isn't moving. The Continuous Improvement Loop is a structured review process — what worked, what didn't, what gets installed differently next cycle.</p>
+              <p>This article walks through the exact end-of-season debrief framework Garrett uses to evaluate his program, his staff, his athletes, and himself — and how to turn those findings into concrete system upgrades before the next season starts.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PDF DOWNLOADS PANEL -->
+      <div class="cat-panel" id="panel-pdfs">
+        <div class="pdf-grid">
+          <div class="pdf-card">
+            <div class="pdf-thumb">📋<span>PDF</span></div>
+            <div class="pdf-cat">Template</div>
+            <h3>Athlete Buy-In Starter Checklist</h3>
+            <p>The first-week onboarding checklist from the full Buy-In System — plug it in before next season.</p>
+            <span class="pdf-size">2 pages · Free</span>
+            <a href="#" class="btn-outline">Download →</a>
+          </div>
+          <div class="pdf-card">
+            <div class="pdf-thumb">⚙️<span>PDF</span></div>
+            <div class="pdf-cat">Template</div>
+            <h3>IF/Then Programming Rules Sheet</h3>
+            <p>Build your own decision-free programming rules with this blank template and filled-in examples.</p>
+            <span class="pdf-size">3 pages · Free</span>
+            <a href="https://docs.google.com/spreadsheets/d/1LTY-zEsatLfbwu2koxU592RAWLkZKcxTsqkjvqRRWrM/edit?usp=sharing" target="_blank" class="btn-outline">Download →</a>
+          </div>
+          <div class="pdf-card">
+            <div class="pdf-thumb">📊<span>PDF</span></div>
+            <div class="pdf-cat">Template</div>
+            <h3>KPI Tracking Spreadsheet</h3>
+            <p>The athlete KPI tracker from the Athlete Development Framework — ready to customize for your roster.</p>
+            <span class="pdf-size">1 page · Free</span>
+            <a href="#" class="btn-outline">Download →</a>
+          </div>
+          <div class="pdf-card">
+            <div class="pdf-thumb">📅<span>PDF</span></div>
+            <div class="pdf-cat">Guide</div>
+            <h3>Off-Season to In-Season Transition Guide</h3>
+            <p>Step-by-step framework for managing the most chaotic transition in the coaching calendar.</p>
+            <span class="pdf-size">5 pages · Free</span>
+            <a href="#" class="btn-outline">Download →</a>
+          </div>
+          <div class="pdf-card">
+            <div class="pdf-thumb">🗣️<span>PDF</span></div>
+            <div class="pdf-cat">Scripts</div>
+            <h3>Parent &amp; Admin Communication Scripts</h3>
+            <p>Copy-and-use scripts for the most common stakeholder conversations in a strength program.</p>
+            <span class="pdf-size">4 pages · Free</span>
+            <a href="#" class="btn-outline">Download →</a>
+          </div>
+          <div class="pdf-card">
+            <div class="pdf-thumb">🔍<span>PDF</span></div>
+            <div class="pdf-cat">Audit</div>
+            <h3>Program Systems Self-Audit</h3>
+            <p>Rate your program across all six STS framework areas and identify exactly where to focus first.</p>
+            <span class="pdf-size">2 pages · Free</span>
+            <a href="#" class="btn-outline">Download →</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 Strength Through Systems. All rights reserved.</span>
+        <span>Built for coaches who run a system.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(id, el) {
+      document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      el.classList.add('active');
+    }
+
+    function toggleArticle(row) {
+      const item = row.closest('.article-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.article-item.open').forEach(i => i.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>

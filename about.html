@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Garrett | Strength Through Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #4CAF50; --green-dark: #388E3C; --black: #0A0A0A;
+      --dark: #111111; --mid: #1A1A1A; --border: #2A2A2A;
+      --text: #E8E8E8; --muted: #888888; --white: #FFFFFF; --radius: 6px; --max: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); border: 1px solid var(--green); border-radius: 100px; padding: 4px 12px; }
+    .btn-primary { display: inline-block; background: var(--green); color: var(--black); font-weight: 800; font-size: 15px; letter-spacing: .04em; padding: 14px 32px; border-radius: var(--radius); transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline { display: inline-block; background: transparent; color: var(--text); font-weight: 700; font-size: 15px; letter-spacing: .04em; padding: 13px 30px; border-radius: var(--radius); border: 1.5px solid var(--border); transition: border-color .2s, color .2s; }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; line-height: 0; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: .03em; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta { font-size: 14px; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+    .page-hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); }
+    .page-hero .tag { margin-bottom: 20px; display: inline-block; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    .page-hero p { font-size: 18px; color: var(--muted); max-width: 580px; line-height: 1.7; }
+    .about-section { padding: 96px 0; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-img { aspect-ratio: 4/5; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-content h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 20px; line-height: 1.2; }
+    .about-content p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .cred-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 28px 0 36px; }
+    .cred-list li { display: flex; gap: 12px; align-items: center; font-size: 15px; font-weight: 600; }
+    .cred-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; } .about-img { display: none; } }
+    footer { background: var(--black); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 8px; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
+      <ul class="nav-links">
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="book.html">Book</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="consulting.html">Consulting</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
+        <li><a href="apps.html">Apps</a></li>
+        <li><a href="free-resources.html">Free Resources</a></li>
+      </ul>
+      <a href="book.html" class="btn-primary nav-cta">Get the Book</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="tag">About Garrett</span>
+      <h1>Built from the<br>Weight Room Up.</h1>
+      <p>Garrett Phelps isn't selling theory. Every framework inside Strength Through Systems was built, tested, and refined in real weight rooms — with real athletes and real constraints.</p>
+    </div>
+  </div>
+
+  <section class="about-section">
+    <div class="container about-inner">
+      <div class="about-img">
+        <img src="images/garrett-phelps.png" alt="Garrett Phelps speaking to coaches" width="800" height="1000" />
+      </div>
+      <div class="about-content">
+        <h2>Who Is Garrett Phelps?</h2>
+        <p>After seeing talented coaches burn out — not because they lacked passion, but because they lacked <strong style="color:var(--white);">structure</strong> — Garrett built the operating systems he wished he'd had from day one.</p>
+        <p>The result is a coaching methodology that's clear, scalable, and teachable at any level. Whether you're running a D1 weight room or a one-person high school program, the frameworks work because they're built on principles, not personalities.</p>
+        <p>Garrett has trained 500+ coaches through his book, courses, and consulting — helping them get their time back, earn athlete buy-in faster, and build programs that run without constant firefighting.</p>
+        <ul class="cred-list">
+          <li>Author of <em>Athlete Buy-in System</em></li>
+          <li>Athletic Performance Coordinator</li>
+          <li>Creator of the Athlete Buy-in Rate</li>
+          <li>Speaker at national coaching clinics &amp; conferences</li>
+        </ul>
+        <a href="book.html" class="btn-primary">Get the Book →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 Strength Through Systems. All rights reserved.</span>
+        <span>Built for coaches who run a system.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

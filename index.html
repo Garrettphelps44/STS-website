@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strength Through Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --green:      #4CAF50;
+      --green-dark: #388E3C;
+      --black:      #0A0A0A;
+      --dark:       #111111;
+      --mid:        #1A1A1A;
+      --border:     #2A2A2A;
+      --text:       #E8E8E8;
+      --muted:      #888888;
+      --white:      #FFFFFF;
+      --radius:     6px;
+      --max:        1160px;
+    }
+
+    /* ── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── UTILITY ─────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .green { color: var(--green); }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: 100px;
+      padding: 4px 12px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--green);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: .04em;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      transition: background .2s, transform .15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .04em;
+      padding: 13px 30px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      transition: border-color .2s, color .2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    section { padding: 96px 0; }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; line-height: 0; }
+    .nav-logo img { height: 40px; width: auto; display: block; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { font-size: 14px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      padding: 120px 0 96px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(76,175,80,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-eyebrow { margin-bottom: 20px; }
+    .hero h1 {
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-proof {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 40px;
+    }
+    .hero-proof-item strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--green);
+    }
+    .hero-proof-item span {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .03em;
+    }
+    .hero-card {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      position: relative;
+    }
+    .hero-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .hero-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .hero-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hero-card ul li {
+      font-size: 14px;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+    }
+    .hero-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+    }
+
+    /* ── MARQUEE / LOGOS ─────────────────────────────────── */
+    .marquee-section {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .marquee-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 64px;
+      animation: scroll 20s linear infinite;
+      width: max-content;
+    }
+    .marquee-track span {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--border);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ── PROBLEM ─────────────────────────────────────────── */
+    .problem { background: var(--dark); }
+    .problem-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .problem h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+    .problem p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .pain-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    @media (max-width: 768px) {
+      .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ── FRAMEWORKS ──────────────────────────────────────── */
+    .frameworks-header { text-align: center; margin-bottom: 64px; }
+    .frameworks-header h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .frameworks-header p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto; }
+    .frameworks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .fw-card {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .fw-card:hover { border-color: var(--green); transform: translateY(-2px); }
+    .fw-number {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .fw-card h3 {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .fw-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    @media (max-width: 768px) {
+      .frameworks-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PRODUCTS ────────────────────────────────────────── */
+    .products { background: var(--dark); }
+    .products-header { text-align: center; margin-bottom: 64px; }
+    .products-header h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .products-header p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color .2s;
+    }
+    .product-card:hover { border-color: var(--green); }
+    .product-card.featured {
+      border-color: var(--green);
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card.featured::before {
+      content: 'START HERE';
+      position: absolute;
+      top: 16px;
+      right: -28px;
+      background: var(--green);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      padding: 4px 40px;
+      transform: rotate(45deg);
+    }
+    .product-icon {
+      font-size: 36px;
+      line-height: 1;
+    }
+    .product-type {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .product-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .product-card p { font-size: 15px; color: var(--muted); line-height: 1.7; flex: 1; }
+    .product-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .product-features li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+    }
+    .product-features li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+    @media (max-width: 768px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SOCIAL PROOF ────────────────────────────────────── */
+    .proof-header { text-align: center; margin-bottom: 64px; }
+    .proof-header h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .proof-header p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+    }
+    .testimonial-stars {
+      color: var(--green);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .testimonial-quote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-author strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .testimonial-author span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ABOUT ───────────────────────────────────────────── */
+    .about { background: var(--dark); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img {
+      aspect-ratio: 4/5;
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--border);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .about h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .about p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .about-creds {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 28px 0 36px;
+    }
+    .cred-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .cred-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; }
+      .about-img { display: none; }
+    }
+
+    /* ── CTA BANNER ──────────────────────────────────────── */
+    .cta-banner {
+      background: var(--green);
+      color: var(--black);
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .cta-banner h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .cta-banner p {
+      font-size: 18px;
+      margin-bottom: 36px;
+      opacity: .85;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-dark {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: .04em;
+      padding: 14px 36px;
+      border-radius: var(--radius);
+      transition: opacity .2s;
+    }
+    .btn-dark:hover { opacity: .85; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-top: 12px; }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 14px; color: var(--muted); transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--green); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="book.html">Book</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="consulting.html">Consulting</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
+        <li><a href="apps.html">Apps</a></li>
+        <li><a href="free-resources.html">Free Resources</a></li>
+      </ul>
+      <a href="book.html" class="btn-primary nav-cta">Get the System</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="tag">Strength Through Systems</span>
+        </div>
+        <h1>Stop Coaching <em>From Chaos.</em> Start Running a System.</h1>
+        <p class="hero-sub">
+          Most coaches are talented. Few are <em style="font-style:normal;color:var(--white);">systematic</em>.
+          The book, courses, and coaching frameworks that help strength coaches build programs that run
+          without constant firefighting — and athletes who actually buy in.
+        </p>
+        <div class="hero-actions">
+          <a href="book.html" class="btn-primary">Get the Book</a>
+          <a href="#courses" class="btn-outline">Explore Courses</a>
+        </div>
+        <div class="hero-proof">
+          <div class="hero-proof-item">
+            <strong>10hrs</strong>
+            <span>Saved Per Week</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>D1–HS</strong>
+            <span>All Levels</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-label">Inside the System</div>
+        <h3>Athlete Buy-In System</h3>
+        <ul>
+          <li>Complete Athlete Development Framework</li>
+          <li>Athlete Buy-In System (tested, plug-and-play)</li>
+          <li>IF/Then Lifting System for decision-free programming</li>
+          <li>KPI-Driven assessment model</li>
+          <li>Staff development + admin reporting structure</li>
+          <li>Continuous improvement loop for your own coaching</li>
+        </ul>
+        <a href="book.html" class="btn-primary" style="width:100%;text-align:center;">Get the Book →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <p class="marquee-label">Trusted by coaches at</p>
+    <div class="marquee-track">
+      <span>Division I Programs</span>
+      <span>High School Athletics</span>
+      <span>Private Performance Centers</span>
+      <span>Collegiate S&C</span>
+      <span>Football Programs</span>
+      <span>Multi-Sport Facilities</span>
+      <span>Division I Programs</span>
+      <span>High School Athletics</span>
+      <span>Private Performance Centers</span>
+      <span>Collegiate S&C</span>
+      <span>Football Programs</span>
+      <span>Multi-Sport Facilities</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container problem-inner">
+      <div>
+        <span class="tag">The Real Problem</span>
+        <h2 style="margin-top:16px;">Talented Coaches Burning Out Isn't a Passion Problem.</h2>
+        <p>
+          You didn't get into this profession because you lacked motivation. You're overwhelmed
+          because your room runs on reactions, not repeatable systems. Every decision
+          re-made daily. Every problem solved from scratch. That's not coaching — that's survival.
+        </p>
+        <p>
+          The answer isn't more motivation. It's a structure that makes the important things automatic
+          so you can focus on what actually develops athletes.
+        </p>
+        <a href="book.html" class="btn-primary">Build Your System →</a>
+      </div>
+      <ul class="pain-list">
+        <li>
+          <span class="pain-icon">⚡</span>
+          <span>Too many athletes, not enough time — and no framework to prioritize</span>
+        </li>
+        <li>
+          <span class="pain-icon">🔄</span>
+          <span>Programming decisions made on the fly every single session</span>
+        </li>
+        <li>
+          <span class="pain-icon">📉</span>
+          <span>Athletes who don't buy in because the "why" was never systematized</span>
+        </li>
+        <li>
+          <span class="pain-icon">🗣️</span>
+          <span>Inconsistent staff communication leading to gaps in execution</span>
+        </li>
+        <li>
+          <span class="pain-icon">🔥</span>
+          <span>Seasonal whiplash — starting over mentally every off-season and in-season</span>
+        </li>
+        <li>
+          <span class="pain-icon">📊</span>
+          <span>No clear data to show admins and parents what you're actually building</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FRAMEWORKS -->
+  <section id="frameworks">
+    <div class="container">
+      <div class="frameworks-header">
+        <span class="tag">Core Frameworks</span>
+        <h2 style="margin-top:16px;">Not Theory. Operating Systems.</h2>
+        <p>Every framework is built from real weight rooms — tested, refined, and ready to deploy.</p>
+      </div>
+      <div class="frameworks-grid">
+        <div class="fw-card">
+          <div class="fw-number">Framework 01</div>
+          <h3>Athlete Buy-In System</h3>
+          <p>A systematic approach to engagement, trust-building, and culture that doesn't rely on charisma or luck. Coaches at every level use this to close the buy-in gap before the first rep.</p>
+        </div>
+        <div class="fw-card">
+          <div class="fw-number">Framework 02</div>
+          <h3>IF / Then Lifting System</h3>
+          <p>Decision-making rules baked into your programming so athletes and coaches never have to guess the right adjustment in the moment. The system thinks for you.</p>
+        </div>
+        <div class="fw-card">
+          <div class="fw-number">Framework 03</div>
+          <h3>Athlete Development Framework</h3>
+          <p>A complete assessment-to-output model — movement screen, KPI tracking, and seasonal progression — that makes athlete growth measurable and reproducible.</p>
+        </div>
+        <div class="fw-card">
+          <div class="fw-number">Framework 04</div>
+          <h3>Room Flow System</h3>
+          <p>Spatial, logistical, and communication structures that make your weight room feel organized before you say a word — and run efficiently with or without you watching.</p>
+        </div>
+        <div class="fw-card">
+          <div class="fw-number">Framework 05</div>
+          <h3>Staff & Stakeholder Communication System</h3>
+          <p>A reporting and communication structure for interns, assistants, administrators, and parents — so you're never re-explaining or managing up on the fly.</p>
+        </div>
+        <div class="fw-card">
+          <div class="fw-number">Framework 06</div>
+          <h3>Continuous Improvement Loop</h3>
+          <p>The coach's personal operating system for seasonal review, career growth, and building a program that gets better year over year instead of resetting every summer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="book">
+    <div class="container">
+      <div class="products-header">
+        <span class="tag">Work With Garrett</span>
+        <h2 style="margin-top:16px;">Choose Your Entry Point</h2>
+        <p>Whether you want the book, a course, direct consulting, or a live keynote — every path delivers the same system, at the depth you need.</p>
+      </div>
+      <div class="products-grid">
+
+        <!-- BOOK -->
+        <div class="product-card featured">
+          <div>
+            <div class="product-type">Book</div>
+            <div class="product-icon" style="margin-top:12px;">📖</div>
+          </div>
+          <h3>Systems-Driven Strength</h3>
+          <p>The complete coaching operating system in print. Every framework, template, and implementation guide — written for coaches who want to stop reacting and start building.</p>
+          <ul class="product-features">
+            <li>6 core operational frameworks</li>
+            <li>Plug-and-play programming templates</li>
+            <li>Athlete Buy-In System playbook</li>
+            <li>Staff & admin reporting structures</li>
+          </ul>
+          <a href="book.html" class="btn-primary">Order Now →</a>
+        </div>
+
+        <!-- COURSES -->
+        <div class="product-card" id="courses">
+          <div>
+            <div class="product-type">Courses</div>
+            <div class="product-icon" style="margin-top:12px;">🎓</div>
+          </div>
+          <h3>Systems Coaching Course Library</h3>
+          <p>Deep-dive courses on every piece of the system: programming, athlete development, in-season management, sprinting, plyometrics, conditioning, and more — with video and templates.</p>
+          <ul class="product-features">
+            <li>Coaching Systems Masterclass</li>
+            <li>Programming Mastery Course</li>
+            <li>Athlete Development Framework Course</li>
+            <li>Specialty modules: Speed, Conditioning, Recovery</li>
+          </ul>
+          <a href="#" class="btn-outline">Browse Courses →</a>
+        </div>
+
+        <!-- CONSULTING -->
+        <div class="product-card" id="consulting">
+          <div>
+            <div class="product-type">Consulting</div>
+            <div class="product-icon" style="margin-top:12px;">🤝</div>
+          </div>
+          <h3>1-on-1 & Program Consulting</h3>
+          <p>Direct work with Garrett to install systems into your specific program — your athletes, your constraints, your culture. Built for coaches who want results this season, not next year.</p>
+          <ul class="product-features">
+            <li>Program audit + systems gap analysis</li>
+            <li>Custom framework implementation</li>
+            <li>Staff development & communication systems</li>
+            <li>Ongoing accountability & support</li>
+          </ul>
+          <a href="#" class="btn-outline">Apply to Work Together →</a>
+        </div>
+
+        <!-- SPEAKING -->
+        <div class="product-card" id="speaking">
+          <div>
+            <div class="product-type">Speaking</div>
+            <div class="product-icon" style="margin-top:12px;">🎤</div>
+          </div>
+          <h3>Keynotes & Clinics</h3>
+          <p>High-energy, framework-packed talks for staff inservices, athletic director conferences, coaching clinics, and professional development days. Practical — not motivational.</p>
+          <ul class="product-features">
+            <li>Systems-Driven Strength keynote</li>
+            <li>Athlete Buy-In System workshop</li>
+            <li>Staff development intensives</li>
+            <li>Available in-person & virtual</li>
+          </ul>
+          <a href="#" class="btn-outline">Book Garrett →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section>
+    <div class="container">
+      <div class="proof-header">
+        <span class="tag">Results From the Field</span>
+        <h2 style="margin-top:16px;">What Coaches Are Building</h2>
+        <p>From D1 programs to high school weight rooms — coaches using the system are getting their time back and their athletes locked in.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"The Athlete Buy-In System completely changed how I onboard new athletes. I used to spend weeks earning trust. Now I have a framework that does it in the first week."</p>
+          <div class="testimonial-author">
+            <strong>D1 Head Strength Coach</strong>
+            <span>Power Five Program</span>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"I was working 60-hour weeks and still felt behind. The Room Flow and Programming frameworks saved me at least 10 hours a week. My staff is finally operating independently."</p>
+          <div class="testimonial-author">
+            <strong>High School S&C Coordinator</strong>
+            <span>Multi-Sport Program, 400+ Athletes</span>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"As an AD, I'd been looking for a system our coaches could actually implement. This isn't theory — it's an operating manual. Our entire staff went through it."</p>
+          <div class="testimonial-author">
+            <strong>Athletic Director</strong>
+            <span>Private High School</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-img">[ Photo of Garrett ]</div>
+      <div>
+        <span class="tag">About Garrett</span>
+        <h2 style="margin-top:16px;">Built from the Weight Room Up.</h2>
+        <p>
+          Garrett Phelps isn't selling theory. Every framework inside Strength Through Systems was
+          built, tested, and refined in real weight rooms — with real athletes and real constraints.
+        </p>
+        <p>
+          After seeing talented coaches burn out not because they lacked passion, but because they
+          lacked <strong style="color:var(--white);">structure</strong>, Garrett built the operating
+          systems he wished he'd had from day one. The result is a coaching methodology that's
+          clear, scalable, and teachable at any level.
+        </p>
+        <div class="about-creds">
+          <div class="cred-item">Author of <em>Systems-Driven Strength</em></div>
+          <div class="cred-item">Strength & Conditioning Coach, D1–High School</div>
+          <div class="cred-item">Creator of the Athlete Buy-In System</div>
+          <div class="cred-item">Speaker at national coaching clinics & conferences</div>
+          <div class="cred-item">500+ coaches trained through courses & consulting</div>
+        </div>
+        <a href="#" class="btn-outline">Full Bio →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Your Program Deserves a System.<br>Not Just a Schedule.</h2>
+    <p>Start with the book. Build the system. Coach with clarity.</p>
+    <a href="book.html" class="btn-dark">Get Systems-Driven Strength →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></div>
+          <p>Helping strength coaches build programs that run on systems, not survival mode. Based in the weight room. Built for the real world.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="book.html">Book</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#consulting">Consulting</a></li>
+            <li><a href="#speaking">Speaking</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Frameworks</h4>
+          <ul>
+            <li><a href="#frameworks">Athlete Buy-In System</a></li>
+            <li><a href="#frameworks">IF/Then Lifting</a></li>
+            <li><a href="#frameworks">Athlete Development</a></li>
+            <li><a href="#frameworks">Room Flow System</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Podcast</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Strength Through Systems. All rights reserved.</span>
+        <span>Built for coaches who run a system.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
