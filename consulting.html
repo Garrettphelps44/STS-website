@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consulting | Strength Through Systems</title>
+  <title>System Architect | Strength Through Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root { --green: #4CAF50; --green-dark: #388E3C; --black: #0A0A0A; --dark: #111111; --mid: #1A1A1A; --border: #2A2A2A; --text: #E8E8E8; --muted: #888888; --white: #FFFFFF; --radius: 6px; --max: 1160px; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
     .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -17,6 +18,8 @@
     .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .btn-outline { display: inline-block; background: transparent; color: var(--text); font-weight: 700; font-size: 15px; letter-spacing: .04em; padding: 13px 30px; border-radius: var(--radius); border: 1.5px solid var(--border); transition: border-color .2s, color .2s; }
     .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+    /* NAV */
     nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { display: flex; align-items: center; line-height: 0; }
@@ -25,22 +28,91 @@
     .nav-links a { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: .03em; transition: color .2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
     @media (max-width: 768px) { .nav-links { display: none; } }
-    .page-hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); }
-    .page-hero .tag { margin-bottom: 20px; display: inline-block; }
-    .page-hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
-    .page-hero p { font-size: 18px; color: var(--muted); max-width: 580px; line-height: 1.7; }
-    .content-section { padding: 96px 0; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .two-col h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 20px; line-height: 1.2; }
-    .two-col p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
-    .offer-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .offer-list li { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; }
-    .offer-list li h4 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
-    .offer-list li p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.6; }
-    .cta-strip { background: var(--dark); border: 1px solid var(--border); border-radius: 12px; padding: 48px; text-align: center; margin-top: 64px; }
-    .cta-strip h3 { font-size: 28px; font-weight: 900; margin-bottom: 12px; }
-    .cta-strip p { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
-    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* HERO */
+    .page-hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(76,175,80,.08) 0%, transparent 70%); pointer-events: none; }
+    .page-hero .tag { margin-bottom: 20px; display: inline-block; position: relative; }
+    .page-hero h1 { font-size: clamp(36px, 5.5vw, 64px); font-weight: 900; line-height: 1.08; letter-spacing: -.02em; margin-bottom: 20px; position: relative; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero p { font-size: 18px; color: var(--muted); max-width: 600px; line-height: 1.7; margin-bottom: 36px; position: relative; }
+    .page-hero p strong { color: var(--text); font-weight: 600; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; position: relative; }
+    .hero-price-note { font-size: 14px; color: var(--muted); }
+    .hero-price-note strong { color: var(--green); }
+
+    /* SECTIONS */
+    section { padding: 96px 0; }
+    section.alt { background: var(--dark); }
+    .section-header { margin-bottom: 56px; }
+    .section-header h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.2; }
+    .section-header h2 em { font-style: normal; color: var(--green); }
+    .section-header p { font-size: 17px; color: var(--muted); max-width: 640px; line-height: 1.75; }
+    .section-header p strong { color: var(--text); font-weight: 600; }
+
+    /* PROBLEM LIST */
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .problem-list li { display: flex; gap: 16px; align-items: flex-start; background: var(--mid); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: var(--radius); padding: 20px 24px; font-size: 15px; color: var(--text); line-height: 1.6; }
+    .problem-list li::before { content: '—'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    /* DELIVERABLES */
+    .deliverables { display: flex; flex-direction: column; gap: 2px; }
+    .deliverable { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; transition: border-color .2s; }
+    .deliverable:hover { border-color: var(--green); }
+    .deliverable-num { font-size: 28px; font-weight: 900; color: var(--green); line-height: 1; padding-top: 2px; }
+    .deliverable-title { font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 8px; }
+    .deliverable p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.7; }
+    @media (max-width: 640px) { .deliverable { grid-template-columns: 40px 1fr; padding: 22px 20px; } }
+
+    /* PHASES */
+    .phases { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .phase { display: grid; grid-template-columns: 110px 1fr; border-bottom: 1px solid var(--border); }
+    .phase:last-child { border-bottom: none; }
+    .phase-num { background: var(--mid); display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); font-size: 32px; font-weight: 900; color: var(--green); opacity: .35; padding: 28px; }
+    .phase-content { padding: 28px 32px; background: var(--black); }
+    .phase-week { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+    .phase-title { font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 8px; }
+    .phase-content p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.7; }
+    @media (max-width: 640px) { .phase { grid-template-columns: 64px 1fr; } .phase-content { padding: 20px; } .phase-num { padding: 20px; font-size: 24px; } }
+
+    /* FIT GRID */
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .fit-card { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .fit-card-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 20px; }
+    .fit-card.good .fit-card-label { color: var(--green); }
+    .fit-card.bad .fit-card-label { color: var(--muted); }
+    .fit-items { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .fit-items li { font-size: 14px; color: var(--text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.55; }
+    .fit-items li .check { color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .fit-items li .x { color: var(--muted); flex-shrink: 0; font-weight: 700; }
+    @media (max-width: 768px) { .fit-grid { grid-template-columns: 1fr; } }
+
+    /* SCOPE */
+    .investment-block { background: var(--mid); border: 1px solid var(--border); border-top: 3px solid var(--green); border-radius: var(--radius); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .investment-includes { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .investment-includes li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); line-height: 1.5; }
+    .investment-includes li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .investment-includes-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 18px; }
+    @media (max-width: 768px) { .investment-block { grid-template-columns: 1fr; padding: 32px; gap: 32px; } }
+
+    /* ABOUT */
+    .about-block { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
+    .about-badge { background: var(--mid); border: 1px solid var(--border); border-top: 3px solid var(--green); border-radius: var(--radius); padding: 28px; text-align: center; }
+    .about-badge-title { font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+    .about-badge-sub { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .about-stat { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 36px; font-weight: 900; color: var(--green); line-height: 1; }
+    .about-stat span { display: block; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-top: 6px; }
+    .about-block p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+    @media (max-width: 768px) { .about-block { grid-template-columns: 1fr; } }
+
+    /* CTA STRIP */
+    .cta-strip { background: var(--mid); border: 1px solid var(--border); border-radius: 12px; padding: 56px 48px; text-align: center; }
+    .cta-strip h3 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin-bottom: 14px; letter-spacing: -.02em; }
+    .cta-strip h3 em { font-style: normal; color: var(--green); }
+    .cta-strip p { color: var(--muted); font-size: 16px; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-subtext { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+    /* FOOTER */
     footer { background: var(--black); border-top: 1px solid var(--border); padding: 48px 0 24px; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
     @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 8px; text-align: center; } }
@@ -54,7 +126,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="book.html">Book</a></li>
         <li><a href="courses.html">Courses</a></li>
-        <li><a href="consulting.html" class="active">Consulting</a></li>
+        <li><a href="consulting.html" class="active">System Architect</a></li>
         <li><a href="speaking.html">Speaking</a></li>
         <li><a href="apps.html">Apps</a></li>
         <li><a href="free-resources.html">Free Resources</a></li>
@@ -63,46 +135,230 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <div class="page-hero">
     <div class="container">
-      <span class="tag">Consulting</span>
-      <h1>Your Program.<br>Garrett's System.</h1>
-      <p>Direct work with Garrett to install the STS frameworks into your specific program — your athletes, your constraints, your culture.</p>
+      <span class="tag">System Architect — Limited Engagements</span>
+      <h1>Your Program Doesn't<br>Have a Talent Problem.<br>It Has a <em>Systems Problem.</em></h1>
+      <p>This is the engagement where we fix that — inside your building, with your staff, for your athletes. <strong>System Architect</strong> is direct, hands-on installation of the STS frameworks into your specific program.</p>
+      <div class="hero-actions">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply to Work Together →</a>
+        <p class="hero-price-note"><strong>Limited to 4 organizations per year</strong></p>
+      </div>
     </div>
   </div>
 
-  <section class="content-section">
+  <!-- PROBLEM -->
+  <section>
     <div class="container">
-      <div class="two-col">
-        <div>
-          <h2>Built for Coaches Who Want Results This Season</h2>
-          <p>Not next year. Not after a few more clinics. Consulting is for coaches who are ready to install a real system now — with direct access to Garrett throughout the process.</p>
-          <p>Every engagement starts with a program audit to identify exactly where your operation is leaking time, energy, and athlete buy-in. Then we build the solution together.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply to Work Together →</a>
-        </div>
-        <ul class="offer-list">
-          <li>
-            <h4>Program Audit + Gap Analysis</h4>
-            <p>A complete review of your current systems — programming, communication, athlete development, room flow — with a prioritized action plan.</p>
-          </li>
-          <li>
-            <h4>Custom Framework Implementation</h4>
-            <p>Garrett works directly with you to install the right STS frameworks for your specific program context and constraints.</p>
-          </li>
-          <li>
-            <h4>Staff Development &amp; Communication Systems</h4>
-            <p>Build internal reporting structures, intern development pipelines, and stakeholder communication that runs without you managing every detail.</p>
-          </li>
-          <li>
-            <h4>Ongoing Accountability &amp; Support</h4>
-            <p>Check-ins, troubleshooting, and iteration as you implement. You're not handed a plan and left alone.</p>
-          </li>
-        </ul>
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Real Problem</span>
+        <h2>Your Program <em>Runs You.</em><br>Not the Other Way Around.</h2>
+        <p>Most athletic programs have talented coaches and willing athletes. What they don't have is a system that holds everything together without constant intervention. So everything depends on the person — not the process.</p>
       </div>
+      <ul class="problem-list">
+        <li>Your weight room operates on the head coach's memory. When they're gone, nothing is repeatable.</li>
+        <li>Athletes go through the motions because no one has given them a system they can actually buy into and measure their progress against.</li>
+        <li>Sport coaches have no idea what strength training is doing for their athletes — or why it matters — so buy-in breaks down in both directions.</li>
+        <li>You're running 4–8 different sports with zero coordination between them, which means your athletes are either undertrained, overtrained, or both at different points in the year.</li>
+        <li>Nobody can show the administration measurable proof that the performance program is producing results — so resources stay thin and the position stays marginal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Engagement</span>
+        <h2>What You Get When We <em>Build Together</em></h2>
+        <p>This is not a seminar. It's not a template drop. It's a full-contact installation of a working performance system inside your specific program — built to your athletes, your staff, your constraints, and your culture.</p>
+      </div>
+      <div class="deliverables">
+        <div class="deliverable">
+          <div class="deliverable-num">01</div>
+          <div>
+            <div class="deliverable-title">Full Program Audit</div>
+            <p>We start by understanding what you have. Session flow, exercise selection, athlete tracking, staff communication, buy-in patterns — everything gets looked at before anything gets built. You can't fix what you haven't measured.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">02</div>
+          <div>
+            <div class="deliverable-title">Custom Systems Architecture</div>
+            <p>Based on the audit, we build the systems your program actually needs: FYOP-aligned annual planning, sport-specific phase maps, Exercise Selection Funnels, progression standards, and athlete buy-in infrastructure. Built for your facility. Not a template. A system.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">03</div>
+          <div>
+            <div class="deliverable-title">Staff Installation + Training</div>
+            <p>Systems only work if the people running them understand them. We train your staff on the frameworks — how to coach it, how to hold the standard, how to communicate it to athletes and sport coaches. The system has to live in the room, not just on paper.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">04</div>
+          <div>
+            <div class="deliverable-title">Athlete Buy-In Infrastructure</div>
+            <p>We install the Athlete Buy-In Rate (ABIR) system inside your program — a measurable framework for tracking and improving athlete engagement. Coaches stop guessing why athletes are checked out and start managing the actual inputs that drive buy-in.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">05</div>
+          <div>
+            <div class="deliverable-title">Data &amp; Tracking System</div>
+            <p>Your program needs to be able to prove it's working. We build the tracking infrastructure — testing protocols, performance dashboards, progress reporting — so you can show athletes, sport coaches, and administrators measurable results.</p>
+          </div>
+        </div>
+        <div class="deliverable">
+          <div class="deliverable-num">06</div>
+          <div>
+            <div class="deliverable-title">90-Day Implementation Support</div>
+            <p>After the build, you're not on your own. We stay connected through the first 90 days of implementation — troubleshooting in real time, adjusting what needs adjusting, and holding the standard until the system runs itself.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Process</span>
+        <h2>How the <em>Engagement Works</em></h2>
+        <p>This engagement runs in four phases. Every phase has a clear deliverable. Nothing is open-ended. Nothing is vague. You'll know exactly what's being built and when.</p>
+      </div>
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-num">1</div>
+          <div class="phase-content">
+            <div class="phase-week">Week 1–2</div>
+            <div class="phase-title">Audit + Discovery</div>
+            <p>Deep dive into your current program — session structure, staff roles, athlete data, buy-in patterns, sport schedules, facility constraints. We learn your system before we build a better one.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">2</div>
+          <div class="phase-content">
+            <div class="phase-week">Week 3–5</div>
+            <div class="phase-title">Systems Build</div>
+            <p>We design and build your custom systems architecture — annual plan, phase maps, exercise funnels, progressions, buy-in framework, tracking infrastructure, and documentation your staff can actually use.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">3</div>
+          <div class="phase-content">
+            <div class="phase-week">Week 6–8</div>
+            <div class="phase-title">Staff Installation</div>
+            <p>Live training with your staff on every system. How it works, why it works, how to hold the standard, and how to communicate it to athletes and sport coaches so everyone in the building understands the program.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">4</div>
+          <div class="phase-content">
+            <div class="phase-week">Days 60–150</div>
+            <div class="phase-title">90-Day Live Support</div>
+            <p>Real-time access to Garrett through the first full cycle of implementation. Questions get answered. Problems get solved. The system gets refined until it runs without constant intervention.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">Right Fit</span>
+        <h2>This Is <em>Built For</em> Organizations That Are Ready</h2>
+        <p>This isn't for everyone. It's a serious engagement for organizations that are serious about building a real performance program — not looking for a motivational speaker or a template pack.</p>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card good">
+          <div class="fit-card-label">This is for you if —</div>
+          <ul class="fit-items">
+            <li><span class="check">✓</span>You're a high school or private school athletic program ready to build infrastructure</li>
+            <li><span class="check">✓</span>You're a private performance center that needs repeatable systems across staff</li>
+            <li><span class="check">✓</span>You have a strength coach or performance staff in place and need the systems layer</li>
+            <li><span class="check">✓</span>Your leadership is bought in and you have the authority to implement</li>
+            <li><span class="check">✓</span>You want something that outlasts any single staff member</li>
+          </ul>
+        </div>
+        <div class="fit-card bad">
+          <div class="fit-card-label">This isn't for you if —</div>
+          <ul class="fit-items">
+            <li><span class="x">✕</span>You want a one-time clinic or motivational talk</li>
+            <li><span class="x">✕</span>Leadership isn't behind the program and nothing can change</li>
+            <li><span class="x">✕</span>You're looking for a template to fill in and figure out yourself</li>
+            <li><span class="x">✕</span>You want someone to tell you what you want to hear instead of what you need to build</li>
+            <li><span class="x">✕</span>You're not willing to commit staff time to the installation process</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Scope</span>
+        <h2>What's <em>Included</em></h2>
+        <p>This is a bespoke engagement, scoped to your organization's size, complexity, and what needs to be built. Every engagement includes the following.</p>
+      </div>
+      <div class="investment-block" style="grid-template-columns: 1fr;">
+        <div>
+          <div class="investment-includes-label">Included in every engagement</div>
+          <ul class="investment-includes">
+            <li>Full program audit + gap analysis report</li>
+            <li>Custom annual training architecture (FYOP)</li>
+            <li>Sport-specific phase maps for all active sports</li>
+            <li>Exercise Selection Funnel built for your facility</li>
+            <li>Athlete Buy-In Rate (ABIR) system installation</li>
+            <li>Testing + tracking infrastructure and dashboards</li>
+            <li>Staff training and communication systems</li>
+            <li>All documentation, templates, and operating manuals</li>
+            <li>90 days of live implementation support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">Who Builds This With You</span>
+        <h2>Built by a Coach Who Has <em>Done This</em></h2>
+      </div>
+      <div class="about-block">
+        <div class="about-badge">
+          <div class="about-badge-title">Garrett Phelps</div>
+          <p class="about-badge-sub">Athletic Performance Coordinator<br>Indian Rocks Christian School<br>Largo, FL</p>
+          <div class="about-stat">10+<span>Years in the Weight Room</span></div>
+          <div class="about-stat" style="margin-top:16px;">6<span>Years as Program Director</span></div>
+        </div>
+        <div>
+          <p>I'm not a consultant who studied performance programs from the outside. I've been building and running them — in real facilities, with real athletes, under real constraints — for over a decade.</p>
+          <p>Every framework inside this engagement was built inside a weight room. The Athlete Buy-In Rate system, the Exercise Selection Funnel, the FYOP — I built these because I needed them and they didn't exist. Then I tested them with real athletes and refined them until they actually worked.</p>
+          <p>I founded Strength Through Systems because the gap I see most isn't talent. It's structure. Coaches who care and know their craft but don't have a system to hold the program together. That's the problem this engagement exists to solve.</p>
+          <p>I only take on four of these per year. That's not a marketing tactic — it's how I protect the quality of the work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container">
       <div class="cta-strip">
-        <h3>Limited Spots Available</h3>
-        <p>Garrett takes on a small number of consulting clients each semester to ensure quality. Apply to see if it's a fit.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply Now →</a>
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">Limited to 4 Organizations Per Year</span>
+        <h3>Ready to <em>Build the System?</em></h3>
+        <p>Fill out the application below. If it looks like a strong fit, we'll schedule a call to map out exactly what needs to be built and confirm the scope. No hard sell. Just a real conversation about your program.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply to Work Together →</a>
+        <p class="cta-subtext">Application takes less than 5 minutes. Most organizations hear back within 48 hours.</p>
       </div>
     </div>
   </section>
