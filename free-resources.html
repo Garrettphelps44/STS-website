@@ -72,8 +72,14 @@
     .article-row:hover .article-arrow { color: var(--green); }
     .article-item.open .article-arrow { color: var(--green); transform: rotate(180deg); }
     .article-body { background: #181818; padding: 0 28px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; }
-    .article-item.open .article-body { max-height: 600px; padding: 24px 28px 28px; }
+    .article-item.open .article-body { max-height: 20000px; padding: 24px 28px 28px; }
     .article-body p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+    .article-body h4 { font-size: 16px; font-weight: 800; color: var(--white); margin: 28px 0 12px; line-height: 1.35; }
+    .article-body h4:first-child { margin-top: 0; }
+    .article-body ul, .article-body ol { margin: 0 0 14px 20px; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .article-body li { margin-bottom: 6px; }
+    .article-body a { color: var(--green); text-decoration: underline; }
+    .article-body a:hover { color: var(--green-dark); }
     .article-body p:last-child { margin-bottom: 0; }
 
     /* PDF DOWNLOADS PANEL */
@@ -122,7 +128,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="book.html">Book</a></li>
         <li><a href="courses.html">Courses</a></li>
-        <li><a href="consulting.html">Consulting</a></li>
+        <li><a href="consulting.html">System Architect</a></li>
         <li><a href="speaking.html">Speaking</a></li>
         <li><a href="apps.html">Apps</a></li>
         <li><a href="free-resources.html" class="active">Free Resources</a></li>
@@ -159,75 +165,165 @@
       <div class="cat-panel active" id="panel-articles">
         <div class="articles-list">
 
-          <div class="article-item">
+          <div class="article-item open">
             <div class="article-row" onclick="toggleArticle(this)">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">Buy-In</span>
-                  <span class="article-date">May 2026</span>
+                  <span class="article-cat">Culture</span>
+                  <span class="article-date">June 2026</span>
                 </div>
-                <h3>Why Athlete Buy-In Isn't a Relationship Problem — It's a Systems Problem</h3>
+                <h3>How to Build a High-Performance Weight Room Culture In High School: A Systems-Based Framework</h3>
               </div>
               <span class="article-arrow">↓</span>
             </div>
             <div class="article-body">
-              <p>Most coaches think buy-in is about being liked. Here's why that framing costs you time, energy, and results.</p>
-              <p>When buy-in is treated as a personality-driven outcome, you have no system to improve it. The coaches who consistently build cultures of commitment aren't more charismatic — they're more systematic. They've built structures that create buy-in automatically, before the first rep is ever taken.</p>
-              <p>This article breaks down the exact process: how to audit your current buy-in gaps, map them to a framework, and install repeatable routines that earn trust at scale.</p>
-            </div>
-          </div>
-
-          <div class="article-item">
-            <div class="article-row" onclick="toggleArticle(this)">
-              <div>
-                <div class="article-meta">
-                  <span class="article-cat">Programming</span>
-                  <span class="article-date">Apr 2026</span>
-                </div>
-                <h3>The IF/Then Framework: Stop Making the Same Programming Decision Twice</h3>
-              </div>
-              <span class="article-arrow">↓</span>
-            </div>
-            <div class="article-body">
-              <p>A breakdown of how to build decision rules into your program so you never have to wing it on the floor again.</p>
-              <p>Every time you make a programming adjustment on the fly, you're spending cognitive currency that should be going toward coaching. The IF/Then Framework converts those recurring decisions into preset rules — so the system thinks for you.</p>
-              <p>This article walks through how to identify your most common in-session decisions, convert them into IF/Then rules, and build them into your program so athletes and assistants can execute without waiting on you.</p>
-            </div>
-          </div>
-
-          <div class="article-item">
-            <div class="article-row" onclick="toggleArticle(this)">
-              <div>
-                <div class="article-meta">
-                  <span class="article-cat">Room Management</span>
-                  <span class="article-date">Mar 2026</span>
-                </div>
-                <h3>Room Flow: How to Run a Weight Room That Operates Without You Watching</h3>
-              </div>
-              <span class="article-arrow">↓</span>
-            </div>
-            <div class="article-body">
-              <p>The spatial, logistical, and communication structures that make your weight room feel organized before you say a word.</p>
-              <p>Room flow isn't about being loud or constantly correcting — it's about designing an environment where the right behavior is the path of least resistance. The best weight rooms run themselves because the coach built the structure, not because the coach is everywhere at once.</p>
-              <p>This article covers station design, transition protocols, verbal cue systems, and how to train your athletes to self-manage so you can focus on the athletes who need you most.</p>
-            </div>
-          </div>
-
-          <div class="article-item">
-            <div class="article-row" onclick="toggleArticle(this)">
-              <div>
-                <div class="article-meta">
-                  <span class="article-cat">Staff Development</span>
-                  <span class="article-date">Feb 2026</span>
-                </div>
-                <h3>How to Build an Intern Development Pipeline That Runs on Autopilot</h3>
-              </div>
-              <span class="article-arrow">↓</span>
-            </div>
-            <div class="article-body">
-              <p>Stop re-training every semester. A repeatable onboarding and development system for your coaching staff.</p>
-              <p>Most programs treat intern development as an afterthought — and then wonder why their staff keeps making the same mistakes. A real pipeline means every new intern enters the same structured onboarding, hits the same checkpoints, and exits with real coaching competency.</p>
-              <p>This article outlines how to build a 3-phase intern development system: orientation, supervised coaching, and independent operation — with checkpoints and feedback loops at every stage.</p>
+              <p>If I walked into your high school tomorrow and you asked me to transform your program, here's exactly how I would do it.</p>
+              <p>After 10 years as a strength and conditioning coach—four as an assistant, six as a director—I&#x27;ve learned that program chaos doesn&#x27;t come from lack of effort. It comes from lack of systems. This is the playbook I use to take a school from zero structure to a fully systematized, coachable program that any strength coach can run.</p>
+              <h4>Step 1: Get Administration on Board</h4>
+              <p>Nothing changes without this first. You need two non-negotiable requirements:</p>
+              <h4>Requirement One: All high school athletes must lift.</h4>
+              <p>This is mandatory. Not optional. Not if you feel like it. Every athlete gets weight training as part of their school day. If you can&#x27;t fit them during regular periods because of facility constraints, they go to a zero period. But every single high school athlete is getting strength training.</p>
+              <p>Why? A stronger athlete is a more resilient athlete. Strength training mitigates injury risk, improves cognitive performance, and actually helps athletes function better academically. This isn&#x27;t optional development—it&#x27;s foundational.</p>
+              <h4>Requirement Two: Weight training is an extension of sports practice.</h4>
+              <p>If an athlete goofs off in the weight room, doesn&#x27;t work hard, or breaks standards, they face the same consequences as if they broke those standards at practice. Playing time gets affected. Practice discipline flows both ways.</p>
+              <p>This accomplishes one critical thing: it signals to every athlete and every coach that strength training is not separate from their sport. It&#x27;s integral to it. Standards are standards.</p>
+              <p>Once your AD understands these two things, everything else becomes possible.</p>
+              <h4>Step 2: Identify Your Facility Constraints</h4>
+              <p>Constraints don&#x27;t limit you. They guide you.</p>
+              <p>Every facility has four variables that dictate what you can actually do:</p>
+              <h4>Time</h4>
+              <p>How long do you actually have with each group? Fifteen minutes? Thirty? Forty-five? An hour? Time determines how much volume you can accumulate and how many exercises you can fit.</p>
+              <h4>Space</h4>
+              <p>What does your weight room actually look like physically? If you&#x27;re trying to train speed work but only have a 5-by-5 platform, sprinters won&#x27;t reach max velocity. Space determines which adaptations you can actually pursue. A 30-foot runway is not the same as a 60-foot runway.</p>
+              <h4>Equipment</h4>
+              <p>Count it. All of it. How many racks? How many barbells? How many kettlebells? How many of each kettlebell weight? How many dumbbells and sets of dumbbells? One vertical jump measurement station? One trap bar? If you have 30 athletes in a class and only one Vert Max, you can&#x27;t program Vert Max testing for everyone simultaneously.</p>
+              <p>Every piece of equipment either enables athletes to train or creates a bottleneck. You need to know exactly what you have so you know exactly how many athletes can do a specific exercise at a specific time.</p>
+              <h4>Group Size</h4>
+              <p>How many athletes are you training at once? Twenty? Thirty? Forty? Group size forces you to prioritize. If you have one Vert Max and thirty athletes, that Vert Max isn&#x27;t your primary testing tool. You need to work backward from group size to find what actually works.</p>
+              <p>Once you understand these four variables, you can work them together intelligently. Time tells you how much they can do. Equipment tells you how many people can do it at once. Space constrains which exercises are possible. Group size forces you to scale.</p>
+              <p>Most programs fail here because they program as if constraints don&#x27;t exist. You program based on what you wish you had, not what you actually have. That&#x27;s how you create chaos.</p>
+              <h4>Step 3: Map Your Facility Flow</h4>
+              <p>Now that you understand your constraints, design the physical flow of your weight room from entry to exit.</p>
+              <p>Picture your facility from above. Imagine you&#x27;re looking down from the ceiling. What path should an athlete walk to move efficiently through the space without bottlenecking on equipment, without crossing paths with other groups, without waiting around?</p>
+              <p>Use Canva or a simple sketch. Map out your stations:</p>
+              <ul>
+                <li>Rack station (for back squats, deadlifts, bench press—any barbell movement using a rack)</li>
+                <li>Cable station (for cable variations)</li>
+                <li>Dumbbell station (for dumbbell work)</li>
+                <li>Medicine ball or wall station</li>
+                <li>Any other equipment clusters you have</li>
+              </ul>
+              <p>Once you&#x27;ve identified the most efficient path, you&#x27;ve identified your flow. Then you assign exercises to stations based on that flow.</p>
+              <p>Don&#x27;t program athletes from dumbbells to racks to cables and back to dumbbells. Create a logical progression: racks → cables → dumbbells → wall work → finish. A clean flow means athletes move with purpose. They know where to go. They&#x27;re not confused. Confusion kills intensity and creates wasted time.</p>
+              <p>This single decision—the physical flow—dictates how your entire training session will be structured.</p>
+              <h4>Step 4: Define Your Daily Training Session Structure</h4>
+              <p>With flow mapped, you now decide: when do athletes lift? What happens before the weight room?</p>
+              <p>Do they start in the weight room and finish there? Do they have field work first (speed sessions, sprints, sled work) and then come to the weight room? Are they warming up in the weight room, or do they have a separate warm-up area?</p>
+              <p>These decisions determine your transition times, your total available training time, and your warm-up structure.</p>
+              <p>For warm-up, I use what I call a sensory starter—a coordination-based activation that serves double duty. Tennis balls, medicine balls, reaction drills, even balloons. Why? Because coordination is the body&#x27;s awareness of movement in space, and you can train it systematically.</p>
+              <p>Coordination has three progressive variables:</p>
+              <ol>
+                <li>Velocity: How fast or slow the input is</li>
+                <li>Task complexity: How difficult the task is</li>
+                <li>Input modality: Visual, auditory, or proprioceptive cues</li>
+              </ol>
+              <p>A well-designed sensory starter wakes athletes up, primes their nervous system, and trains coordination—all in the same 5 to 10 minutes.</p>
+              <p>Then, depending on your schedule, athletes either go straight into strength work or they handle field-based adaptations first (acceleration work, max velocity sprints, deceleration training, sled work). From there, they flow through the weight room based on the facility map you created.</p>
+              <h4>Step 5: The Exercise Selection Funnel</h4>
+              <p>This is where most programs go sideways. They either have too few exercises and can&#x27;t adapt, or they have so many that coaches don&#x27;t know how to select the right one for the right athlete at the right time.</p>
+              <p>Use the six-WAT exercise selection funnel.</p>
+              <h4>First: Build Your Complete Exercise Library</h4>
+              <p>List every exercise your equipment and space allows. Not just &quot;back squat&quot;—list every variation:</p>
+              <ul>
+                <li>High bar back squats</li>
+                <li>Low bar back squats</li>
+                <li>High pin back squats</li>
+                <li>Low pin back squats</li>
+                <li>Tempo variations</li>
+                <li>Pauses</li>
+              </ul>
+              <p>This library becomes your flexibility. When an athlete can&#x27;t do the primary exercise, you have immediate regressions. When an athlete needs progression, you have it.</p>
+              <h4>Second: Identify the Primary Joint</h4>
+              <p>What joint is this exercise targeting?</p>
+              <ul>
+                <li>Ankle</li>
+                <li>Knee</li>
+                <li>Hip</li>
+                <li>Spine</li>
+                <li>Shoulder</li>
+                <li>Elbow</li>
+                <li>Wrist</li>
+              </ul>
+              <h4>Third: Identify the Primary Movement</h4>
+              <p>What does that joint do? For the hip, the movements are:</p>
+              <ul>
+                <li>Abduction</li>
+                <li>Adduction</li>
+                <li>Internal rotation</li>
+                <li>External rotation</li>
+                <li>Flexion</li>
+                <li>Extension</li>
+              </ul>
+              <p>If you&#x27;re targeting the hip, and the movement is flexion-extension, you&#x27;re in hip hinge territory.</p>
+              <h4>Fourth: Define the Adaptation or Intent</h4>
+              <p>What are you trying to build? Strength output? Power? Hypertrophy? Mobility? Stability? Movement quality?</p>
+              <p>This is critical. The adaptation determines everything downstream. If your goal is maximum strength output, you&#x27;ll prescribe low reps and higher sets to accumulate load. If it&#x27;s power, you&#x27;ll chase bar speed and moderate loads. If it&#x27;s muscular endurance, reps climb but weight drops.</p>
+              <h4>Fifth: Select the Best Exercise for This Athlete</h4>
+              <p>Now you have the joint, the movement, and the adaptation. Filter through your exercise library and pick the best option given your facility constraints, group size, and this specific athlete&#x27;s level.</p>
+              <h4>Sixth: Determine Volume, Load, and Progression</h4>
+              <p>How many reps and sets drive this adaptation? What load can this athlete handle based on what they&#x27;ve done before? Is their load going up consistently, or are they stuck?</p>
+              <p>Here&#x27;s the flow in action:</p>
+              <ul>
+                <li>Athlete needs hip flexion-extension work</li>
+                <li>Adaptation goal is maximum strength output</li>
+                <li>Facility constraints mean dumbbells and barbells work; space doesn&#x27;t allow heavy implements</li>
+                <li>Select barbell RDL</li>
+                <li>Prescribe 6 sets of 3 reps (low reps, higher sets to accumulate volume)</li>
+                <li>Last week they hit 305 for 3 sets of 3</li>
+                <li>New load: 315</li>
+              </ul>
+              <p>That&#x27;s one exercise. You then repeat this process for every exercise in the week until you&#x27;ve built a program that checks off every adaptation you&#x27;re targeting.</p>
+              <h4>Step 6: Weekly Hierarchy and the If-Then Lifting Schedule</h4>
+              <p>Life happens. Practices run over. Bad weather. Schedule changes. The weight room isn&#x27;t immune.</p>
+              <p>Instead of scrapping the entire week and reprogramming chaos, use an if-then hierarchy.</p>
+              <p>Rank your training sessions by importance based on your phase goals:</p>
+              <ol>
+                <li>Monday (most important—primary strength work)</li>
+                <li>Wednesday (second—power-focused)</li>
+                <li>Thursday (third—supplemental)</li>
+                <li>Friday (least important—optional if needed)</li>
+              </ol>
+              <p>If Monday&#x27;s workout gets missed, move Monday&#x27;s session to Tuesday and scrap Thursday. Shift Wednesday to Thursday, Thursday to Friday.</p>
+              <p>You still hit all your critical adaptations. You just adjust the calendar. The hierarchy ensures that if something has to give, it&#x27;s the least critical session, not your main strength work.</p>
+              <h4>Step 7: Daily Adjustments on the Fly</h4>
+              <p>What happens when you plan for 60 minutes but only get 45?</p>
+              <p>Create a daily hierarchy within that session:</p>
+              <ol>
+                <li>Primary lift (non-negotiable—do this)</li>
+                <li>Secondary strength work (do this if time allows)</li>
+                <li>Accessory/supplemental work (nice to have)</li>
+                <li>Conditioning/finisher (first thing to cut if time is short)</li>
+              </ol>
+              <p>If time is cut short, you cut the bottom. You never sacrifice the main lift.</p>
+              <p>As a coach, this is your decision tree in the moment. You don&#x27;t improvise. You follow the hierarchy you set ahead of time.</p>
+              <h4>Step 8: Build a Session Code and Year-Long Template</h4>
+              <p>Here&#x27;s where the system becomes bulletproof.</p>
+              <p>Once you&#x27;ve mapped facility constraints, designed your flow, identified your weekly hierarchy, and built your weekly exercises, you&#x27;ve essentially solved 95% of the problem. The only variable that changes is:</p>
+              <ul>
+                <li>Individual athlete regressions or progressions (athlete A does dumbbell RDL, athlete B does barbell RDL)</li>
+                <li>Load adjustments based on where they are in season</li>
+                <li>Which sessions get swapped if the week gets disrupted</li>
+              </ul>
+              <p>That&#x27;s it. You&#x27;re not rebuilding the program every week. You&#x27;re not searching for new exercises. You&#x27;re not confused about what to do next.</p>
+              <p>You create one master template code for the year. It accounts for your facility. It accounts for your group size. It accounts for your phase goals. Then you run it, adjust within it, and watch athletes improve because they have consistency and clarity.</p>
+              <h4>The Payoff</h4>
+              <p>You don&#x27;t need to hire an expensive new strength coach. You don&#x27;t need to completely overhaul your program. You don&#x27;t need chaos.</p>
+              <p>You need a system.</p>
+              <p>When you walk into a school and you want to build a high-performance weight room culture, you start with administration (mandatory strength training + consequences). You map your constraints. You design your flow. You build your daily structure. You master the exercise selection funnel. You create a weekly hierarchy. You set daily adjustment rules. You build a template that accounts for your reality.</p>
+              <p>Then you teach it to the coaches you already have.</p>
+              <p>That&#x27;s the system. It works because it&#x27;s built on what&#x27;s actually possible in your facility, not what&#x27;s possible in some imaginary perfect facility. It scales because it&#x27;s repeatable. It improves athletes because it&#x27;s intentional.</p>
+              <p>After 10 years of doing this, I can tell you with certainty: this is the difference between a program that works and a program that fails. Not the coach&#x27;s effort. Not the facility&#x27;s equipment. The system.</p>
+              <p>Systems drive success.</p>
             </div>
           </div>
 
@@ -236,16 +332,50 @@
               <div>
                 <div class="article-meta">
                   <span class="article-cat">Athlete Development</span>
-                  <span class="article-date">Jan 2026</span>
+                  <span class="article-date">June 2026</span>
                 </div>
-                <h3>KPI-Driven Coaching: The Metrics That Actually Predict Athletic Development</h3>
+                <h3>Why Athletes Can&#x27;t Do an Exercise Yet</h3>
               </div>
               <span class="article-arrow">↓</span>
             </div>
             <div class="article-body">
-              <p>Which numbers to track, how to track them, and how to use data to drive decisions without drowning in spreadsheets.</p>
-              <p>Most coaches either track nothing or track everything — and both approaches fail. The right KPIs are the ones that tell you whether your system is working before the season reveals it. Lagging indicators like performance outcomes matter, but leading indicators like training consistency and effort scores are what you can actually act on in real time.</p>
-              <p>This article identifies the six KPIs every strength coach should be tracking, how to collect them without adding administrative burden, and how to use them in your weekly coaching decisions.</p>
+              <p>Recently, I was talking with a sport coach about a specific athlete who could not perform an exercise at the level we needed. I had used every cue I knew. He had tried everything on his end. The athlete wanted to do it right — you could see it — but something wasn’t connecting.</p>
+              <p>The coach looked at me and asked the question straight: why can’t he do this?</p>
+              <p>I paused for about 30 seconds.</p>
+              <p>Then I realized the problem: the athlete didn’t have the capacity to do what the exercise required. He wasn’t lazy. He wasn’t uncoachable. His ceiling just wasn’t high enough yet.</p>
+              <h4>Production Capacity vs. Production Value</h4>
+              <p>I’ve been thinking about this concept since reading Stephen Covey’s 7 Habits of Highly Effective People. Covey talks about the P/PC balance — Production Value versus Production Capacity. Production Capacity is the maximum output a system can produce. Production Value is the output itself.</p>
+              <p>I use this framework in the weight room constantly.</p>
+              <p>The value is what coaches want to see: more weight on the bar, a higher jump, more power, a faster sprint. These are the visible outcomes. This is what gets celebrated, filmed, and posted.</p>
+              <p>The capacity is everything underneath that. Coordination. Joint control. Body positioning. Mobility. The ability to move under load. The athlete’s understanding of what’s expected and how to execute it.</p>
+              <p>Most coaches default to chasing value. They load the bar, cue the athlete, and expect the output to improve. But if the capacity isn’t there to support the demand, you’re not developing anything — you’re just exposing a gap.</p>
+              <h4>ESL: Exercise Skill Level</h4>
+              <p>Every exercise has a skill demand. I call this the Exercise Skill Level, or ESL. Some exercises are low-skill, forgiving, and easy to learn. Others are high-skill, technically complex, and require a significant base of capacity before an athlete can produce meaningful value from them.</p>
+              <p>The back squat is one of the highest ESL exercises in the weight room. The value is heavy loading and total lower-body development. But the capacity requirements are significant:</p>
+              <ul>
+                <li>Shoulder: external rotation to hold bar position</li>
+                <li>Spine: rib cage and pelvis stacked, neutral throughout</li>
+                <li>Hips: internal and external rotation, flexion and extension</li>
+                <li>Knees: flexion and extension under load</li>
+                <li>Ankles: dorsiflexion to achieve depth</li>
+              </ul>
+              <p>That’s a long list. And it’s not just that each piece needs to exist — they need to work together, at the same time, under load. If any one of those segments is a weak link, the whole movement falls apart. You can cue all day and get nowhere, because the body literally cannot do what you’re asking.</p>
+              <h4>Build Capacity First</h4>
+              <p>So what do you do? You break the high-ESL movement down into smaller, lower-skill components. You build each piece of the capacity separately before asking the athlete to combine them.</p>
+              <p>For the shoulder, a single-arm overhead hold trains external rotation in isolation. Simple to coach, easy to load progressively, and directly feeds the bar position in a back squat.</p>
+              <p>For the spine, a plank with an intentional focus on pulling the rib cage down and locking the pelvis in a stacked position. This is the same spinal demand present in the squat, but without the complexity of the lower body.</p>
+              <p>For the hips, knees, and ankles, a good lunge variation — stationary lunge or a front-foot elevated split squat (FFESS) — covers the flexion, extension, and rotation demands of each segment individually. These movements are lower-skill, easier to load, and easy to progress.</p>
+              <p>None of these are glamorous. Athletes won’t post them. But they work. They build the structural foundation that allows a back squat to actually develop the athlete rather than just test him.</p>
+              <h4>Why This Changes How You Coach</h4>
+              <p>When you start thinking in PC/PV terms, your whole decision-making process shifts.</p>
+              <p>Before you load an exercise, you ask: does this athlete have the capacity to produce value from this movement? If the answer is no, you don’t fight the athlete — you build the athlete. You’re not lowering standards. You’re creating the conditions for standards to be met.</p>
+              <p>This is the difference between training and working out. A workout is effort. Training is targeted development toward a specific outcome. When you sequence capacity before value, every movement you program has a reason. Every progression makes sense. And athletes stop feeling like they’re failing at exercises they were never actually ready for.</p>
+              <p>I’ve seen this change the way athletes carry themselves in the weight room. When they understand the sequence — when they know that what they’re doing right now is building toward something — the frustration disappears. They have a goal within the goal. That’s buy-in you don’t have to manufacture.</p>
+              <h4>The Practical Takeaway</h4>
+              <p>Before you program any high-ESL movement, identify the capacity requirements. Break them down by joint or segment. Ask what simpler exercise trains each requirement in isolation. Build those movements first. Stay on them long enough to actually develop the capacity — not one week, not two. Real capacity development takes time.</p>
+              <p>Then revisit the primary movement. You’ll see a different athlete.</p>
+              <p>Capacity is invisible until it isn’t. When the athlete finally owns the movement — clean, loaded, consistent — that’s when you know the foundation was built right.</p>
+              <p>Build the capacity. The value will follow.</p>
             </div>
           </div>
 
@@ -253,17 +383,51 @@
             <div class="article-row" onclick="toggleArticle(this)">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">Mindset</span>
-                  <span class="article-date">Dec 2025</span>
+                  <span class="article-cat">Programming</span>
+                  <span class="article-date">June 2026</span>
                 </div>
-                <h3>The Continuous Improvement Loop: How Coaches Get Better Every Off-Season</h3>
+                <h3>Why Tonnage Is Lying to Your Athletes (And What to Use Instead)</h3>
               </div>
               <span class="article-arrow">↓</span>
             </div>
             <div class="article-body">
-              <p>A personal operating system for seasonal review, career growth, and building a program that compounds year over year.</p>
-              <p>Most coaches reset every off-season instead of compounding. They start fresh, make the same adjustments they made last year, and wonder why the ceiling isn't moving. The Continuous Improvement Loop is a structured review process — what worked, what didn't, what gets installed differently next cycle.</p>
-              <p>This article walks through the exact end-of-season debrief framework Garrett uses to evaluate his program, his staff, his athletes, and himself — and how to turn those findings into concrete system upgrades before the next season starts.</p>
+              <h4>Summary</h4>
+              <p>Tonnage has been the default workload management tool for strength coaches for decades — but it has four critical blind spots that cause coaches to misread athlete stress and misrepresent real progression. Athletic Performance Coordinator Garrett Phelps breaks down each flaw and introduces the Gradation Unit, a skill-coefficient-based formula he developed to give coaches a more accurate single-number picture of athlete workload.</p>
+              <p>Tonnage has been the go-to workload metric in strength and conditioning for a long time. It is simple, teachable, and easy to track. But after five years of frustration with the data it produces, I can no longer recommend it as the primary way coaches quantify athlete stress or track real progression.</p>
+              <p>This is not a critique for the sake of being contrarian. It is a practical problem with a practical solution. Coaches deserve tools that tell the truth about what is happening in the weight room. Tonnage does not always do that — and in several specific ways, it actively misleads us.</p>
+              <h4>What Tonnage Is</h4>
+              <p>Tonnage is a workload management tool. Coaches use it to quantify how much work an athlete is doing across a session, week, or training block. The equation is straightforward: sets × reps × load. That combination produces a single number that coaches then use to track volume trends and make programming adjustments.</p>
+              <p>The simplicity is part of the appeal. One number is easy to communicate, easy to compare, and easy to trend over time. The problem is that simplicity comes at a cost — and that cost shows up in four specific areas.</p>
+              <h4>Problem 1: Tempo and Duration Are Not Accounted For</h4>
+              <p>The tonnage equation captures load, sets, and reps. It does not capture how long each rep takes.</p>
+              <p>This matters more than most coaches acknowledge. A three-second eccentric on a back squat and a one-second drop are not the same physiological event. Time under tension affects fatigue, muscle damage, and the metabolic demand of the set. Two athletes can produce identical tonnage numbers from two very different training stimuli, and the data will not tell you that. That is a meaningful gap.</p>
+              <h4>Problem 2: Exercise Skill Level Is Not Quantified</h4>
+              <p>Tonnage treats all exercises equally. Whatever the movement, if the sets, reps, and load are the same, the tonnage is the same.</p>
+              <p>Consider a bicep curl and a back squat. If the same athlete performs identical sets, reps, and load on both exercises, tonnage records them as equivalent stress. Every experienced coach knows that is not true. The back squat demands far more from the central nervous system, requires greater coordination and technical skill, and produces significantly more systemic fatigue. The data says they are the same. The athlete’s body knows otherwise.</p>
+              <p>This becomes a real programming problem when coaches use tonnage to make load management decisions. The exercise itself carries stress information that the formula never captures.</p>
+              <h4>Problem 3: There Is No Individualization for Athlete Body Dimensions</h4>
+              <p>Take a 6’5” athlete and a 5’6” athlete and put them under the same bar at the same load for the same sets and reps. Tonnage records their workload as identical.</p>
+              <p>It is not. The taller athlete moves that bar through a substantially greater range of motion on every single rep. More distance means more mechanical work — by definition. It also means more demand on the joints, more positional complexity to manage, and a longer time under tension even at the same tempo. Tonnage ignores all of it. Two very different physical realities get collapsed into the same number.</p>
+              <h4>Problem 4: The Math Misrepresents Rep-by-Rep Fatigue</h4>
+              <p>This is the one that bothered me most when I started pulling it apart.</p>
+              <p>When coaches add volume, the math in tonnage works against accuracy in a specific way. Going from one rep to two doubles the value. Going from two to three increases it by a third. From three to four, by a fourth. Each additional rep contributes proportionally less to the total number — even though the physiological reality is the opposite. Rep eight is harder than rep two. The later reps are more fatiguing, not less. Tonnage mathematically underweights the hardest portion of every set.</p>
+              <p>The same logic applies to sets. Set five, loaded with cumulative fatigue, registers the same in the equation as set one. From a data standpoint, they are identical. From an athlete standpoint, they are not even close.</p>
+              <h4>The Solution: The Gradation Unit</h4>
+              <p>Understanding what tonnage gets wrong is the easy part. The harder question is what to replace it with.</p>
+              <p>In 2022, I set out to build a better formula. I went through exercises systematically and asked a basic question: what actually makes a given exercise stressful? Center of mass, load placement, stability demands, movement complexity, required coordination — all of these factors contribute to how much an exercise asks of an athlete. I used that analysis to assign each exercise a skill coefficient that reflects its true demand relative to other movements.</p>
+              <p>The result is what I now call the Gradation Unit. The formula incorporates sets, reps, and tempo — and it weights later reps and sets more heavily to reflect cumulative fatigue more accurately. The skill coefficient adjusts the total based on the exercise being performed. And critically, the formula also accounts for the athlete’s height, so a 6’5” athlete and a 5’6” athlete doing the same movement produce different values that more accurately reflect what each of them actually experienced.</p>
+              <p>This gives coaches a single number that is more honest about athlete stress. It is still simple enough to use practically, but it is built on inputs that actually matter.</p>
+              <h4>Using the Gradation Unit in Practice</h4>
+              <p>The application is straightforward. When you open the free app linked below, you input the athlete’s height, the exercise, the load, sets, reps, and tempo. The formula runs automatically and returns a Gradation Unit value.</p>
+              <p>That value can then be trended over time just like tonnage — but what it is trending is more reliable. When the number goes up, it reflects real progression. When it stagnates, it tells you something meaningful. When athletes of different sizes and skill levels are compared, the data is no longer misleading.</p>
+              <p>The goal was never to make workload tracking more complicated. The goal was to make it more accurate. Tonnage gave coaches a number. The Gradation Unit gives coaches the right number.</p>
+              <h4>Final Thoughts</h4>
+              <p>Tonnage is not useless. It is better than nothing, and for coaches who have no other system in place, it still provides directional information. But for coaches who are serious about making data-driven decisions, it has real limitations that are worth understanding.</p>
+              <p>The four problems outlined here — missing tempo data, no skill differentiation, no height individualization, and mathematically underweighted later reps — all point in the same direction: tonnage tells an incomplete story. In some cases, it tells the wrong one.</p>
+              <p>The Gradation Unit is my attempt to fix that. It is not perfect, and it will continue to evolve. But it is built on better inputs, and better inputs produce better decisions. That is what athlete tracking should do.</p>
+              <p>The free app is linked below. Add your athletes, run the numbers, and see the difference.</p>
+              <p>Team App: <a href="https://teamstrengthcal.netlify.app/" target="_blank" rel="noopener">https://teamstrengthcal.netlify.app/</a></p>
+              <p>Garrett Phelps is the Athletic Performance Coordinator at Indian Rocks Christian School in Largo, Florida. He is the founder of Strength Through Systems (STS) and serves on the NHSSCA Florida State Board. He holds an MS in Exercise and Nutrition Science, CSCS, PSL1 and PSL2, and USAW Level 1.</p>
             </div>
           </div>
 
