@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>System Architect | Strength Through Systems</title>
+  <title>Facility System Install | Strength Through Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -35,11 +35,16 @@
     .page-hero .tag { margin-bottom: 20px; display: inline-block; position: relative; }
     .page-hero h1 { font-size: clamp(36px, 5.5vw, 64px); font-weight: 900; line-height: 1.08; letter-spacing: -.02em; margin-bottom: 20px; position: relative; }
     .page-hero h1 em { font-style: normal; color: var(--green); }
-    .page-hero p { font-size: 18px; color: var(--muted); max-width: 600px; line-height: 1.7; margin-bottom: 36px; position: relative; }
+    .page-hero p { font-size: 18px; color: var(--muted); max-width: 640px; line-height: 1.7; margin-bottom: 36px; position: relative; }
     .page-hero p strong { color: var(--text); font-weight: 600; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; position: relative; }
     .hero-price-note { font-size: 14px; color: var(--muted); }
     .hero-price-note strong { color: var(--green); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; position: relative; max-width: 780px; }
+    .hero-stat { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .hero-stat strong { display: block; font-size: 18px; font-weight: 800; color: var(--green); letter-spacing: -.01em; }
+    .hero-stat span { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+    @media (max-width: 700px) { .hero-stats { grid-template-columns: 1fr; } }
 
     /* SECTIONS */
     section { padding: 96px 0; }
@@ -54,17 +59,45 @@
     .problem-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
     .problem-list li { display: flex; gap: 16px; align-items: flex-start; background: var(--mid); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: var(--radius); padding: 20px 24px; font-size: 15px; color: var(--text); line-height: 1.6; }
     .problem-list li::before { content: '—'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .reframe { margin-top: 32px; background: var(--mid); border: 1px solid var(--green); border-radius: var(--radius); padding: 28px 32px; }
+    .reframe .label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .reframe p { font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.55; max-width: 58ch; }
 
-    /* DELIVERABLES */
-    .deliverables { display: flex; flex-direction: column; gap: 2px; }
-    .deliverable { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; transition: border-color .2s; }
-    .deliverable:hover { border-color: var(--green); }
-    .deliverable-num { font-size: 28px; font-weight: 900; color: var(--green); line-height: 1; padding-top: 2px; }
-    .deliverable-title { font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 8px; }
-    .deliverable p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.7; }
-    @media (max-width: 640px) { .deliverable { grid-template-columns: 40px 1fr; padding: 22px 20px; } }
+    /* ROI */
+    .roi-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: stretch; }
+    .roi-box { background: rgba(76,175,80,.08); border: 1.5px solid var(--green); border-radius: var(--radius); padding: 36px 32px; }
+    .roi-box .big { font-size: clamp(40px, 5vw, 56px); font-weight: 900; color: var(--green); letter-spacing: -.03em; line-height: 1; }
+    .roi-box .cap { font-size: 15px; color: var(--text); margin-top: 14px; line-height: 1.65; }
+    .roi-levers { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .roi-levers li { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .roi-levers strong { display: block; font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .roi-levers span { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    @media (max-width: 800px) { .roi-grid { grid-template-columns: 1fr; } }
 
-    /* PHASES */
+    /* PILLARS */
+    .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .pillar { background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 22px; display: flex; flex-direction: column; transition: border-color .2s; }
+    .pillar:hover { border-color: var(--green); }
+    .pillar.layer { border-style: dashed; opacity: .95; }
+    .pillar-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .pillar h3 { font-size: 16px; font-weight: 800; letter-spacing: .01em; line-height: 1.3; }
+    .pillar-tag { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--border); border-radius: 100px; padding: 3px 8px; color: var(--muted); white-space: nowrap; }
+    .pillar-tag.core { color: var(--black); background: var(--green); border-color: var(--green); }
+    .pillar-tag.bonus { color: var(--green); border-color: var(--green); }
+    .pillar .val { font-size: 18px; font-weight: 800; color: var(--green); margin: 6px 0 10px; }
+    .pillar .val.note { font-size: 13px; font-weight: 700; }
+    .pillar .one { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; flex: 1; }
+    .pillar ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pillar li { font-size: 13px; color: var(--text); padding-left: 14px; position: relative; line-height: 1.45; }
+    .pillar li::before { content: ''; position: absolute; left: 0; top: .5em; width: 6px; height: 7px; background: var(--green); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+    @media (max-width: 900px) { .pillar-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .pillar-grid { grid-template-columns: 1fr; } }
+
+    .stack-band { margin-top: 24px; background: var(--mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 28px; }
+    .stack-band div { font-size: 14px; color: var(--muted); }
+    .stack-band b { color: var(--white); font-weight: 800; }
+
+    /* PHASES / TIMELINE */
     .phases { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .phase { display: grid; grid-template-columns: 110px 1fr; border-bottom: 1px solid var(--border); }
     .phase:last-child { border-bottom: none; }
@@ -73,7 +106,16 @@
     .phase-week { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
     .phase-title { font-size: 17px; font-weight: 800; letter-spacing: .02em; margin-bottom: 8px; }
     .phase-content p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.7; }
+    .phase-content ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
+    .phase-content li { font-size: 13px; color: var(--text); padding-left: 14px; position: relative; }
+    .phase-content li::before { content: '→'; position: absolute; left: 0; color: var(--green); }
     @media (max-width: 640px) { .phase { grid-template-columns: 64px 1fr; } .phase-content { padding: 20px; } .phase-num { padding: 20px; font-size: 24px; } }
+
+    /* GUARANTEE */
+    .guarantee { background: rgba(76,175,80,.08); border: 1.5px solid var(--green); border-radius: var(--radius); padding: 40px 40px; }
+    .guarantee h3 { font-size: clamp(22px, 3vw, 32px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 12px; }
+    .guarantee h3 em { font-style: normal; color: var(--green); }
+    .guarantee p { font-size: 16px; color: var(--text); max-width: 62ch; line-height: 1.7; }
 
     /* FIT GRID */
     .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -87,12 +129,17 @@
     .fit-items li .x { color: var(--muted); flex-shrink: 0; font-weight: 700; }
     @media (max-width: 768px) { .fit-grid { grid-template-columns: 1fr; } }
 
-    /* SCOPE */
-    .investment-block { background: var(--mid); border: 1px solid var(--border); border-top: 3px solid var(--green); border-radius: var(--radius); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    /* SCOPE / INVESTMENT */
+    .investment-block { background: var(--mid); border: 1px solid var(--border); border-top: 3px solid var(--green); border-radius: var(--radius); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .investment-includes { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .investment-includes li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); line-height: 1.5; }
     .investment-includes li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
     .investment-includes-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 18px; }
+    .price-tiers { display: flex; flex-direction: column; gap: 14px; }
+    .price-tier { background: var(--black); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .price-tier .n { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .price-tier .p { font-size: 22px; font-weight: 900; color: var(--green); letter-spacing: -.02em; }
+    .price-tier .d { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
     @media (max-width: 768px) { .investment-block { grid-template-columns: 1fr; padding: 32px; gap: 32px; } }
 
     /* ABOUT */
@@ -109,13 +156,13 @@
     .cta-strip { background: var(--mid); border: 1px solid var(--border); border-radius: 12px; padding: 56px 48px; text-align: center; }
     .cta-strip h3 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin-bottom: 14px; letter-spacing: -.02em; }
     .cta-strip h3 em { font-style: normal; color: var(--green); }
-    .cta-strip p { color: var(--muted); font-size: 16px; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-strip p { color: var(--muted); font-size: 16px; margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
     .cta-subtext { margin-top: 18px; font-size: 13px; color: var(--muted); }
 
     /* FOOTER */
     footer { background: var(--black); border-top: 1px solid var(--border); padding: 48px 0 24px; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
-    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 8px; text-align: center; } }
+    @media (max-width: 480px) { .footer-bottom { flex-direction: column; gap: 8px; text-align: center; } .cta-strip { padding: 40px 24px; } }
   </style>
 </head>
 <body>
@@ -126,23 +173,29 @@
         <li><a href="about.html">About</a></li>
         <li><a href="book.html">Book</a></li>
         <li><a href="courses.html">Courses</a></li>
-        <li><a href="consulting.html" class="active">System Architect</a></li>
+        <li><a href="consulting.html" class="active">Facility Install</a></li>
         <li><a href="speaking.html">Speaking</a></li>
         <li><a href="apps.html">Apps</a></li>
         <li><a href="free-resources.html">Free Resources</a></li>
       </ul>
-      <a href="book.html" class="btn-primary">Get the Book</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <div class="page-hero">
     <div class="container">
-      <span class="tag">System Architect — Limited Engagements</span>
-      <h1>Your Facility Doesn't<br>Need another system.<br>It needs <em>a System Architect to build Your System.</em></h1>
-      <p>This is the engagement where we fix that — inside your building, with your staff, for your athletes. <strong>System Architect</strong> is direct, hands-on installation of the STS frameworks into your specific program.</p>
+      <span class="tag">Facility System Install — 2 slots per month</span>
+      <h1>The problem was never <em>effort.</em><br>It's the missing system.</h1>
+      <p>You have good coaches, real athletes, and a growing facility — and it still runs on your memory instead of a system. If a coach walked out tomorrow, the program would walk out with him. <strong>We install the structure you can't build while running the floor.</strong></p>
       <div class="hero-actions">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply to Work Together →</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install Slot →</a>
+        <span class="hero-price-note"><strong>$9,000–$23,000</strong> install · audit rolls 100% in</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>$145K–$230K</strong><span>Estimated annual value created for an established multi-coach facility</span></div>
+        <div class="hero-stat"><strong>90-day guarantee</strong><span>Full adoption — or we keep working until it is</span></div>
+        <div class="hero-stat"><strong>2 installs / month</strong><span>Current month filling. Standards session is in person.</span></div>
       </div>
     </div>
   </div>
@@ -152,115 +205,291 @@
     <div class="container">
       <div class="section-header">
         <span class="tag" style="margin-bottom:16px;display:inline-block;">The Real Problem</span>
-        <h2>Your Program <em>Runs You.</em><br>Not the Other Way Around.</h2>
-        <p>Most athletic programs have talented coaches and willing athletes. What they don't have is a system that holds everything together without constant intervention. So everything depends on the person — not the process.</p>
+        <h2>Your Facility Runs on <em>You.</em><br>That's the Ceiling.</h2>
+        <p>This is not a software problem. Most owners have already bought a dashboard their coaches ignored. What's missing is a standard every coach actually runs — whether you're on the floor or not.</p>
       </div>
       <ul class="problem-list">
-        <li>Your weight room operates on the head coach's memory. When they're gone, nothing is repeatable.</li>
-        <li>Athletes go through the motions because no one has given them a system they can actually buy into and measure their progress against.</li>
-        <li>Sport coaches have no idea what strength training is doing for their athletes — or why it matters — so buy-in breaks down in both directions.</li>
-        <li>You're running 4–8 different sports with zero coordination between them, which means your athletes are either undertrained, overtrained, or both at different points in the year.</li>
-        <li>Nobody can show the administration measurable proof that the performance program is producing results — so resources stay thin and the position stays marginal.</li>
+        <li>The program lives in your head and one or two strong coaches. When they leave, the program leaves with them.</li>
+        <li>New hires take weeks of your selling and marketing time to ramp — because there's no certification, only tribal knowledge.</li>
+        <li>Space and time get used inefficiently, so you can't add athletes without adding square footage or more hours on the floor.</li>
+        <li>Parents don't see proof. You tell them the kid is progressing. You can't show them. That's what caps your prices.</li>
+        <li>Sixteen-plus hours a week of programming, tracking, and reporting still falls on you — or it doesn't get done.</li>
       </ul>
+      <div class="reframe">
+        <div class="label">Program vs. system</div>
+        <p>A program is what one coach runs. A system is what every coach runs the same way, whether you're in the building or not.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section class="alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">Why This Pays For Itself</span>
+        <h2>Not a Cost. <em>Recovered Capacity.</em></h2>
+        <p>The install is priced against the value it creates — capacity you already paid for, time you get back, and pricing power you can't unlock without proof.</p>
+      </div>
+      <div class="roi-grid">
+        <div class="roi-box">
+          <div class="big">$145K–$230K</div>
+          <p class="cap">Estimated annual value created for an established multi-coach facility — from capacity gains, reduced turnover disruption, owner time recovered, and pricing power unlocked by real reporting.</p>
+        </div>
+        <ul class="roi-levers">
+          <li><strong>Capacity</strong><span>Efficient space and time use adds athlete slots without adding square footage.</span></li>
+          <li><strong>Turnover-proof</strong><span>A coach can leave without the program leaving with him.</span></li>
+          <li><strong>Owner's time back</strong><span>Spend it marketing and growing, not covering the floor.</span></li>
+          <li><strong>Pricing power</strong><span>Proof of results is what lets you raise prices and keep families.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- WHAT YOU GET -->
-  <section class="alt">
+  <section>
     <div class="container">
       <div class="section-header">
-        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Engagement</span>
-        <h2>What You Get When We <em>Build Together</em></h2>
-        <p>This is not a seminar. It's not a template drop. It's a full-contact installation of a working performance system inside your specific program — built to your athletes, your staff, your constraints, and your culture.</p>
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Stack</span>
+        <h2>Seven Systems. <em>Installed in Your Building.</em></h2>
+        <p>Not a template drop. Not another dashboard. Three core systems that make the room run, plus four bonuses your last software never touched — stacked against ~$40,000 of named value.</p>
       </div>
-      <div class="deliverables">
-        <div class="deliverable">
-          <div class="deliverable-num">01</div>
-          <div>
-            <div class="deliverable-title">Full Program Audit</div>
-            <p>We start by understanding what you have. Session flow, exercise selection, athlete tracking, staff communication, buy-in patterns — everything gets looked at before anything gets built. You can't fix what you haven't measured.</p>
+      <div class="pillar-grid">
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Owner Command Center</h3>
+            <span class="pillar-tag core">Core</span>
           </div>
+          <div class="val">$8,000</div>
+          <p class="one">See what's actually happening on the floor — without being in the building.</p>
+          <ul>
+            <li>Adoption audit, day zero</li>
+            <li>System adoption rate dashboard</li>
+            <li>90-day certification</li>
+            <li>Continuity walk-out test</li>
+          </ul>
         </div>
-        <div class="deliverable">
-          <div class="deliverable-num">02</div>
-          <div>
-            <div class="deliverable-title">Custom Systems Architecture</div>
-            <p>Based on the audit, we build the systems your program actually needs: FYOP-aligned annual planning, sport-specific phase maps, Exercise Selection Funnels, progression standards, and athlete buy-in infrastructure. Built for your facility. Not a template. A system.</p>
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Exercise Selection System</h3>
+            <span class="pillar-tag core">Core</span>
           </div>
+          <div class="val">$7,500</div>
+          <p class="one">Programming matched to athlete readiness. 52 weeks generated in under 3 minutes.</p>
+          <ul>
+            <li>ESL framework, macro vs micro</li>
+            <li>Adaptation menus</li>
+            <li>52-week engine, live app</li>
+            <li>Progression standard</li>
+          </ul>
         </div>
-        <div class="deliverable">
-          <div class="deliverable-num">03</div>
-          <div>
-            <div class="deliverable-title">Staff Installation + Training</div>
-            <p>Systems only work if the people running them understand them. We train your staff on the frameworks — how to coach it, how to hold the standard, how to communicate it to athletes and sport coaches. The system has to live in the room, not just on paper.</p>
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Core 4 Movement Prep</h3>
+            <span class="pillar-tag core">Core</span>
           </div>
+          <div class="val">$2,500</div>
+          <p class="one">Fast, standardized warm-ups. No more 15-minute routines eating session time.</p>
+          <ul>
+            <li>Prep protocol</li>
+            <li>Library by need</li>
+            <li>Progression rules</li>
+            <li>Zero dead time into session</li>
+          </ul>
         </div>
-        <div class="deliverable">
-          <div class="deliverable-num">04</div>
-          <div>
-            <div class="deliverable-title">Athlete Buy-In Infrastructure</div>
-            <p>We install the Athlete Buy-In Rate (ABIR) system inside your program — a measurable framework for tracking and improving athlete engagement. Coaches stop guessing why athletes are checked out and start managing the actual inputs that drive buy-in.</p>
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Coach Certification &amp; Standards</h3>
+            <span class="pillar-tag bonus">Bonus</span>
           </div>
+          <div class="val">$6,500</div>
+          <p class="one">New hires ramp in days, not weeks — no tribal knowledge required.</p>
+          <ul>
+            <li>Standards session kit</li>
+            <li>Four-tier checklist</li>
+            <li>Drift correction</li>
+            <li>Coverage &amp; handoff</li>
+          </ul>
         </div>
-        <div class="deliverable">
-          <div class="deliverable-num">05</div>
-          <div>
-            <div class="deliverable-title">Data &amp; Tracking System</div>
-            <p>Your program needs to be able to prove it's working. We build the tracking infrastructure — testing protocols, performance dashboards, progress reporting — so you can show athletes, sport coaches, and administrators measurable results.</p>
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Parent Trust System</h3>
+            <span class="pillar-tag bonus">Bonus</span>
           </div>
+          <div class="val">$6,500</div>
+          <p class="one">Communication cadence and reporting that justifies your pricing.</p>
+          <ul>
+            <li>Communication cadence</li>
+            <li>Proof report</li>
+            <li>Complaint protocol</li>
+            <li>Re-enrollment conversation</li>
+          </ul>
         </div>
-        <div class="deliverable">
-          <div class="deliverable-num">06</div>
-          <div>
-            <div class="deliverable-title">90-Day Implementation Support</div>
-            <p>After the build, you're not on your own. We stay connected through the first 90 days of implementation — troubleshooting in real time, adjusting what needs adjusting, and holding the standard until the system runs itself.</p>
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Zero Downtime &amp; Capacity</h3>
+            <span class="pillar-tag bonus">Bonus</span>
           </div>
+          <div class="val">$5,500</div>
+          <p class="one">Flow, grouping, and capacity rules — no wasted time or space.</p>
+          <ul>
+            <li>Constraint set, flow bands</li>
+            <li>Capacity map, open seat cost</li>
+            <li>Scheduling rules</li>
+            <li>Makeup policy</li>
+          </ul>
         </div>
+        <div class="pillar">
+          <div class="pillar-top">
+            <h3>Return-to-Train Protocol</h3>
+            <span class="pillar-tag bonus">Bonus</span>
+          </div>
+          <div class="val">$3,500</div>
+          <p class="one">A real standard for injury return, not a guess. Coaches don't diagnose, don't clear, don't rehabilitate.</p>
+          <ul>
+            <li>Train-around standard</li>
+            <li>Return-to-lift ladder</li>
+            <li>Emergency protocol</li>
+            <li>Medical handoff</li>
+          </ul>
+        </div>
+        <div class="pillar layer">
+          <div class="pillar-top">
+            <h3>ABIR</h3>
+            <span class="pillar-tag">Measurement layer</span>
+          </div>
+          <div class="val note">Brackets the install</div>
+          <p class="one">Puts a number on athlete buy-in before and after — the proof the 90-day guarantee was met.</p>
+          <ul>
+            <li>Run at day zero as baseline</li>
+            <li>Re-run every cycle</li>
+            <li>Onboarding, day-one expectations</li>
+            <li>Proves the 90-day guarantee</li>
+          </ul>
+        </div>
+        <div class="pillar layer">
+          <div class="pillar-top">
+            <h3>Data to Action</h3>
+            <span class="pillar-tag">Runs underneath</span>
+          </div>
+          <div class="val note">Feeds three pillars</div>
+          <p class="one">Testing, tracking, and attendance that turn into reports a parent can actually hold.</p>
+          <ul>
+            <li>Testing stack, tracking</li>
+            <li>Attendance</li>
+            <li>Feeds the proof report</li>
+            <li>Automation as the last build</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stack-band">
+        <div><b>Stacked value:</b> ~$40,000</div>
+        <div><b>Price:</b> $9,000–$23,000</div>
+        <div><b>Guarantee:</b> full adoption in 90 days, or we keep working</div>
+        <div><b>Capacity:</b> 2 installs a month</div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section>
+  <section class="alt">
     <div class="container">
       <div class="section-header">
         <span class="tag" style="margin-bottom:16px;display:inline-block;">The Process</span>
-        <h2>How the <em>Engagement Works</em></h2>
-        <p>This engagement runs in four phases. Every phase has a clear deliverable. Nothing is open-ended. Nothing is vague. You'll know exactly what's being built and when.</p>
+        <h2>How the <em>Install Works</em></h2>
+        <p>The install runs 60 days. The guarantee is measured at 90. The staff standards session is in person — that's where coach buy-in actually gets built. Everything after is Zoom.</p>
       </div>
       <div class="phases">
         <div class="phase">
+          <div class="phase-num">0</div>
+          <div class="phase-content">
+            <div class="phase-week">Week 0</div>
+            <div class="phase-title">Audit</div>
+            <p>We map what's actually running before we install anything. Constraint set, command-center baseline, ABIR score — so the build is your room, not a template.</p>
+            <ul>
+              <li>Command center audit</li>
+              <li>ABIR baseline</li>
+              <li>Constraint set collected</li>
+            </ul>
+          </div>
+        </div>
+        <div class="phase">
           <div class="phase-num">1</div>
           <div class="phase-content">
-            <div class="phase-week">Week 1–2</div>
-            <div class="phase-title">Audit + Discovery</div>
-            <p>Deep dive into your current program — session structure, staff roles, athlete data, buy-in patterns, sport schedules, facility constraints. We learn your system before we build a better one.</p>
+            <div class="phase-week">Week 1</div>
+            <div class="phase-title">Standards Session</div>
+            <p>In person with your staff. This is the one non-negotiable on-site piece — the thing prior software never did. Certification starts here. Core 4 goes on the floor the same day. Emergency card gets posted.</p>
+            <ul>
+              <li>Certification, in person</li>
+              <li>Core 4 installed</li>
+              <li>Day-one expectations</li>
+              <li>Emergency card posted</li>
+            </ul>
           </div>
         </div>
         <div class="phase">
           <div class="phase-num">2</div>
           <div class="phase-content">
-            <div class="phase-week">Week 3–5</div>
-            <div class="phase-title">Systems Build</div>
-            <p>We design and build your custom systems architecture — annual plan, phase maps, exercise funnels, progressions, buy-in framework, tracking infrastructure, and documentation your staff can actually use.</p>
+            <div class="phase-week">Weeks 2–4</div>
+            <div class="phase-title">Programming and Flow</div>
+            <p>Exercise selection, session flow, and capacity — so every coach programs the same way and the room stops leaking time and seats.</p>
+            <ul>
+              <li>Exercise selection</li>
+              <li>Zero downtime</li>
+              <li>Capacity map, makeups</li>
+            </ul>
           </div>
         </div>
         <div class="phase">
           <div class="phase-num">3</div>
           <div class="phase-content">
-            <div class="phase-week">Week 6–8</div>
-            <div class="phase-title">Staff Installation</div>
-            <p>Live training with your staff on every system. How it works, why it works, how to hold the standard, and how to communicate it to athletes and sport coaches so everyone in the building understands the program.</p>
+            <div class="phase-week">Weeks 4–8</div>
+            <div class="phase-title">Data and Cadence</div>
+            <p>The command center goes live. Testing cycle runs. Parent communication starts. Return-to-train gets the rest of the stack underneath it.</p>
+            <ul>
+              <li>Testing cycle runs</li>
+              <li>Command center live</li>
+              <li>Parent cadence starts</li>
+              <li>Return-to-train rest</li>
+            </ul>
           </div>
         </div>
         <div class="phase">
           <div class="phase-num">4</div>
           <div class="phase-content">
-            <div class="phase-week">Days 60–150</div>
-            <div class="phase-title">90-Day Live Support</div>
-            <p>Real-time access to Garrett through the first full cycle of implementation. Questions get answered. Problems get solved. The system gets refined until it runs without constant intervention.</p>
+            <div class="phase-week">Weeks 8–12</div>
+            <div class="phase-title">Proof</div>
+            <p>First proof reports ship. Onboarding standard is live. Complaint protocol is in place — so value is visible before re-enrollment conversations start.</p>
+            <ul>
+              <li>First proof reports</li>
+              <li>Onboarding standard</li>
+              <li>Complaint protocol</li>
+            </ul>
           </div>
         </div>
+        <div class="phase">
+          <div class="phase-num">5</div>
+          <div class="phase-content">
+            <div class="phase-week">Day 90</div>
+            <div class="phase-title">Certification</div>
+            <p>Guarantee checkpoint. ABIR re-run against the day-zero baseline. If the system is adopted, the retainer begins. Re-enrollment work comes after proof, not before it.</p>
+            <ul>
+              <li>Guarantee checkpoint</li>
+              <li>ABIR re-run vs baseline</li>
+              <li>Retainer begins</li>
+              <li>Re-enrollment, later</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section>
+    <div class="container">
+      <div class="guarantee">
+        <h3>The <em>90-Day Guarantee</em></h3>
+        <p>Full system adoption in 90 days — every coach running the same standard, attendance logged, testing cycle complete — or we keep working until it is.</p>
       </div>
     </div>
   </section>
@@ -270,28 +499,28 @@
     <div class="container">
       <div class="section-header">
         <span class="tag" style="margin-bottom:16px;display:inline-block;">Right Fit</span>
-        <h2>This Is <em>Built For</em> Organizations That Are Ready</h2>
-        <p>This isn't for everyone. It's a serious engagement for organizations that are serious about building a real performance program — not looking for a motivational speaker or a template pack.</p>
+        <h2>Built for Owners Ready to <em>Stop Being the System</em></h2>
+        <p>Private, multi-sport performance facilities with 60+ paid athletes, multiple coaches, and an owner who is done covering the floor.</p>
       </div>
       <div class="fit-grid">
         <div class="fit-card good">
           <div class="fit-card-label">This is for you if —</div>
           <ul class="fit-items">
-            <li><span class="check">✓</span>You're a high school or private school athletic program ready to build infrastructure</li>
-            <li><span class="check">✓</span>You're a private performance center that needs repeatable systems across staff</li>
-            <li><span class="check">✓</span>You have a strength coach or performance staff in place and need the systems layer</li>
-            <li><span class="check">✓</span>Your leadership is bought in and you have the authority to implement</li>
-            <li><span class="check">✓</span>You want something that outlasts any single staff member</li>
+            <li><span class="check">✓</span>You own or run a private, multi-sport performance facility</li>
+            <li><span class="check">✓</span>You have 60+ paid athletes and more than one coach on the floor</li>
+            <li><span class="check">✓</span>You want the facility to run the same way when you're not in the building</li>
+            <li><span class="check">✓</span>You're willing to get the staff in a room for one in-person standards session</li>
+            <li><span class="check">✓</span>You want proof you can hand a parent — not another speech about value</li>
           </ul>
         </div>
         <div class="fit-card bad">
           <div class="fit-card-label">This isn't for you if —</div>
           <ul class="fit-items">
-            <li><span class="x">✕</span>You want a one-time clinic or motivational talk</li>
-            <li><span class="x">✕</span>Leadership isn't behind the program and nothing can change</li>
-            <li><span class="x">✕</span>You're looking for a template to fill in and figure out yourself</li>
-            <li><span class="x">✕</span>You want someone to tell you what you want to hear instead of what you need to build</li>
-            <li><span class="x">✕</span>You're not willing to commit staff time to the installation process</li>
+            <li><span class="x">✕</span>You want a one-time clinic, template pack, or motivational talk</li>
+            <li><span class="x">✕</span>You're looking for software your coaches will ignore the same way they ignored the last one</li>
+            <li><span class="x">✕</span>You're a one-coach operation with no staff to install a standard into</li>
+            <li><span class="x">✕</span>Leadership isn't behind the change and nothing on the floor can actually shift</li>
+            <li><span class="x">✕</span>You won't commit staff time to the standards session</li>
           </ul>
         </div>
       </div>
@@ -302,24 +531,41 @@
   <section>
     <div class="container">
       <div class="section-header">
-        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Scope</span>
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">The Investment</span>
         <h2>What's <em>Included</em></h2>
-        <p>This is a bespoke engagement, scoped to your organization's size, complexity, and what needs to be built. Every engagement includes the following.</p>
+        <p>Priced as a fraction of the value it creates. The audit is the front door — and it rolls 100% into the install if you proceed.</p>
       </div>
-      <div class="investment-block" style="grid-template-columns: 1fr;">
+      <div class="investment-block">
         <div>
-          <div class="investment-includes-label">Included in every engagement</div>
+          <div class="investment-includes-label">Included in every install</div>
           <ul class="investment-includes">
-            <li>Full program audit + gap analysis report</li>
-            <li>Custom annual training architecture (FYOP)</li>
-            <li>Sport-specific phase maps for all active sports</li>
-            <li>Exercise Selection Funnel built for your facility</li>
-            <li>Athlete Buy-In Rate (ABIR) system installation</li>
-            <li>Testing + tracking infrastructure and dashboards</li>
-            <li>Staff training and communication systems</li>
-            <li>All documentation, templates, and operating manuals</li>
-            <li>90 days of live implementation support</li>
+            <li>System audit — constraint map, ABIR baseline, command-center gap</li>
+            <li>In-person staff standards session (non-negotiable)</li>
+            <li>Owner Command Center, Exercise Selection, and Core 4</li>
+            <li>Coach certification, parent trust, capacity, return-to-train</li>
+            <li>All documentation, operating standards, and matching tools</li>
+            <li>90-day adoption guarantee — we stay until the standard holds</li>
           </ul>
+        </div>
+        <div>
+          <div class="investment-includes-label">Price architecture</div>
+          <div class="price-tiers">
+            <div class="price-tier">
+              <div class="n">Diagnostic / System Audit</div>
+              <div class="p">$1,500–$3,500</div>
+              <div class="d">Rolls 100% into the install if you proceed.</div>
+            </div>
+            <div class="price-tier">
+              <div class="n">Core Install</div>
+              <div class="p">$9,000–$23,000</div>
+              <div class="d">Established multi-coach facility. Scoped to size and complexity.</div>
+            </div>
+            <div class="price-tier">
+              <div class="n">Maintenance Retainer</div>
+              <div class="p">$1,000–$1,500/mo</div>
+              <div class="d">Optional. Starts after Day 90 if you want the system kept current as you grow.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -329,8 +575,8 @@
   <section class="alt">
     <div class="container">
       <div class="section-header">
-        <span class="tag" style="margin-bottom:16px;display:inline-block;">Who Builds This With You</span>
-        <h2>Built by a Coach Who Has <em>Done This</em></h2>
+        <span class="tag" style="margin-bottom:16px;display:inline-block;">Who Installs This With You</span>
+        <h2>Built by a Coach Who Has <em>Run the Floor</em></h2>
       </div>
       <div class="about-block">
         <div class="about-badge">
@@ -341,8 +587,8 @@
         </div>
         <div>
           <p>I'm not a consultant who studied performance programs from the outside. I've been building and running them — in real facilities, with real athletes, under real constraints — for over a decade.</p>
-          <p>Every framework inside this engagement was built inside a weight room. The Athlete Buy-In Rate system, the Exercise Selection Funnel, the FYOP — I built these because I needed them and they didn't exist. Then I tested them with real athletes and refined them until they actually worked.</p>
-          <p>I founded Strength Through Systems because the gap I see most isn't talent. It's structure. Coaches who care and know their craft but don't have a system to hold the program together. That's the problem this engagement exists to solve.</p>
+          <p>Every system in this install was built inside a weight room because I needed it and it didn't exist. Then it was tested with real athletes and refined until a coach who wasn't me could run it the same way.</p>
+          <p>I founded Strength Through Systems because the gap I see most isn't talent. It's structure. Owners who care, coaches who know their craft, and a facility that still depends on one person being in the room. That's the problem this install exists to solve.</p>
         </div>
       </div>
     </div>
@@ -352,10 +598,10 @@
   <section>
     <div class="container">
       <div class="cta-strip">
-        <h3>Ready to <em>Build the System?</em></h3>
-        <p>Fill out the application below. If it looks like a strong fit, we'll schedule a call to map out exactly what needs to be built and confirm the scope. No hard sell. Just a real conversation about your program.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply to Work Together →</a>
-        <p class="cta-subtext">Application takes less than 5 minutes. Most organizations hear back within 48 hours.</p>
+        <h3>Ready to <em>Install the System?</em></h3>
+        <p>Apply below. If it's a fit, we'll map the audit and confirm whether an install slot is open. No hard sell. A real conversation about whether the facility can run without you on the floor.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install Slot →</a>
+        <p class="cta-subtext">Application takes less than 5 minutes. Only 2 install slots per month — current month filling.</p>
       </div>
     </div>
   </section>
@@ -364,7 +610,7 @@
     <div class="container">
       <div class="footer-bottom">
         <span>© 2026 Strength Through Systems. All rights reserved.</span>
-        <span>Built for coaches who run a system.</span>
+        <span>Systems Drive Success</span>
       </div>
     </div>
   </footer>
