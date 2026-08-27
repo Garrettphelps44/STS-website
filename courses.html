@@ -29,6 +29,12 @@ h1,h2,h3,h4,.brand,.tag,.navbtn .ttl{font-family:'Inter',Helvetica,Arial,sans-se
 .btn-primary{display:inline-block;background:var(--green);color:var(--ink);font-weight:800;font-size:14px;letter-spacing:.04em;padding:10px 22px;border-radius:6px;transition:background .2s,transform .15s}
 .btn-primary:hover{background:var(--green-dim);transform:translateY(-1px)}
 @media(max-width:768px){.nav-links{display:none}}
+.install-strip{background:#111;border-bottom:1px solid var(--line);padding:18px 0}
+.install-strip-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.install-strip p{margin:0;font-size:14px;color:var(--mute)}
+.install-strip p strong{color:var(--white);font-weight:700}
+.install-strip a.btn-outline{display:inline-block;background:transparent;color:var(--white);font-weight:700;font-size:13px;letter-spacing:.04em;padding:8px 18px;border-radius:6px;border:1.5px solid var(--line);text-decoration:none}
+.install-strip a.btn-outline:hover{border-color:var(--green);color:var(--green)}
 
 .wrap{display:flex;min-height:calc(100vh - 64px)}
 
@@ -117,17 +123,23 @@ td:last-child,th:last-child{text-align:right;padding-right:0;white-space:nowrap}
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
     <ul class="nav-links">
+      <li><a href="consulting.html">Facility Install</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="book.html">Book</a></li>
       <li><a href="courses.html" class="active">Courses</a></li>
-      <li><a href="consulting.html">Facility Install</a></li>
-      <li><a href="speaking.html">Speaking</a></li>
       <li><a href="apps.html">Apps</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
       <li><a href="free-resources.html">Free Resources</a></li>
     </ul>
-    <a href="book.html" class="btn-primary">Get the Book</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install</a>
   </div>
 </header>
+<div class="install-strip">
+  <div class="container install-strip-inner">
+    <p><strong>Want this installed in the building, not just learned?</strong> The Facility System Install puts the same system on the floor with your staff.</p>
+    <a href="consulting.html" class="btn-outline">See the Facility Install →</a>
+  </div>
+</div>
 <div class="wrap">
 <aside>
   <div class="brandbox">

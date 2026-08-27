@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strength Through Systems</title>
+  <title>Strength Through Systems | Facility System Install</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -108,7 +108,7 @@
       letter-spacing: .03em;
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
     .nav-cta { font-size: 14px; }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -150,22 +150,27 @@
       font-size: 18px;
       color: var(--muted);
       max-width: 520px;
-      margin-bottom: 40px;
+      margin-bottom: 28px;
       line-height: 1.7;
     }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .hero-price-note { font-size: 14px; color: var(--muted); margin-top: 16px; }
+    .hero-price-note strong { color: var(--green); }
     .hero-proof {
       margin-top: 48px;
       padding-top: 32px;
       border-top: 1px solid var(--border);
       display: flex;
-      gap: 40px;
+      gap: 32px;
+      flex-wrap: wrap;
     }
     .hero-proof-item strong {
       display: block;
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 900;
       color: var(--green);
+      letter-spacing: -.01em;
     }
     .hero-proof-item span {
       font-size: 13px;
@@ -264,6 +269,7 @@
       letter-spacing: -.02em;
       margin-bottom: 20px;
     }
+    .problem h2 em { font-style: normal; color: var(--green); }
     .problem p {
       color: var(--muted);
       font-size: 17px;
@@ -282,107 +288,164 @@
       align-items: flex-start;
       background: var(--mid);
       border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
       border-radius: var(--radius);
       padding: 16px 20px;
       font-size: 15px;
       font-weight: 500;
     }
-    .pain-icon {
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
     @media (max-width: 768px) {
       .problem-inner { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    /* ── FRAMEWORKS ──────────────────────────────────────── */
-    .frameworks-header { text-align: center; margin-bottom: 64px; }
-    .frameworks-header h2 {
+    /* ── SYSTEMS SNAPSHOT ────────────────────────────────── */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 {
       font-size: clamp(28px, 3.5vw, 44px);
       font-weight: 900;
       letter-spacing: -.02em;
       margin-bottom: 16px;
     }
-    .frameworks-header p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto; }
-    .frameworks-grid {
+    .section-header h2 em { font-style: normal; color: var(--green); }
+    .section-header p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto; }
+    .systems-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
-    .fw-card {
+    .sys-card {
       background: var(--mid);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 32px 28px;
       transition: border-color .2s, transform .2s;
     }
-    .fw-card:hover { border-color: var(--green); transform: translateY(-2px); }
-    .fw-number {
-      font-size: 12px;
-      font-weight: 700;
+    .sys-card:hover { border-color: var(--green); transform: translateY(-2px); }
+    .sys-label {
+      font-size: 11px;
+      font-weight: 800;
       letter-spacing: .12em;
-      color: var(--green);
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--green);
+      border-radius: 100px;
+      padding: 3px 10px;
+      display: inline-block;
       margin-bottom: 16px;
     }
-    .fw-card h3 {
+    .sys-card h3 {
       font-size: 19px;
       font-weight: 800;
       margin-bottom: 12px;
       line-height: 1.3;
     }
-    .fw-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .sys-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .systems-note {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .systems-note a { color: var(--green); font-weight: 700; }
+    .systems-note a:hover { color: var(--green-dark); }
     @media (max-width: 768px) {
-      .frameworks-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── PRODUCTS ────────────────────────────────────────── */
-    .products { background: var(--dark); }
-    .products-header { text-align: center; margin-bottom: 64px; }
-    .products-header h2 {
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 900;
-      letter-spacing: -.02em;
-      margin-bottom: 16px;
-    }
-    .products-header p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto; }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .product-card {
-      background: var(--mid);
+    /* ── PROCESS ─────────────────────────────────────────── */
+    .process { background: var(--dark); }
+    .phases {
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transition: border-color .2s;
-    }
-    .product-card:hover { border-color: var(--green); }
-    .product-card.featured {
-      border-color: var(--green);
-      position: relative;
+      border-radius: var(--radius);
       overflow: hidden;
     }
-    .product-card.featured::before {
-      content: 'START HERE';
-      position: absolute;
-      top: 16px;
-      right: -28px;
-      background: var(--green);
-      color: var(--black);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      padding: 4px 40px;
-      transform: rotate(45deg);
+    .phase {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      border-bottom: 1px solid var(--border);
     }
-    .product-icon {
-      font-size: 36px;
-      line-height: 1;
+    .phase:last-child { border-bottom: none; }
+    .phase-num {
+      background: var(--mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--green);
+      opacity: .4;
+      padding: 28px;
+    }
+    .phase-content { padding: 28px 32px; background: var(--black); }
+    .phase-week {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .phase-title { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .phase-content p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.7; }
+    .process-link { margin-top: 32px; text-align: center; }
+    @media (max-width: 640px) {
+      .phase { grid-template-columns: 64px 1fr; }
+      .phase-content { padding: 20px; }
+      .phase-num { padding: 20px; font-size: 22px; }
+    }
+
+    /* ── FIT ─────────────────────────────────────────────── */
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .fit-card {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .fit-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .fit-card.good .fit-card-label { color: var(--green); }
+    .fit-card.bad .fit-card-label { color: var(--muted); }
+    .fit-items { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .fit-items li {
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.55;
+    }
+    .fit-items li .check { color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .fit-items li .x { color: var(--muted); flex-shrink: 0; font-weight: 700; }
+    @media (max-width: 768px) { .fit-grid { grid-template-columns: 1fr; } }
+
+    /* ── OTHER PATHS ─────────────────────────────────────── */
+    .paths { background: var(--dark); }
+    .path-featured {
+      background: linear-gradient(135deg, rgba(76,175,80,.14), rgba(76,175,80,.03) 55%), var(--mid);
+      border: 1.5px solid var(--green);
+      border-radius: 16px;
+      padding: 40px 40px;
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: 1.2fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .path-featured .product-type { margin-bottom: 10px; }
+    .path-featured h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 900; margin-bottom: 12px; letter-spacing: -.02em; }
+    .path-featured p { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; max-width: 58ch; }
+    .path-featured-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
     .product-type {
       font-size: 11px;
@@ -391,32 +454,25 @@
       text-transform: uppercase;
       color: var(--green);
     }
-    .product-card h3 {
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1.25;
-    }
-    .product-card p { font-size: 15px; color: var(--muted); line-height: 1.7; flex: 1; }
-    .product-features {
-      list-style: none;
+    .product-card {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
+      transition: border-color .2s;
     }
-    .product-features li {
-      font-size: 13px;
-      color: var(--muted);
-      padding-left: 18px;
-      position: relative;
+    .product-card:hover { border-color: var(--green); }
+    .product-card h3 { font-size: 18px; font-weight: 800; line-height: 1.3; }
+    .product-card p { font-size: 14px; color: var(--muted); line-height: 1.65; flex: 1; }
+    @media (max-width: 960px) {
+      .path-featured { grid-template-columns: 1fr; padding: 32px 28px; }
+      .paths-grid { grid-template-columns: 1fr 1fr; }
     }
-    .product-features li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--green);
-    }
-    @media (max-width: 768px) {
-      .products-grid { grid-template-columns: 1fr; }
+    @media (max-width: 640px) {
+      .paths-grid { grid-template-columns: 1fr; }
     }
 
     /* ── SOCIAL PROOF ────────────────────────────────────── */
@@ -482,7 +538,7 @@
       font-size: 18px;
       margin-bottom: 36px;
       opacity: .85;
-      max-width: 520px;
+      max-width: 560px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -546,17 +602,17 @@
   <!-- NAV -->
   <nav>
     <div class="container nav-inner">
-      <a href="#" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
+      <a href="index.html" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
       <ul class="nav-links">
+        <li><a href="consulting.html">Facility Install</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="book.html">Book</a></li>
         <li><a href="courses.html">Courses</a></li>
-        <li><a href="consulting.html">Facility Install</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
         <li><a href="apps.html">Apps</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
         <li><a href="free-resources.html">Free Resources</a></li>
       </ul>
-      <a href="book.html" class="btn-primary nav-cta">Get the System</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">Apply for an Install</a>
     </div>
   </nav>
 
@@ -565,61 +621,63 @@
     <div class="container hero-inner">
       <div>
         <div class="hero-eyebrow">
-          <span class="tag">Strength Through Systems</span>
+          <span class="tag">Facility System Install — 2 slots per month</span>
         </div>
-        <h1>Stop Coaching <em>From Chaos.</em> Start Running a System.</h1>
+        <h1>The problem was never <em>effort.</em><br>It's the missing system.</h1>
         <p class="hero-sub">
-          Most coaches are talented. Few are <em style="font-style:normal;color:var(--white);">systematic</em>.
-          The book, courses, and coaching frameworks that help strength coaches build programs that run
-          without constant firefighting — and athletes who actually buy in.
+          You have good coaches, real athletes, and a growing facility — and it still runs on your memory instead of a system. If a coach walked out tomorrow, the program would walk out with him. <strong>We install the structure you can't build while running the floor.</strong>
         </p>
         <div class="hero-actions">
-          <a href="book.html" class="btn-primary">Get the Book</a>
-          <a href="#courses" class="btn-outline">Explore Courses</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install Slot →</a>
+          <a href="consulting.html" class="btn-outline">See how the install works</a>
         </div>
+        <p class="hero-price-note"><strong>$9,000–$23,000</strong> install · audit rolls 100% in</p>
         <div class="hero-proof">
           <div class="hero-proof-item">
-            <strong>10hrs</strong>
-            <span>Saved Per Week</span>
+            <strong>$145K–$230K</strong>
+            <span>Est. annual value created</span>
           </div>
           <div class="hero-proof-item">
-            <strong>Pro–Youth</strong>
-            <span>All Levels</span>
+            <strong>90-day</strong>
+            <span>Adoption guarantee</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>2 / month</strong>
+            <span>Install slots</span>
           </div>
         </div>
       </div>
       <div class="hero-card">
-        <div class="hero-card-label">Inside the System</div>
-        <h3>Athlete Buy-In System</h3>
+        <div class="hero-card-label">What's Installed</div>
+        <h3>The Facility System Install</h3>
         <ul>
-          <li>The ABIR Formula — a measurable system to track and improve athlete buy-in</li>
-          <li>TEEL Method — how to coach on the floor so athletes actually trust you</li>
-          <li>The Exercise Funnel + IF/THEN Lifting Model — make programming decisions without guessing</li>
-          <li>The Data-to-Action System — a 4-step assessment debrief athletes can't argue with</li>
-          <li>Core-4 Prep System — a loadable warm-up that doubles as development time</li>
-          <li>FYOP + L3 System — a full-year map that layers skill, lifting, and conditioning without chaos</li>
+          <li>Owner Command Center — see the floor without being in the building</li>
+          <li>Exercise Selection System — 52 weeks generated in under 3 minutes</li>
+          <li>Core 4 Movement Prep — standardized warm-ups, zero dead time</li>
+          <li>Coach certification, parent proof, capacity, return-to-train</li>
+          <li>Full adoption in 90 days — or we keep working</li>
         </ul>
-        <a href="book.html" class="btn-primary" style="width:100%;text-align:center;">Get the Book →</a>
+        <a href="consulting.html" class="btn-primary" style="width:100%;text-align:center;">See the Full Install →</a>
       </div>
     </div>
   </section>
 
   <!-- MARQUEE -->
   <div class="marquee-section">
-    <p class="marquee-label">Trusted by coaches at</p>
+    <p class="marquee-label">Built for owners of</p>
     <div class="marquee-track">
-      <span>Division I Programs</span>
-      <span>High School Athletics</span>
       <span>Private Performance Centers</span>
+      <span>Multi-Sport Facilities</span>
+      <span>High School Athletics</span>
+      <span>Division I Programs</span>
       <span>Collegiate S&C</span>
       <span>Football Programs</span>
-      <span>Multi-Sport Facilities</span>
-      <span>Division I Programs</span>
-      <span>High School Athletics</span>
       <span>Private Performance Centers</span>
+      <span>Multi-Sport Facilities</span>
+      <span>High School Athletics</span>
+      <span>Division I Programs</span>
       <span>Collegiate S&C</span>
       <span>Football Programs</span>
-      <span>Multi-Sport Facilities</span>
     </div>
   </div>
 
@@ -628,168 +686,179 @@
     <div class="container problem-inner">
       <div>
         <span class="tag">The Real Problem</span>
-        <h2 style="margin-top:16px;">Talented Coaches Burning Out Isn't a Passion Problem.</h2>
+        <h2 style="margin-top:16px;">Your Facility Runs on <em>You.</em><br>That's the Ceiling.</h2>
         <p>
-          You didn't get into this profession because you lacked motivation. You're overwhelmed
-          because your room runs on reactions, not repeatable systems. Every decision
-          re-made daily. Every problem solved from scratch. That's not coaching — that's survival.
+          This is not a software problem. Most owners have already bought a dashboard their coaches ignored. What's missing is a standard every coach actually runs — whether you're on the floor or not.
         </p>
         <p>
-          The answer isn't more motivation. It's a structure that makes the important things automatic
-          so you can focus on what actually develops athletes.
+          A program is what one coach runs. A system is what every coach runs the same way, whether you're in the building or not.
         </p>
-        <a href="book.html" class="btn-primary">Build Your System →</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install →</a>
       </div>
       <ul class="pain-list">
-        <li>
-          <span class="pain-icon">⚡</span>
-          <span>Athletes show up — but no one knows what they're actually training for</span>
-        </li>
-        <li>
-          <span class="pain-icon">🔄</span>
-          <span>You're working harder than anyone in the building and still feel like you're behind</span>
-        </li>
-        <li>
-          <span class="pain-icon">📉</span>
-          <span>No system for progressions, so every new semester starts from scratch</span>
-        </li>
-        <li>
-          <span class="pain-icon">🗣️</span>
-          <span>The program lives in your head — and dies when you're not in the room</span>
-        </li>
-        <li>
-          <span class="pain-icon">🔥</span>
-          <span>You can't prove your program is working because nothing is being tracked</span>
-        </li>
-        <li>
-          <span class="pain-icon">📊</span>
-          <span>Athletes do the work but can't tell you why — and neither can their coaches</span>
-        </li>
+        <li>The program lives in your head and one or two strong coaches. When they leave, the program leaves with them.</li>
+        <li>New hires take weeks of your selling and marketing time to ramp — because there's no certification, only tribal knowledge.</li>
+        <li>Space and time get used inefficiently, so you can't add athletes without adding square footage or more hours on the floor.</li>
+        <li>Parents don't see proof. You tell them the kid is progressing. You can't show them. That's what caps your prices.</li>
+        <li>Sixteen-plus hours a week of programming, tracking, and reporting still falls on you — or it doesn't get done.</li>
       </ul>
     </div>
   </section>
 
-  <!-- FRAMEWORKS -->
-  <section id="frameworks">
+  <!-- SYSTEMS SNAPSHOT -->
+  <section id="systems">
     <div class="container">
-      <div class="frameworks-header">
-        <span class="tag">Core Frameworks</span>
-        <h2 style="margin-top:16px;">Not Theory. Operating Systems.</h2>
-        <p>Every framework is built from real weight rooms — tested, refined, and ready to deploy.</p>
+      <div class="section-header">
+        <span class="tag">The Stack</span>
+        <h2 style="margin-top:16px;">Three Core Systems. <em>Installed in Your Building.</em></h2>
+        <p>Not a template drop. Not another dashboard. The three systems that make the room run — plus four bonuses your last software never touched.</p>
       </div>
-      <div class="frameworks-grid">
-        <div class="fw-card">
-          <div class="fw-number">Framework 01</div>
-          <h3>Exercise Selection Funnel</h3>
-          <p>Most coaches pick exercises based on what looks good or what they've always done. The Exercise Selection Funnel changes that. Every exercise decision runs through the same filter: primary joint, movement pattern, intent, best exercise for that intent, volume, and load. No guessing. No randomness. Just a repeatable system that builds consistent programming every single time.</p>
+      <div class="systems-grid">
+        <div class="sys-card">
+          <span class="sys-label">Core</span>
+          <h3>Owner Command Center</h3>
+          <p>See what's actually happening on the floor — without being in the building. Adoption audit, day zero. System adoption rate. 90-day certification.</p>
         </div>
-        <div class="fw-card">
-          <div class="fw-number">Framework 02</div>
-          <h3>FYOP — Full-Year Optimization Plan</h3>
-          <p>Most programs react to the schedule. FYOP builds ahead of it. The Full-Year Optimization Plan maps every month of the year to a specific training phase before the year starts — so your athletes are always in the right phase at the right time, no matter what the sport calendar throws at you. Stop winging the year. Start owning it.</p>
+        <div class="sys-card">
+          <span class="sys-label">Core</span>
+          <h3>Exercise Selection System</h3>
+          <p>Programming matched to athlete readiness. ESL framework, adaptation menus, and a 52-week engine — generated in under 3 minutes.</p>
         </div>
-        <div class="fw-card">
-          <div class="fw-number">Framework 03</div>
+        <div class="sys-card">
+          <span class="sys-label">Core</span>
           <h3>Core 4 Movement Prep</h3>
-          <p>Long warm-ups kill momentum and waste time. Core 4 cuts it down to what actually matters — four loadable movements that hit every major joint system: hips, spine, and shoulders. These aren't just feel-good stretches. They're progressive, trackable, and designed to improve over time. The best prep system is one athletes actually do — and this one works.</p>
+          <p>Fast, standardized warm-ups. No more 15-minute routines eating session time. Prep protocol, library by need, zero dead time into the session.</p>
         </div>
-        <div class="fw-card">
-          <div class="fw-number">Framework 04</div>
-          <h3>Athlete Buy-In Rate (ABIR)</h3>
-          <p>Buy-in isn't random. It's the result of specific inputs: how good the session experience is, what results athletes are chasing, how you coach them, and how much friction exists in the environment. ABIR puts a formula to it — P × R^I − DP — so you can stop guessing why athletes are checked out and start fixing the actual problem. Measure it. Manage it. Change it.</p>
+      </div>
+      <p class="systems-note">Plus coach certification, parent trust, capacity, and return-to-train. <a href="consulting.html">See the full stack →</a></p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="process">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">The Process</span>
+        <h2 style="margin-top:16px;">How the <em>Install Works</em></h2>
+        <p>The install runs 60 days. The guarantee is measured at 90. The staff standards session is in person. Everything after is Zoom.</p>
+      </div>
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-num">0</div>
+          <div class="phase-content">
+            <div class="phase-week">Week 0</div>
+            <div class="phase-title">Audit</div>
+            <p>We map what's actually running before we install anything. Constraint set, command-center baseline, ABIR score — so the build is your room, not a template.</p>
+          </div>
         </div>
-        <div class="fw-card">
-          <div class="fw-number">Framework 05</div>
-          <h3>L3 Method</h3>
-          <p>Every athlete needs three things: sport skill, physical development, and cardiovascular capacity. The L3 Method organizes training into three layers — Skill, Physical, and Cardiovascular — and tells you exactly how to sequence and prioritize them based on where the athlete is in their year. No more random blocks. No more missed qualities. One framework, full-year clarity.</p>
+        <div class="phase">
+          <div class="phase-num">1</div>
+          <div class="phase-content">
+            <div class="phase-week">Week 1</div>
+            <div class="phase-title">Standards Session</div>
+            <p>In person with your staff. This is the one non-negotiable on-site piece — the thing prior software never did. Certification starts here. Core 4 goes on the floor the same day.</p>
+          </div>
         </div>
-        <div class="fw-card">
-          <div class="fw-number">Framework 06</div>
-          <h3>The Coach's Role</h3>
-          <p>Most new coaches walk into the weight room thinking they're the main character. They're not. The strength coach's job is to support the sport — to develop what the sport demands and stay out of the way of everything else. Understanding your role doesn't shrink your impact. It focuses it. And focused coaches build the programs that athletes, sport coaches, and schools actually trust.</p>
+        <div class="phase">
+          <div class="phase-num">2</div>
+          <div class="phase-content">
+            <div class="phase-week">Weeks 2–8</div>
+            <div class="phase-title">Programming, Flow &amp; Cadence</div>
+            <p>Exercise selection, session flow, and capacity — then the command center goes live, testing runs, and parent communication starts.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">3</div>
+          <div class="phase-content">
+            <div class="phase-week">Day 90</div>
+            <div class="phase-title">Proof</div>
+            <p>Guarantee checkpoint. First proof reports ship. ABIR re-run against the day-zero baseline. Full adoption — or we keep working until it is.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-link">
+        <a href="consulting.html" class="btn-outline">See the full process →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Right Fit</span>
+        <h2 style="margin-top:16px;">Built for Owners Ready to <em>Stop Being the System</em></h2>
+        <p>Private, multi-sport performance facilities with 60+ paid athletes, multiple coaches, and an owner who is done covering the floor.</p>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card good">
+          <div class="fit-card-label">This is for you if —</div>
+          <ul class="fit-items">
+            <li><span class="check">✓</span>You own or run a private, multi-sport performance facility</li>
+            <li><span class="check">✓</span>You have 60+ paid athletes and more than one coach on the floor</li>
+            <li><span class="check">✓</span>You want the facility to run the same way when you're not in the building</li>
+            <li><span class="check">✓</span>You're willing to get the staff in a room for one in-person standards session</li>
+          </ul>
+        </div>
+        <div class="fit-card bad">
+          <div class="fit-card-label">This isn't for you if —</div>
+          <ul class="fit-items">
+            <li><span class="x">✕</span>You want a one-time clinic, template pack, or motivational talk</li>
+            <li><span class="x">✕</span>You're looking for software your coaches will ignore the same way they ignored the last one</li>
+            <li><span class="x">✕</span>You're a one-coach operation with no staff to install a standard into</li>
+            <li><span class="x">✕</span>Leadership isn't behind the change and nothing on the floor can actually shift</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCTS -->
-  <section class="products" id="book">
+  <!-- OTHER PATHS -->
+  <section class="paths" id="work-with">
     <div class="container">
-      <div class="products-header">
-        <span class="tag">Work With Garrett</span>
-        <h2 style="margin-top:16px;">Choose Your Entry Point</h2>
-        <p>Whether you want the book, a course, a facility install, or a live keynote — every path delivers the same system, at the depth you need.</p>
+      <div class="section-header">
+        <span class="tag">Other Ways to Work With STS</span>
+        <h2 style="margin-top:16px;">The Install Is the Flagship.<br>Everything Else Still Lives Here.</h2>
+        <p>Book, courses, apps, and speaking — same system, at the depth you need if you're not ready for a full install.</p>
       </div>
-      <div class="products-grid">
 
-        <!-- BOOK -->
-        <div class="product-card featured">
-          <div>
-            <div class="product-type">Book</div>
-            <div class="product-icon" style="margin-top:12px;">📖</div>
-          </div>
-          <h3>Athlete Buy-In System</h3>
-          <p>The complete coaching operating system in print. Every framework, template, and implementation guide — written for coaches who want to stop reacting and start building.</p>
-          <ul class="product-features">
-            <li>13 core operational systems</li>
-            <li>Plug-and-play programming templates</li>
-            <li>Lifetime updates</li>
-            <li>30-day money-back guarantee</li>
-          </ul>
-          <a href="book.html" class="btn-primary">Order Now →</a>
-        </div>
-
-        <!-- COURSES -->
-        <div class="product-card" id="courses">
-          <div>
-            <div class="product-type">Courses</div>
-            <div class="product-icon" style="margin-top:12px;">🎓</div>
-          </div>
-          <h3>Systems Coaching Course Library</h3>
-          <p>Deep-dive courses on every piece of the system: programming, athlete development, in-season management, sprinting, plyometrics, conditioning, and more — with video and templates.</p>
-          <ul class="product-features">
-            <li>Coaching Systems Masterclass</li>
-            <li>Programming Mastery Course</li>
-            <li>Athlete Development Framework Course</li>
-            <li>Specialty modules: Speed, Conditioning, Recovery</li>
-          </ul>
-          <a href="courses.html#courses" class="btn-outline">Browse Courses →</a>
-        </div>
-
-        <!-- FACILITY SYSTEM INSTALL -->
-        <div class="product-card" id="consulting">
-          <div>
-            <div class="product-type">Facility Install</div>
-            <div class="product-icon" style="margin-top:12px;">🤝</div>
-          </div>
+      <div class="path-featured">
+        <div>
+          <div class="product-type">Flagship — Facility Install</div>
           <h3>The Facility System Install</h3>
-          <p>We install the structure you can't build while running the floor — owner command center, programming, coach standards, parent proof, and a 90-day adoption guarantee.</p>
-          <ul class="product-features">
-            <li>Owner Command Center + Exercise Selection + Core 4</li>
-            <li>Coach certification, parent trust, capacity, return-to-train</li>
-            <li>$9,000–$23,000 install against $145K–$230K of annual value</li>
-            <li>Full adoption in 90 days — or we keep working</li>
-          </ul>
-          <a href="consulting.html" class="btn-outline">See the Facility Install →</a>
-        </div>
-
-        <!-- SPEAKING -->
-        <div class="product-card" id="speaking">
-          <div>
-            <div class="product-type">Speaking</div>
-            <div class="product-icon" style="margin-top:12px;">🎤</div>
+          <p>We install the structure you can't build while running the floor — owner command center, programming, coach standards, parent proof, and a 90-day adoption guarantee. $9,000–$23,000 against $145K–$230K of annual value.</p>
+          <div class="path-featured-actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install →</a>
+            <a href="consulting.html" class="btn-outline">See the full offer</a>
           </div>
-          <h3>Keynotes & Clinics</h3>
-          <p>High-energy, framework-packed talks for staff inservices, athletic director conferences, coaching clinics, and professional development days. Practical — not motivational.</p>
-          <ul class="product-features">
-            <li>Athlete Buy-In System keynote</li>
-            <li>Athlete Buy-In System workshop</li>
-            <li>Staff development intensives</li>
-            <li>Available in-person & virtual</li>
-          </ul>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-outline">Book Garrett →</a>
         </div>
+      </div>
 
+      <div class="paths-grid">
+        <div class="product-card">
+          <div class="product-type">Book</div>
+          <h3>Athlete Buy-In System</h3>
+          <p>The complete coaching operating system in print. Every framework, template, and implementation guide.</p>
+          <a href="book.html" class="btn-outline">Get the Book →</a>
+        </div>
+        <div class="product-card" id="courses">
+          <div class="product-type">Courses</div>
+          <h3>Systems Course Library</h3>
+          <p>Deep-dive courses on programming, athlete development, in-season management, and more.</p>
+          <a href="courses.html" class="btn-outline">Browse Courses →</a>
+        </div>
+        <div class="product-card">
+          <div class="product-type">Apps</div>
+          <h3>DIY System Builder</h3>
+          <p>Everything we'd install for you — now DIY. Constraints in, program out, floor log, and reports.</p>
+          <a href="apps.html" class="btn-outline">Open Apps →</a>
+        </div>
+        <div class="product-card" id="speaking">
+          <div class="product-type">Speaking</div>
+          <h3>Keynotes &amp; Clinics</h3>
+          <p>Framework-packed talks for staff inservices, AD conferences, and coaching clinics. Practical — not motivational.</p>
+          <a href="speaking.html" class="btn-outline">Book Garrett →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -815,7 +884,7 @@
           <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-quote">"I was working 60-hour weeks and still felt behind. The Room Flow and Programming frameworks saved me at least 10 hours a week. My staff is finally operating independently."</p>
           <div class="testimonial-author">
-            <strong>High School S&C Coordinator</strong>
+            <strong>High School S&amp;C Coordinator</strong>
             <span>Multi-Sport Program, 400+ Athletes</span>
           </div>
         </div>
@@ -833,9 +902,9 @@
 
   <!-- CTA BANNER -->
   <div class="cta-banner">
-    <h2>Your Program Deserves a System.<br>Not Just a Schedule.</h2>
-    <p>Start with the book. Build the system. Coach with clarity.</p>
-    <a href="book.html" class="btn-dark">Get the Athlete Buy-In System →</a>
+    <h2>Ready to Install the System?</h2>
+    <p>Apply below. If it's a fit, we'll map the audit and confirm whether an install slot is open. Prefer to start on your own? The book and apps are still here.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-dark">Apply for an Install Slot →</a>
   </div>
 
   <!-- FOOTER -->
@@ -844,39 +913,40 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <div class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></div>
-          <p>Helping strength coaches build programs that run on systems, not survival mode. Based in the weight room. Built for the real world.</p>
+          <p>We install the structure facility owners can't build while running the floor. Based in the weight room. Built for the real world.</p>
         </div>
         <div class="footer-col">
-          <h4>Products</h4>
+          <h4>Work With Us</h4>
           <ul>
-            <li><a href="book.html">Book</a></li>
-            <li><a href="#courses">Courses</a></li>
             <li><a href="consulting.html">Facility Install</a></li>
-            <li><a href="#speaking">Speaking</a></li>
+            <li><a href="book.html">Book</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="apps.html">Apps</a></li>
+            <li><a href="speaking.html">Speaking</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Frameworks</h4>
+          <h4>Learn</h4>
           <ul>
-            <li><a href="#frameworks">Athlete Buy-In System</a></li>
-            <li><a href="#frameworks">IF/Then Lifting</a></li>
-            <li><a href="#frameworks">Athlete Development</a></li>
-            <li><a href="#frameworks">Room Flow System</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="free-resources.html">Free Resources</a></li>
+            <li><a href="consulting.html">How the Install Works</a></li>
+            <li><a href="#systems">The Stack</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Apply for an Install</a></li>
             <li><a href="#">Instagram</a></li>
             <li><a href="#">YouTube</a></li>
             <li><a href="#">Podcast</a></li>
-            <li><a href="#">Contact</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2026 Strength Through Systems. All rights reserved.</span>
-        <span>Built for coaches who run a system.</span>
+        <span>Systems Drive Success</span>
       </div>
     </div>
   </footer>
