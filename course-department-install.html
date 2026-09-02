@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Department Install | Strength Through Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A0A; --panel:#111111; --line:#2A2A2A;
+  --green:#4CAF50; --green-dim:#388E3C; --white:#FFFFFF; --mute:#888888;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--ink);color:var(--white);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.brand,.tag,.navbtn .ttl{font-family:'Inter',Helvetica,Arial,sans-serif}
+
+/* SITE NAVBAR */
+.sitenav{position:sticky;top:0;z-index:200;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;line-height:0}
+.nav-logo img{height:40px;width:auto;display:block}
+.nav-links{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:14px;font-weight:600;color:var(--mute);letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.btn-primary{display:inline-block;background:var(--green);color:var(--ink);font-weight:800;font-size:14px;letter-spacing:.04em;padding:10px 22px;border-radius:6px;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--green-dim);transform:translateY(-1px)}
+@media(max-width:768px){.nav-links{display:none}}
+.install-strip{background:#111;border-bottom:1px solid var(--line);padding:18px 0}
+.install-strip-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.install-strip p{margin:0;font-size:14px;color:var(--mute)}
+.install-strip p strong{color:var(--white);font-weight:700}
+.install-strip a.btn-outline{display:inline-block;background:transparent;color:var(--white);font-weight:700;font-size:13px;letter-spacing:.04em;padding:8px 18px;border-radius:6px;border:1.5px solid var(--line);text-decoration:none}
+.install-strip a.btn-outline:hover{border-color:var(--green);color:var(--green)}
+
+.wrap{display:flex;min-height:calc(100vh - 64px)}
+
+/* SIDEBAR */
+aside{width:310px;flex:0 0 310px;background:#050505;border-right:1px solid var(--line);
+  position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding:26px 0 40px}
+.brandbox{padding:0 22px 20px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.logo{display:inline-flex;align-items:center;line-height:0;margin-bottom:14px}
+.logo img{width:44px;height:44px;display:block}
+.brand{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.brand b{color:var(--green)}
+.coursename{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-top:8px;line-height:1.2}
+.all-courses{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700;margin-bottom:12px;text-decoration:none}
+.all-courses:hover{color:var(--green)}
+.overall{padding:0 22px 16px}
+.bar{height:4px;background:#1A1A1A;border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green);width:0%;transition:width .3s}
+.overall small{display:block;color:var(--mute);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:8px}
+nav{padding:0 12px}
+.navbtn{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;
+  color:var(--white);padding:11px 12px;border-radius:4px;cursor:pointer;font-size:14px;line-height:1.3;position:relative}
+.navbtn:hover{background:#1A1A1A}
+.navbtn.active{background:#1A1A1A;box-shadow:inset 2px 0 0 var(--green)}
+.navbtn .tag{font-size:10px;letter-spacing:.1em;color:var(--green);font-weight:800;min-width:26px}
+.navbtn .ttl{flex:1;font-weight:600}
+.navbtn .prog{font-size:10px;color:var(--mute);letter-spacing:.06em}
+.navbtn.done .prog{color:var(--green)}
+
+/* CONTENT */
+main{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;padding:52px 40px 120px}
+.page{display:none;max-width:760px;width:100%}
+.page.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+h1{font-size:clamp(30px,4.6vw,46px);line-height:1.03;letter-spacing:-.02em;font-weight:800;
+  text-transform:uppercase;margin:0 0 26px;border-bottom:3px solid var(--green);padding-bottom:18px}
+h2{font-size:22px;text-transform:uppercase;letter-spacing:.01em;font-weight:800;margin:52px 0 6px;line-height:1.15}
+h2::before{content:"";display:block;width:34px;height:3px;background:var(--green);margin-bottom:14px}
+h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:800;margin:30px 0 8px}
+p{margin:0 0 16px;color:#E8E8E8}
+strong{color:#fff;font-weight:700}
+em{font-family:'Inter';font-style:italic;color:var(--mute)}
+a{color:var(--green)}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+ul,ol{margin:0 0 18px;padding-left:20px}
+li{margin-bottom:7px;color:#E8E8E8}
+blockquote{margin:18px 0;padding:16px 20px;border-left:3px solid var(--green);background:#111111;color:#D8D8D8}
+blockquote p{margin:0}
+code{background:#1A1A1A;padding:2px 6px;border-radius:3px;color:var(--green);font-size:13px}
+
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{text-align:left;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--green);padding:9px 10px 9px 0;font-weight:800}
+td{padding:11px 10px 11px 0;border-bottom:1px solid var(--line);vertical-align:top;color:#E8E8E8}
+td:last-child,th:last-child{text-align:right;padding-right:0;white-space:nowrap}
+
+.checkitem{list-style:none;margin-left:-20px;display:flex;gap:11px;align-items:flex-start;
+  padding:9px 12px;border:1px solid var(--line);border-radius:4px;margin-bottom:7px;background:#141414}
+.checkitem input{appearance:none;width:17px;height:17px;flex:0 0 17px;border:1.5px solid #2A2A2A;
+  border-radius:3px;margin-top:3px;cursor:pointer;position:relative}
+.checkitem input:checked{background:var(--green);border-color:var(--green)}
+.checkitem input:checked::after{content:"";position:absolute;left:5px;top:1px;width:4px;height:9px;
+  border:solid #000;border-width:0 2px 2px 0;transform:rotate(43deg)}
+.checkitem label{cursor:pointer;flex:1;color:#D8D8D8}
+.checkitem input:checked + label{color:var(--mute);text-decoration:line-through}
+
+.pagenav{display:flex;justify-content:space-between;gap:14px;max-width:760px;width:100%;margin-top:64px;padding-top:26px;border-top:1px solid var(--line)}
+.pagenav button{background:none;border:1px solid var(--line);color:var(--white);padding:13px 20px;border-radius:4px;
+  cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:800}
+.pagenav button:hover{border-color:var(--green);color:var(--green)}
+.pagenav button[disabled]{opacity:.25;cursor:default}
+
+.topbar{display:none}
+@media(max-width:920px){
+  .wrap{flex-direction:column}
+  aside{position:static;width:100%;flex:none;height:auto;max-height:none;padding:18px 0 22px}
+  main{padding:30px 20px 90px}
+  nav{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .navbtn .ttl{font-size:13px}
+  h1{font-size:29px}
+  table{font-size:13px}
+  td:last-child,th:last-child{white-space:normal}
+}
+</style>
+</head><body>
+<header class="sitenav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
+    <ul class="nav-links">
+      <li><a href="consulting.html">Facility Install</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="courses.html" class="active">Courses</a></li>
+      <li><a href="apps.html">Apps</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="free-resources.html">Free Resources</a></li>
+    </ul>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install</a>
+  </div>
+</header>
+<div class="install-strip">
+  <div class="container install-strip-inner">
+    <p><strong>Want this installed in the building, not just learned?</strong> The Facility System Install puts the same system on the floor with your staff.</p>
+    <a href="consulting.html" class="btn-outline">See the Facility Install →</a>
+  </div>
+</div>
+<div class="wrap">
+<aside>
+  <div class="brandbox">
+    <a href="courses.html" class="all-courses">← All Courses</a>
+    <a href="index.html" class="logo" aria-label="Strength Through Systems — Home"><img src="images/sts-logo.png" alt="Strength Through Systems" width="44" height="44" /></a>
+    <div class="brand">STRENGTH THROUGH <b>SYSTEMS</b></div>
+    <div class="coursename">The Department Install</div>
+  </div>
+  <div class="overall">
+    <div class="bar"><i id="barfill"></i></div>
+    <small id="pcttxt">0% installed</small>
+  </div>
+  <nav><button class="navbtn" data-target="start"><span class="tag">00</span><span class="ttl">Start Here</span><span class="prog" id="prog-start"></span></button><button class="navbtn" data-target="m0"><span class="tag">M0</span><span class="ttl">Orientation &amp; The Real Price Tag Audit</span><span class="prog" id="prog-m0"></span></button><button class="navbtn" data-target="m1"><span class="tag">M1</span><span class="ttl">Program Build</span><span class="prog" id="prog-m1"></span></button><button class="navbtn" data-target="m2"><span class="tag">M2</span><span class="ttl">Assessment</span><span class="prog" id="prog-m2"></span></button><button class="navbtn" data-target="m3"><span class="tag">M3</span><span class="ttl">Floor Log</span><span class="prog" id="prog-m3"></span></button><button class="navbtn" data-target="m4"><span class="tag">M4</span><span class="ttl">Testing &amp; Tracker</span><span class="prog" id="prog-m4"></span></button><button class="navbtn" data-target="m5"><span class="tag">M5</span><span class="ttl">Attendance</span><span class="prog" id="prog-m5"></span></button><button class="navbtn" data-target="m6"><span class="tag">M6</span><span class="ttl">Reports</span><span class="prog" id="prog-m6"></span></button><button class="navbtn" data-target="m7"><span class="tag">M7</span><span class="ttl">Install Order &amp; The First 90 Days</span><span class="prog" id="prog-m7"></span></button><button class="navbtn" data-target="m8"><span class="tag">M8</span><span class="ttl">Why Systems Drive Buy-In</span><span class="prog" id="prog-m8"></span></button><button class="navbtn" data-target="m9"><span class="tag">M9</span><span class="ttl">The Department Operating Manual</span><span class="prog" id="prog-m9"></span></button><button class="navbtn" data-target="sit"><span class="tag">REF</span><span class="ttl">My Situation Is Different</span><span class="prog" id="prog-sit"></span></button><button class="navbtn" data-target="ex"><span class="tag">REF</span><span class="ttl">Three Complete Installs</span><span class="prog" id="prog-ex"></span></button></nav>
+</aside>
+<main>
+<section class="page" id="page-start" data-key="start"><h1>THE DEPARTMENT INSTALL</h1>
+<p><strong>Turn a room with equipment in it into a six-component strength department — in 90 days, without hiring anyone.</strong></p>
+<hr />
+<h2>WHAT THIS IS</h2>
+<p>The written install manual for the six components that make a weight room an actual department: <strong>program build, assessment, floor log, testing and tracker, attendance, and reports.</strong></p>
+<p>It is not a program you copy. You already have exercises. This is the infrastructure that decides which exercise lands on which athlete, at what weight, on what day, recorded where, compared against what, and reported to whom.</p>
+<p>Chaos in a weight room is almost never a lack of effort. It's a lack of systems. Effort without a system just produces tired coaches.</p>
+<hr />
+<h2>WHO IT'S FOR</h2>
+<ul>
+<li>Facility owners standing up a training program for the first time</li>
+<li>School athletic directors trying to turn a weight room into an actual department</li>
+<li>Directors inheriting equipment, athletes, and no infrastructure</li>
+<li>Coaches doing all six of these jobs by hand and drowning in admin</li>
+</ul>
+<hr />
+<h2>HOW TO USE IT</h2>
+<p><strong>Read the module you're in. Do the work. Check the boxes. Move on.</strong></p>
+<p>Every lesson ends with an artifact — a file, a number, a written standard, or a date on a calendar. Every module ends with a gate: a list of things that are either true in your building or not. The gates are the grading. Reading doesn't unlock anything; installing does.</p>
+<p>Don't read it front to back and then do nothing. <strong>One component installed beats six components understood.</strong></p>
+<hr />
+<h2>THE COURSE</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>What you install</th>
+<th>Desk time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 · Orientation &amp; The Real Price Tag Audit</strong></td>
+<td>Your current hours-per-week number and a ranked fix order</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>1 · Program Build</strong></td>
+<td>A 52-week coded calendar built to your real constraints</td>
+<td>4–5 hrs</td>
+</tr>
+<tr>
+<td><strong>2 · Assessment</strong></td>
+<td>Written movement standards and a working weight for every athlete</td>
+<td>2 hrs + 1 floor day</td>
+</tr>
+<tr>
+<td><strong>3 · Floor Log</strong></td>
+<td>Live logging at the racks with one named owner per group</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>4 · Testing &amp; Tracker</strong></td>
+<td>A locked battery, written protocols, dates on the calendar, a baseline</td>
+<td>2 hrs + 1 floor day</td>
+</tr>
+<tr>
+<td><strong>5 · Attendance</strong></td>
+<td>Four statuses, named owners, a threshold, an escalation script</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td><strong>6 · Reports</strong></td>
+<td>Three locked report versions on a cadence with one owner</td>
+<td>2.5 hrs</td>
+</tr>
+<tr>
+<td><strong>7 · Install Order &amp; The First 90 Days</strong></td>
+<td>A dated install plan and your before/after hours</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td><strong>8 · Why Systems Drive Buy-In</strong></td>
+<td>An ABIR score and a buy-in fix list mapped to the six</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td><strong>9 · The Department Operating Manual</strong></td>
+<td>A binder somebody else could run the department from</td>
+<td>2 hrs</td>
+</tr>
+</tbody>
+</table>
+<p>Plus: <strong>My Situation Is Different</strong> — every constraint-specific question answered in writing. And <strong>Three Complete Installs</strong> — a 60-athlete facility, a 150-athlete facility, and a 400-athlete school, with every number filled in.</p>
+<hr />
+<h2>THE NUMBER THIS IS ABOUT</h2>
+<p>Hours per week spent outside of training time to run all six components. Same department, three different ways to run it.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Buy-in risk</th>
+<th>Hours/week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>All manual</strong></td>
+<td>HIGH</td>
+<td>16 hrs</td>
+</tr>
+<tr>
+<td><strong>Semi-automated</strong></td>
+<td>MOD</td>
+<td>3.8 hrs</td>
+</tr>
+<tr>
+<td><strong>Fully automated</strong></td>
+<td>LOW</td>
+<td>1.1 hrs</td>
+</tr>
+</tbody>
+</table>
+<p>Sixteen hours a week versus one. That's the gap between running a department on clipboards and running it on a system — and it's why most owners quietly stop doing half of these six things by October.</p>
+<p>Nobody prices this before they start. They price racks, flooring, and turf. Then the admin load shows up, and it doesn't show up as a bill — it shows up as evenings.</p>
+<hr />
+<p><strong>Start with Module 0. It takes 90 minutes and it tells you what everything else is worth.</strong></p>
+<p>SYSTEMS DRIVE SUCCESS.</p></section><section class="page" id="page-m0" data-key="m0"><h1>MODULE 0 · ORIENTATION &amp; THE REAL PRICE TAG AUDIT</h1>
+<p><strong>What this module does:</strong> gives you your real number before you build anything, and tells you which component to fix first.
+<strong>Desk time:</strong> 90 minutes.
+<strong>You finish holding:</strong> your current hours-per-week cost, a ranked fix order, and a start date on a real calendar.</p>
+<hr />
+<h2>LESSON 0.1 · A ROOM WITH EQUIPMENT IN IT IS NOT A DEPARTMENT</h2>
+<p><strong>Time: 6 min · You'll finish with: a decision about which room you're standing in</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>If your weight room runs on the memory and effort of whoever happens to be standing in it, you don't have a department yet. You have a room.</p>
+<p>A department is six working parts that feed each other. Build the program off your real constraints. Assess so you know what to put on the bar. Log what happens. Test what matters, on a schedule. Track who shows up. Report it so people can see it.</p>
+<p>Take one out and the other five degrade. No assessment and the program prescribes nothing. No log and you can't progress. No attendance and you'll blame the program for a participation problem. No reports and the best work in the building stays invisible until the budget meeting.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Chaos in a weight room is almost never a lack of effort. It's a lack of systems. Effort without a system just produces tired coaches.</p>
+<p>Which means the fix isn't working harder, hiring better, or buying more. The fix is installing six specific things in a specific order and knowing what each one costs you every week to keep running.</p>
+<p>That's what this course does. Nothing else.</p>
+<h3>WHAT THIS COURSE IS AND ISN'T</h3>
+<p>It is not a program you copy. You already have exercises. It is the infrastructure that decides which exercises land on which athlete, at what weight, on what day, recorded where, compared against what, reported to whom.</p>
+<p>Every module ends with a checklist of things that are either true or not true in your building. You check the boxes when the work exists. Not when you understand it.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Reading the whole thing and installing none of it. <strong>One component installed beats six components understood.</strong> If you only ever finish Module 1, you'll still be further ahead than most facilities in your county.</p>
+<h3>DO THIS NOW</h3>
+<p>Answer one question in writing, somewhere you'll see it again: <em>If I were out of the building for two weeks starting tomorrow, what would break first?</em></p>
+<p>Hold that answer. Lesson 0.4 uses it.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck0"><label for="m0-ck0">I've written down what breaks first without me</label></li>
+</ul>
+<hr />
+<h2>LESSON 0.2 · HOW TO READ THE OPTIONS</h2>
+<p><strong>Time: 6 min · You'll finish with: the three columns that run through the entire course</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Every component in this course gets a table of every realistic way to solve it. Three things are marked on every row, and you'll read these tables a dozen times before you're done.</p>
+<h3>1 · THE MODE</h3>
+<p>How much of the work a human has to do every week.</p>
+<p><strong>MANUAL</strong> — a person does every step. Paper, whiteboards, memory, and typing things in later. Cheapest to start, most expensive to keep.</p>
+<p><strong>SEMI</strong> — software or a device carries part of the load, but there's still a human step in the middle: an export, a merge, a re-entry. This is where most facilities live.</p>
+<p><strong>FULL</strong> — data is captured where it's created and lands finished. No transcription step exists to abandon.</p>
+<h3>2 · BUY-IN RISK</h3>
+<p>How likely the option is to cost you athlete engagement. One rule governs this column: <strong>buy-in risk tracks visibility, not automation.</strong> Athletes disengage when they can't see the standard, the number, or their own progress — and that happens with expensive software just as easily as with a clipboard.</p>
+<p>Which is why a few manual options score LOW. Building a report for every athlete by hand is the most expensive option in this course, and it works beautifully. Time cost and buy-in are two separate columns for a reason.</p>
+<h3>3 · TIME PER WEEK</h3>
+<p>Minutes spent outside of floor coaching, once the thing is running. Setup isn't included — every option has a bigger week one than week ten. What's priced is the ongoing cost, because that's what decides whether you're still doing it in six months.</p>
+<p>Read every hour figure in this course as time spent <strong>on top of</strong> the hours you and your staff are already on the floor coaching. This is the work that happens before the doors open and after they close.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Assuming zero minutes means free. Several options in this course score 0 minutes per week — don't log anything, don't assess, give verbal updates. Those are honest entries, not sarcasm. They genuinely cost you no admin time. What they do is move the cost somewhere you don't measure: extra coaching on the floor every set, athletes drifting, and no evidence when someone asks what the room is producing.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck1"><label for="m0-ck1">I can explain the difference between MANUAL, SEMI, and FULL without looking</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck2"><label for="m0-ck2">I understand that a manual option can carry low buy-in risk</label></li>
+</ul>
+<hr />
+<h2>LESSON 0.3 · THE REAL PRICE TAG AUDIT</h2>
+<p><strong>Time: 35 min · You'll finish with: your actual weekly hours number</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Nobody prices this before they start. They price racks, flooring, and turf. Then the admin load shows up, and it doesn't show up as a bill — it shows up as evenings. The log stops getting entered. Testing gets pushed. Reports never happen. Not because the coach didn't care, but because the method cost more time than the week had in it.</p>
+<h3>THE THREE ROWS</h3>
+<p>Hours per week spent outside of training time to run all six components. Same department, three different ways to run it.</p>
+<table>
+<thead>
+<tr>
+<th>Way you run it</th>
+<th>Buy-in risk</th>
+<th>Hours/week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All manual</td>
+<td>HIGH</td>
+<td>16 hrs</td>
+</tr>
+<tr>
+<td>Semi-automated</td>
+<td>MOD</td>
+<td>3.8 hrs</td>
+</tr>
+<tr>
+<td>Fully automated</td>
+<td>LOW</td>
+<td>1.1 hrs</td>
+</tr>
+</tbody>
+</table>
+<p>Sixteen hours a week versus one. That's the gap between running a department on clipboards and running it on a system — and it's why most owners quietly stop doing half of these six things by October.</p>
+<p><strong>The assumptions behind these numbers:</strong> a facility of roughly 150 athletes with two coaches, training four days a week in groups of 20 to 30. Your numbers move with your roster — a 60-athlete facility runs lighter, a 400-athlete school runs far heavier. The ratio between the three rows holds regardless of size, because manual methods scale with athlete count and systems mostly don't.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>You're not going to guess at your number. You're going to find the row you're actually standing in for each of the six components and add up the minutes.</p>
+<ol>
+<li>Open <strong>STS-01 Price Tag Audit</strong>.</li>
+<li>For each of the six components, pick the row that describes what you do <em>today</em> — not what you intend to do.</li>
+<li>If a component isn't happening at all, mark it. That's a row too, and it's usually the 0-minute row with HIGH buy-in risk.</li>
+<li>Read your total.</li>
+</ol>
+<h3>EXAMPLE</h3>
+<p>A 140-athlete facility with two coaches: whiteboard programming (180), coach's eye assessment (0), paper cards typed in weekly (210), stopwatch and clipboard testing (120), head count attendance (0), hallway verbal updates (0). Total: 510 minutes — 8.5 hours a week. And three of the six components aren't producing anything usable.</p>
+<p>That owner's problem isn't that he's lazy. It's that he's paying 8.5 hours a week for half a department.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Marking the row you <em>mean</em> to be on. If you print rack cards but stopped entering them in March, your row is "don't log," not "paper cards typed into a spreadsheet." Score the building you actually have.</p>
+<h3>DO THIS NOW</h3>
+<p>Fill the audit. Write your total hours at the top of the page where you'll see it.</p>
+<p>Then fill the TARGET tab: for each component, pick the row you intend to be standing in by day 90. Don't pick all FULL. Pick what you'll actually sustain.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck3"><label for="m0-ck3">All six current rows marked</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck4"><label for="m0-ck4">Total hours per week calculated</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck5"><label for="m0-ck5">A target row chosen for each of the six</label></li>
+</ul>
+<h3>IF / THEN</h3>
+<ul>
+<li><strong>IF</strong> your total is under 3 hours and nothing is automated → <strong>THEN</strong> you're not running these components, you're skipping them. Re-score honestly.</li>
+<li><strong>IF</strong> your total is over 15 hours → <strong>THEN</strong> you're the exact person this course was built for, and Module 7 will tell you which row to fix first.</li>
+<li><strong>IF</strong> you're a school and your "cost" is salaried time → <strong>THEN</strong> it still counts. Salaried hours are the hours that get spent on evenings and lost to burnout.</li>
+</ul>
+<hr />
+<h2>LESSON 0.4 · THE THREE QUESTIONS AND YOUR FIX ORDER</h2>
+<p><strong>Time: 25 min · You'll finish with: a ranked list of six components</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>You don't need all six components perfect. You need to know which one is bleeding the most time and buy-in, and fix that one first.</p>
+<h3>THE THREE QUESTIONS WORTH ANSWERING THIS WEEK</h3>
+<ol>
+<li>Which component would collapse first if you were out for two weeks?</li>
+<li>Which one is costing the most hours for the least return?</li>
+<li>Which one would your athletes notice within a week if you fixed it?</li>
+</ol>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-02 Fix Order Worksheet</strong>. Score all six components on three axes, 1 to 5:</p>
+<ul>
+<li><strong>Fragility</strong> — how fast it dies without you</li>
+<li><strong>Cost</strong> — hours per week from your audit</li>
+<li><strong>Visibility</strong> — how quickly athletes would feel it</li>
+</ul>
+<p>Add the three scores. Highest total is your fix order #1.</p>
+<h3>EXAMPLE</h3>
+<p>An owner scores Floor Log at fragility 5, cost 5, visibility 4 — total 14. Reports scores 2, 1, 5 — total 8. His fix order starts at the log. That's the component eating his Sunday nights and the one his athletes can't see progress without.</p>
+<h3>THE IMPORTANT DISTINCTION</h3>
+<p>The install order in Module 7 is the correct <strong>build</strong> sequence — program, assessment, log, testing, attendance, reports. That order is not negotiable, because each component depends on the one above it.</p>
+<p>Your fix order is different. It tells you where you'll <em>feel it first</em>, and therefore which component to automate first once things are running. When the two conflict, follow the install order and let the fix order decide your upgrade.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Starting with the component that annoys you most. Usually that's reports, because someone asked you for numbers and you didn't have them. Reports built on top of nothing produce nothing. Build in order.</p>
+<h3>DO THIS NOW</h3>
+<p>Complete the worksheet. Write your #1 fix at the top of your Price Tag Audit next to your hours total.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck6"><label for="m0-ck6">All six components scored on three axes</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck7"><label for="m0-ck7">Fix order ranked 1 through 6</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck8"><label for="m0-ck8">I understand fix order and install order are different things</label></li>
+</ul>
+<hr />
+<h2>LESSON 0.5 · SET YOUR 90 DAYS</h2>
+<p><strong>Time: 15 min · You'll finish with: dates on a real calendar</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>The students who finish this have calendar blocks. The ones who don't have intentions. That's the entire difference and it shows up in week three.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<ol>
+<li>Pick a start Monday. Not "next month." A date.</li>
+<li>Block <strong>two 45-minute build sessions per week</strong> on your own calendar for the next 13 weeks. Name them. Protect them like a training session, because that's what they are.</li>
+<li>Name one person who will notice if you stop. Tell them what you're doing and when it ends.</li>
+<li>Write your commitment sentence.</li>
+</ol>
+<h3>THE COMMITMENT SENTENCE</h3>
+<blockquote>
+<p>On <strong>[date]</strong>, my department will be running six components at a cost of <strong>[target hours]</strong> hours per week, down from <strong>[current hours]</strong> today.</p>
+</blockquote>
+<p>That sentence goes on <strong>STS-03 90-Day Start Card</strong>, printed, somewhere you see it.</p>
+<h3>EXAMPLE</h3>
+<p>Start Monday, September 8. Build blocks Tuesday 7:00–7:45am and Thursday 7:00–7:45am. Accountability: assistant coach, who gets the binder in Module 9. End date December 7. Current 8.5 hours, target 2.5.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Blocking build time at 5pm. If you have a family, the evening block is the first thing to die and its death will feel like the course failing. Build in the morning or on the one weekend block you already own.</p>
+<h3>DO THIS NOW</h3>
+<p>Fill and print the start card.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck9"><label for="m0-ck9">Start date chosen</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck10"><label for="m0-ck10">Two weekly build blocks on my actual calendar for 13 weeks</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck11"><label for="m0-ck11">Accountability person named and told</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck12"><label for="m0-ck12">Commitment sentence written and printed</label></li>
+</ul>
+<hr />
+<h2>MODULE 0 GATE</h2>
+<p>You cannot install a system you haven't priced. All four must be true:</p>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck13"><label for="m0-ck13">I know my current total hours per week</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck14"><label for="m0-ck14">I know which component would collapse first without me</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck15"><label for="m0-ck15">I have a start date and two weekly build blocks on my actual calendar</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m0-ck16"><label for="m0-ck16">I have chosen a target mode for all six components</label></li>
+</ul>
+<p><strong>Next:</strong> Module 1 · Program Build. Count the room before you write anything.</p></section><section class="page" id="page-m1" data-key="m1"><h1>MODULE 1 · PROGRAM BUILD</h1>
+<p><em>Turning your constraints into a year of training that physically fits your floor.</em></p>
+<p><strong>Desk time:</strong> 4–5 hours across your build blocks.
+<strong>You finish holding:</strong> a 52-week calendar, coded session by session, that someone else could run.
+<strong>Assets used:</strong> STS-10 Program Build Workbook · STS-11 Session Timeline · STS-12 52-Week Calendar · STS-13 Core 4 Prep Card · STS-14 Lane Map · STS-15 Session Code Scheme</p>
+<hr />
+<h2>LESSON 1.1 · WHY PROGRAM BUILD BREAKS FIRST</h2>
+<p><strong>Time: 8 min · You'll finish with: the rule the rest of this module runs on</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Constraints dictate choices.</strong> The program is downstream of your clock, your equipment count, and your group size — never the other way around.</p>
+<h3>WHY IT BREAKS</h3>
+<p>Owners buy programming before they count racks. A program written for a college weight room lands in a facility with a quarter of the equipment and twice the bodies, and within two weeks the coaches are improvising. Improvisation becomes the program. Nobody decided that — it just happened, because the plan never fit the room.</p>
+<p>Every downstream component inherits this failure. You can't assess against movements the room can't run. You can't log a session that didn't happen the way it was written. You can't compare a test to training that was invented on the spot.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>This module runs in one direction and you cannot skip a step:</p>
+<p><strong>Constraints → lanes → session timeline → daily structure → 52-week calendar.</strong></p>
+<p>Build it once, run it all year, adjust at the block change instead of every Sunday night. Any option that doesn't start with your equipment count and group size is guessing, and you'll pay for the guess every single week in floor chaos.</p>
+<h3>YOUR OPTIONS</h3>
+<table>
+<thead>
+<tr>
+<th>How you could solve it</th>
+<th>Mode</th>
+<th>Buy-in</th>
+<th>Time/wk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write it on the whiteboard each week — zero cost, zero record, dies the week you're out sick</td>
+<td>MANUAL</td>
+<td>HIGH</td>
+<td>180 min</td>
+</tr>
+<tr>
+<td>Build your own spreadsheet program — full control, and you maintain every formula forever</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>120 min</td>
+</tr>
+<tr>
+<td>Buy a static program template — fast start, doesn't know your equipment or group sizes</td>
+<td>MANUAL</td>
+<td>HIGH</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Commercial programming software — delivery is solved, the thinking is still entirely yours</td>
+<td>SEMI</td>
+<td>LOW</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>Retain an outside programmer — off your plate, slow to adjust, priced every month</td>
+<td>SEMI</td>
+<td>MOD</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Constraint-driven builder that outputs 52 weeks — inputs once, calendar out, every session coded</td>
+<td>FULL</td>
+<td>LOW</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<p>This module teaches the spreadsheet build completely. Every tab, every formula. If you never buy another thing, the workbook works. If you'd rather the same inputs produce the same 52 weeks in about ten minutes, that's the FULL row, and it's the same logic with the arithmetic done for you.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Buying tracking technology before this step. That's how facilities end up owning a timing system and having nothing to feed it.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck0"><label for="m1-ck0">I can state the build order from memory: constraints, lanes, timeline, structure, calendar</label></li>
+</ul>
+<hr />
+<h2>LESSON 1.2 · COUNT THE ROOM</h2>
+<p><strong>Time: 45 min · You'll finish with: your true simultaneous capacity</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>What you own and what can run at the same time are two different numbers. Only one of them matters. Six racks with four usable barbells is four lanes, not six.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Walk the floor with the workbook open. Don't do this from memory at your desk — you will be wrong about plates and dumbbells every time.</p>
+<p>Fill <strong>Tab: INVENTORY</strong>, four columns per row:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What goes in it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Count owned</td>
+<td>Everything in the building</td>
+</tr>
+<tr>
+<td>Count usable today</td>
+<td>Working, not broken, not borrowed by a sport team</td>
+</tr>
+<tr>
+<td>Usable simultaneously</td>
+<td>How many can be in use at the same moment by different athletes</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Shared? Seasonal? Waiting on repair?</td>
+</tr>
+</tbody>
+</table>
+<p>Rows to fill: racks, barbells, plate sets by weight, dumbbells by pair, benches, boxes, sleds, turf lanes by width, platforms, med balls, bands, trap bars, machines, open floor square footage.</p>
+<h3>THE NUMBER YOU'RE AFTER</h3>
+<p><strong>True Simultaneous Capacity</strong> = the lowest binding constraint across the movement categories you intend to run.</p>
+<p>If you plan on a barbell main lift and you have 6 racks but 4 bars, your barbell capacity is 4. If your accessories need 8 pairs of dumbbells and you own 5, your accessory capacity is 5. The lowest number in the block you're building is the number that decides your lanes.</p>
+<h3>EXAMPLE</h3>
+<p>A facility counts 8 racks, 6 usable bars, 2 trap bars, 9 dumbbell pairs, 4 benches, 2 sled lanes, 1,400 sq ft of open floor. Their barbell lane capacity is 6, not 8. Their accessory rotation is capped at 4 stations by benches. That building runs four lanes cleanly and six lanes badly.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Counting equipment you own but can't supervise. Two coaches cannot coach eight lanes of a technical main lift. Capacity is equipment <strong>and</strong> eyes, and the lower one wins.</p>
+<h3>DO THIS NOW</h3>
+<p>Complete the INVENTORY tab on the floor, then read your True Simultaneous Capacity off the bottom of the tab.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck1"><label for="m1-ck1">Full equipment count done — racks, bars, plates, dumbbells, benches, turf, sleds</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck2"><label for="m1-ck2">Simultaneous column filled, not just owned</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck3"><label for="m1-ck3">True Simultaneous Capacity calculated</label></li>
+</ul>
+<h3>IF / THEN</h3>
+<ul>
+<li><strong>IF</strong> you share the floor with sport teams → <strong>THEN</strong> count your worst-case day, not your best. Build to the Tuesday when the team has the turf.</li>
+<li><strong>IF</strong> equipment is arriving next month → <strong>THEN</strong> build to today's count. You can add lanes at a block change; you can't un-break a program that assumed gear you don't have.</li>
+</ul>
+<hr />
+<h2>LESSON 1.3 · LOCK THE CLOCK</h2>
+<p><strong>Time: 25 min · You'll finish with: every training day defined</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>The clock is the hardest constraint in the building and the one owners negotiate with most. You cannot coach a 60-minute session in 45 minutes by wanting it more.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>Tab: CLOCK</strong> — one row per group, per day:</p>
+<p>Day | Group name | Start | End | Total minutes | Athletes | Day type | Coaches on floor</p>
+<p>Then label every training day as one of three things:</p>
+<ul>
+<li><strong>Lifting</strong> — the primary stress is the barbell work</li>
+<li><strong>Conditioning</strong> — the primary stress is energy system work</li>
+<li><strong>Both</strong> — you're doing both, and you'll pay for it in session length</li>
+</ul>
+<p>A day labeled "both" that's only 45 minutes long is a day where one of the two gets cut every week. Decide which one now, in writing, instead of live at 6:40am.</p>
+<h3>THE HONEST MINUTES</h3>
+<p>Total minutes is not the number on the schedule. It's the number from when athletes are actually on the floor to when they actually leave. If the schedule says 60 and they trickle in for 8, you have 52.</p>
+<h3>EXAMPLE</h3>
+<p>A high school with an 8-period day: five groups, 47-minute periods, realistic floor time 40 minutes, 24 athletes per group, two coaches on the floor for periods 2, 3, and 5, one coach for periods 6 and 7. Those single-coach periods cannot run the same daily structure as the double-coach periods. That gets decided here, not in week four.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Building one program for a schedule that has two different staffing realities in it. If a group runs with one coach, its structure is different. Write both.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck4"><label for="m1-ck4">Session length locked for every group</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck5"><label for="m1-ck5">Training days labeled: lifting, conditioning, or both</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck6"><label for="m1-ck6">Coaches on floor recorded per group</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck7"><label for="m1-ck7">Honest floor minutes used, not scheduled minutes</label></li>
+</ul>
+<hr />
+<h2>LESSON 1.4 · LANES, NOT LISTS</h2>
+<p><strong>Time: 40 min · You'll finish with: your lane structure</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Build the day as blocks that run in parallel, not as a list of exercises everyone does simultaneously. Athletes ÷ stations = lanes. That single division decides more about whether your program works than exercise selection ever will.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<ol>
+<li>Take your True Simultaneous Capacity from Lesson 1.2.</li>
+<li>Take your group size from Lesson 1.3.</li>
+<li>Divide. That's athletes per lane.</li>
+<li>If athletes per lane is over 6, you have a capacity problem, not a programming problem. Fix the schedule or add stations.</li>
+</ol>
+<p>Fill <strong>Tab: LANES</strong>. It reads from INVENTORY and CLOCK automatically and flags any group that exceeds capacity in red, with the exact number of athletes over.</p>
+<h3>EXAMPLE</h3>
+<p>Twenty-four athletes, six racks, sixty minutes. That's four lanes of six. Five minutes of movement prep and five of coordination for everyone, then two twenty-minute blocks where each lane rotates through one main lift and three accessories as stations, then a finisher that flexes five to ten minutes.</p>
+<p>That fits. A program that assumes twenty-four athletes squat at the same time does not, and no amount of coaching energy will make it.</p>
+<h3>WHY SIX IS THE CEILING</h3>
+<p>Six athletes per rack, at a main lift with real weight, is roughly 3 minutes of work and 3 of waiting per round. Above six, athletes cool down between sets, the block runs long, and the last two never finish. Above eight, you have a supervision problem: the coach can't see the bar and the line at the same time.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Running more lanes than you can coach to keep athletes moving. Movement isn't the goal. Coached movement is. A fifth lane you can't see is a fifth lane building bad reps at speed.</p>
+<h3>DO THIS NOW</h3>
+<p>Complete the LANES tab. Print <strong>STS-14 Lane Map</strong> and mark your actual floor: where lane A stands, where lane B stands. Tape it up. Athletes will find their lane without being told after about three days.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck8"><label for="m1-ck8">Max athletes on the floor calculated from stations, not hope</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck9"><label for="m1-ck9">Group allocation set — how many lanes run in parallel</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck10"><label for="m1-ck10">No group flagged red, or the ones flagged have a written fix</label></li>
+</ul>
+<h3>IF / THEN</h3>
+<ul>
+<li><strong>IF</strong> a group is 8 over capacity → <strong>THEN</strong> split it or extend the day. Do not shrink the program to fit; you'll cut the main lift and the whole block loses its purpose.</li>
+<li><strong>IF</strong> you have mixed skill levels in one group → <strong>THEN</strong> lane by skill level, not by sport or friend group. Build → Blend → Express is a lane assignment, not a personality.</li>
+<li><strong>IF</strong> athletes arrive across a 20-minute window → <strong>THEN</strong> your prep becomes rolling, your first block starts late for some, and your attendance owner changes. Write the rolling version in Module 3.</li>
+</ul>
+<hr />
+<h2>LESSON 1.5 · STANDARDIZE THE PREP (CORE 4)</h2>
+<p><strong>Time: 30 min · You'll finish with: one prep, printed and on the wall</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>One prep. Five minutes. Every day. Every group. The prep is the first thing an athlete does in your building and the first place your standard is either visible or absent.</p>
+<h3>WHY FIVE AND NOT FIFTEEN</h3>
+<p>A fifteen-minute prep costs you a quarter of your session and buys almost nothing a five-minute prep doesn't. Worse, a prep that changes daily costs coaching attention every single day — teaching new movements to the whole room before you've done any training. That's the most expensive novelty in the building.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Four categories. One selection per category. Run in the same order every day.</p>
+<ol>
+<li><strong>Tissue / temperature</strong> — get warm and get blood moving</li>
+<li><strong>Position</strong> — get into the shapes today's lifts require</li>
+<li><strong>Activation</strong> — wake up what's about to work</li>
+<li><strong>Coordination / speed of movement</strong> — one short exposure that primes the nervous system</li>
+</ol>
+<p>Pick one movement per category. Write the coaching cue for each. That's your prep. It doesn't change until the block changes.</p>
+<h3>EXAMPLE</h3>
+<p>Skips and leg swings (2 min) → half-kneeling hip opener and thoracic rotation (1 min) → banded glute and scap series (1 min) → three low-box jumps or three sprint-starts (1 min). Five minutes. Same order, every day, all block. By week three you say "prep" and the room runs it without you.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Treating prep as the place to be creative. Prep is the place to be identical. Save your coaching attention for the bar.</p>
+<h3>DO THIS NOW</h3>
+<p>Fill and print <strong>STS-13 Core 4 Prep Card</strong>. Laminate it. Put it on the wall where athletes walk in. Run it once with your staff so every coach coaches it the same way.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck11"><label for="m1-ck11">Movement prep standardized — one prep, five minutes, every day</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck12"><label for="m1-ck12">Prep card printed and on the wall</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck13"><label for="m1-ck13">Every coach has run it once</label></li>
+</ul>
+<hr />
+<h2>LESSON 1.6 · BUILD THE SESSION TIMELINE</h2>
+<p><strong>Time: 30 min · You'll finish with: a minute-by-minute page per group type</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>If the timeline doesn't sum to your session length, the program is already broken and you haven't started yet.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-11 Session Timeline Template</strong>. Assign every minute:</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Minutes</th>
+<th>Who owns it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrival + attendance</td>
+<td>2</td>
+<td>Attendance owner</td>
+</tr>
+<tr>
+<td>Core 4 prep</td>
+<td>5</td>
+<td>Whole room</td>
+</tr>
+<tr>
+<td>Coordination</td>
+<td>5</td>
+<td>Whole room</td>
+</tr>
+<tr>
+<td>Block 1 (main + 3 accessories, rotating)</td>
+<td>20</td>
+<td>Lane coaches</td>
+</tr>
+<tr>
+<td>Block 2 (main + 3 accessories, rotating)</td>
+<td>20</td>
+<td>Lane coaches</td>
+</tr>
+<tr>
+<td>Finisher</td>
+<td>5–10</td>
+<td>Whole room</td>
+</tr>
+<tr>
+<td>Out</td>
+<td>1</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Adjust to your real number from Lesson 1.3. Whatever's left over is not "extra" — it's the buffer that keeps you from running long every day. Protect it.</p>
+<h3>THE TIMELINE IS WHERE LOGGING AND ATTENDANCE LIVE</h3>
+<p>Both of those components get installed later, but they get their minutes here. Attendance is in the first two. Logging happens between sets inside the blocks, never after. If you don't reserve those minutes now, you'll try to add them in Module 3 and they'll cost you real training time — and anything that costs training time gets abandoned.</p>
+<h3>EXAMPLE</h3>
+<p>A 40-minute high school period: 2 attendance, 5 prep, 3 coordination, 14 block one, 13 block two, 3 out. No finisher. That's an honest 40-minute timeline. The facility that writes a 60-minute timeline and runs it in a 40-minute period cuts block two every single day and wonders why the posterior chain never develops.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Building the timeline for your best group. Build it for the group with the least time and the fewest coaches, then add to the others.</p>
+<h3>DO THIS NOW</h3>
+<p>Build one timeline per group type. Print them. One goes on the wall, one goes in the binder in Module 9.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck14"><label for="m1-ck14">Session timeline mapped end to end</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck15"><label for="m1-ck15">Timeline sums to actual session length</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck16"><label for="m1-ck16">Attendance has its two minutes</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck17"><label for="m1-ck17">Logging has its place inside the blocks</label></li>
+</ul>
+<hr />
+<h2>LESSON 1.7 · DAILY STRUCTURE AND THE 20-WEEK COMMITMENT</h2>
+<p><strong>Time: 50 min · You'll finish with: your locked block structure</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>One main lift plus three accessories per block. Main lifts committed to a <strong>20-week block</strong>. A small number of movements, run long enough to actually progress, beats novelty every time — and it's the only way your staff ever gets good at coaching them.</p>
+<h3>THE VARIATION MYTH</h3>
+<p>Owners assume a fresh program every four weeks signals quality. It signals churn. Here's what actually happens when you change main lifts every four weeks:</p>
+<ul>
+<li>Athletes spend the first two weeks re-learning the movement</li>
+<li>Your coaches never get past teaching it</li>
+<li>Your numbers aren't comparable, so you can't prove progress</li>
+<li>Volume — the variable that matters most — resets every month</li>
+</ul>
+<p>Twenty weeks on the same main lift means twenty weeks of comparable data, twenty weeks of accumulating volume, and a staff that can coach that lift in their sleep.</p>
+<h3>MACRO VS. MICRO</h3>
+<ul>
+<li><strong>Macro</strong> = a change to a new exercise. Happens at the block change. Twice a year.</li>
+<li><strong>Micro</strong> = a small variation within the same exercise. Bar type, stance, tempo, range. Happens whenever equipment or an athlete requires it.</li>
+</ul>
+<p>Mid-block substitutions are micro. If you find yourself making a macro change in week 9, you didn't have a constraint problem — you had a boredom problem, and it cost you the block.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>Tab: STRUCTURE</strong>:</p>
+<p>Block | Lane | Main lift | Accessory 1 | Accessory 2 | Accessory 3 | Equipment required | Coach cue</p>
+<p>Rules for filling it:
+1. Main lift must be runnable by every athlete in that lane at their skill level.
+2. The three accessories must be runnable <strong>as stations</strong> — no accessory that needs the same equipment as the main lift.
+3. Every row must fit inside the block minutes from Lesson 1.6.
+4. Equipment column must reconcile against your INVENTORY tab. If it doesn't, the structure is fiction.</p>
+<h3>EXAMPLE</h3>
+<p>Block 1, Lane A: main lift back squat. Accessories: DB Romanian deadlift, split squat, half-kneeling press. Four stations, six athletes, twenty minutes, rotating. No accessory competes with the rack. The whole lane runs with one coach standing at the rack watching the only movement that needs eyes.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Writing accessories that require the same equipment as the main lift. Now your lane can't rotate, athletes stack up at one station, and your twenty-minute block takes twenty-eight.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck18"><label for="m1-ck18">Majority skill level identified — it sets your starting stage</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck19"><label for="m1-ck19">Daily structure built: one main plus three accessories per block</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck20"><label for="m1-ck20">Main lifts committed to a 20-week block</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck21"><label for="m1-ck21">Every accessory runs as a station without competing for the main lift's equipment</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck22"><label for="m1-ck22">Structure reconciles against the inventory count</label></li>
+</ul>
+<hr />
+<h2>LESSON 1.8 · THE PROGRESSION RULE</h2>
+<p><strong>Time: 30 min · You'll finish with: one sentence and a 20-week map</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Volume is the most important variable in training.</strong> Above frequency, above exercise selection, above everything you'll be tempted to fiddle with. So your progression rule is a volume rule.</p>
+<p>Write it as one sentence: <strong>sets first, then reps, never past five.</strong></p>
+<h3>WHAT THAT MEANS ON THE FLOOR</h3>
+<p>You add a set before you add reps. You add reps before you add load. You never take a main lift set past five reps, because past five you're training something other than what the main lift is there for.</p>
+<p>Load moves when the volume standard is met — not when the calendar turns over and not when it feels like time.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>Tab: PROGRESSION</strong>. Map all 20 weeks per main lift before week one starts:</p>
+<p>Week | Sets | Reps | Load rule | Notes</p>
+<p>Week 14 is decided in week one. That's the point. Sunday-night programming disappears from your life, and any coach can open the workbook and know exactly what's prescribed.</p>
+<h3>EXAMPLE</h3>
+<p>Weeks 1–4: 3×5. Weeks 5–8: 4×5. Weeks 9–12: 5×5, load increases when all 25 reps are completed to standard. Weeks 13–16: 5×4 at a higher load. Weeks 17–20: 5×3 at a higher load, retest at week 20.</p>
+<p>Simple, boring, and it produces more than a clever program nobody runs the same way twice.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Progressing load because it feels like progress. Load is the last thing you move and the easiest thing to move too early. The athlete who adds ten pounds every week for eight weeks did not get stronger — he got worse at the movement faster.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck23"><label for="m1-ck23">Progression rule written: sets first, then reps, never past five</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck24"><label for="m1-ck24">20-week set/rep map complete per main lift</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck25"><label for="m1-ck25">Load-increase condition written down, not implied</label></li>
+</ul>
+<hr />
+<h2>LESSON 1.9 · STAMP THE 52-WEEK CALENDAR</h2>
+<p><strong>Time: 45 min · You'll finish with: the year, decided</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Then stamp it across a calendar so week 14 is already decided in week one.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-12 52-Week Calendar</strong>. Fill:</p>
+<p>Week # | Date | Block | Phase | Session code | Main lifts | Test week? | Notes</p>
+<p>Place, in this order:
+1. <strong>Real start date</strong> — a Monday
+2. <strong>Season and school breaks</strong> — the weeks you don't train
+3. <strong>The two 20-week blocks</strong> — with a transition week between them
+4. <strong>Test dates</strong> — Module 4 tells you how many; place them now as placeholders
+5. <strong>Re-assessment weeks</strong> — at each block change
+6. <strong>Report send dates</strong> — Module 6 sets the cadence; block the weeks now</p>
+<h3>SESSION CODES</h3>
+<p>Every session gets a code so the log, the tracker, and the reports all reference the same string. Use <strong>STS-15 Session Code Scheme</strong>:</p>
+<p><code>B2-W7-D3-A</code> = Block 2, Week 7, Day 3, Lane A</p>
+<p>When an athlete's report card says his squat moved 40 lbs across B1, you can trace exactly which sessions produced it. Without codes, your three systems hold three different versions of the same week.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Leaving the back half of the year blank because "we'll see how it goes." You won't see how it goes. You'll get to week 12, get busy, and improvise — and improvisation becomes the program.</p>
+<h3>DO THIS NOW</h3>
+<p>Stamp all 52 weeks. Then do the handoff step: name the file, save it, back it up somewhere off the floor, and tell one other person where it lives.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck26"><label for="m1-ck26">52-week calendar stamped off a real start date</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck27"><label for="m1-ck27">Every session coded so someone else could run it without me</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck28"><label for="m1-ck28">Test dates and re-assessment weeks placed</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck29"><label for="m1-ck29">Program named, saved, and backed up somewhere off the floor</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck30"><label for="m1-ck30">One other person knows where it lives</label></li>
+</ul>
+<hr />
+<h2>MODULE 1 GATE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck31"><label for="m1-ck31">Session length locked</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck32"><label for="m1-ck32">Full equipment count done — racks, bars, plates, dumbbells, benches, turf, sleds</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck33"><label for="m1-ck33">Max athletes on the floor calculated from stations, not hope</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck34"><label for="m1-ck34">Group allocation set — how many lanes run in parallel</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck35"><label for="m1-ck35">Session timeline mapped end to end</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck36"><label for="m1-ck36">Movement prep standardized — one prep, five minutes, every day</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck37"><label for="m1-ck37">Training days labeled: lifting, conditioning, or both</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck38"><label for="m1-ck38">Majority skill level identified</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck39"><label for="m1-ck39">Daily structure built: one main plus three accessories per block</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck40"><label for="m1-ck40">Main lifts committed to a 20-week block</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck41"><label for="m1-ck41">Progression rule written: sets first, then reps, never past five</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck42"><label for="m1-ck42">52-week calendar stamped off a real start date</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck43"><label for="m1-ck43">Every session coded so someone else could run it without you</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-ck44"><label for="m1-ck44">Program named, saved, and backed up somewhere off the floor</label></li>
+</ul>
+<p>If you can't check all fourteen, do not start Module 2. Assessment prescribes weight <em>into</em> this program. Build the container first.</p>
+<p><strong>Next:</strong> Module 2 · Assessment. Set the standard before week one.</p></section><section class="page" id="page-m2" data-key="m2"><h1>MODULE 2 · ASSESSMENT</h1>
+<p><em>Setting each athlete's starting point so the program prescribes weight instead of guessing.</em></p>
+<p><strong>Desk time:</strong> 2 hours, plus one assessment day on the floor.
+<strong>You finish holding:</strong> written movement standards every coach scores identically, and a stored working weight for every athlete on your roster.
+<strong>Assets used:</strong> STS-20 Movement Standards Pack · STS-21 Assessment Day Run Sheet · STS-22 Working Weight Register · STS-23 Regression Path Sheet · STS-24 Intake SOP</p>
+<hr />
+<h2>LESSON 2.1 · WHY "GO BY FEEL" FAILS THIRTY PEOPLE AT ONCE</h2>
+<p><strong>Time: 7 min · You'll finish with: the reason this module comes before week one</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>You can't prescribe what you haven't measured.</strong> One honest working weight per movement anchors everything downstream of it.</p>
+<h3>WHY IT BREAKS</h3>
+<p>Without a starting number, "go by feel" turns into thirty athletes guessing at once. Half go too light and never adapt — they'll train for a year and get nothing. The other half go too heavy, form falls apart, and now your coaches spend the session managing risk instead of developing athletes. Both groups are on the same program and neither is training.</p>
+<p>That's the whole failure. It doesn't look like a failure, because the room is busy and everyone is sweating. It shows up four months later when nothing moved.</p>
+<h3>WHAT ASSESSMENT ACTUALLY BUYS YOU</h3>
+<ul>
+<li>A number the program can prescribe off, so no coach invents a weight mid-session</li>
+<li>A baseline the log can be compared against</li>
+<li>A standard every coach applies the same way</li>
+<li>A first data point for the report card in Module 6</li>
+</ul>
+<h3>COMMON MISTAKE</h3>
+<p>Assessing during week one. If you assess and train in the same session, you get a rushed assessment and a compromised session. Assessment day is its own day, on the calendar, before the block starts.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck0"><label for="m2-ck0">Assessment day is on the calendar, not squeezed in</label></li>
+</ul>
+<hr />
+<h2>LESSON 2.2 · HARD BUT COMPLETABLE</h2>
+<p><strong>Time: 15 min · You'll finish with: your written standard</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>You're not looking for a max. You're looking for a hard-but-completable working weight — the load an athlete could finish for the prescribed reps with a couple left in the tank.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>An athlete works up until the prescribed set is genuinely hard but clean. That number becomes the anchor for the whole 20-week block. The main lift progresses off it, the accessories hold steady around it, and nobody on the floor has to invent a weight mid-session. When the block ends, you reassess. That's it.</p>
+<p>Write the definition in your own words, one paragraph, and put it on page one of the Standards Pack. Every coach reads it and signs it.</p>
+<p>A usable version:</p>
+<blockquote>
+<p>A working weight is the heaviest load an athlete can complete for the prescribed sets and reps with clean technique from the first rep to the last, leaving roughly two reps in reserve on the final set. If technique changes, the weight was too heavy — regardless of whether the rep finished.</p>
+</blockquote>
+<h3>COMMON MISTAKE</h3>
+<p><strong>Maxing untrained athletes to get a number.</strong> You'll get a number and a form problem, and the number won't even be usable — an athlete whose technique breaks at the top of the range gives you data about their breakdown point, not their training load.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck1"><label for="m2-ck1">Written standard for "hard but completable" exists in my own words</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck2"><label for="m2-ck2">Every coach has read it</label></li>
+</ul>
+<hr />
+<h2>LESSON 2.3 · WRITE THE MOVEMENT STANDARD</h2>
+<p><strong>Time: 45 min · You'll finish with: one page per main lift</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>If two coaches can read your standard and score the same athlete differently, the standard isn't written yet.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-20 Movement Standards Pack</strong>. One page per main lift. Five fields on each page:</p>
+<ol>
+<li><strong>Set-up position</strong> — feet, grip, bar position, brace. Three bullets max.</li>
+<li><strong>The range that counts</strong> — where the rep starts and where it ends, described so it can be judged from ten feet away.</li>
+<li><strong>The three things that end the rep</strong> — the specific technique failures that mean this rep did not count.</li>
+<li><strong>The coaching cue</strong> — the one cue every coach uses for this movement. One cue. Not a library.</li>
+<li><strong>The regression</strong> — what this athlete does instead if they can't hit the standard.</li>
+</ol>
+<h3>EXAMPLE</h3>
+<p>Back squat. Range that counts: hip crease below the top of the knee, full stand at the top. Three things that end the rep: knees collapse in, heels leave the floor, bar drifts forward past mid-foot. Cue: "chest tall, knees out." Regression: goblet squat to a box at the same depth.</p>
+<p>Now a first-year assistant scores the same rep you would.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Writing standards with adjectives. "Good depth" and "solid position" mean different things to different coaches on different days. Write positions and landmarks, not qualities.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck3"><label for="m2-ck3">Coaching standard written per movement</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck4"><label for="m2-ck4">What counts and what doesn't is defined</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck5"><label for="m2-ck5">One cue per movement, agreed by every coach</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck6"><label for="m2-ck6">Regression path written for every main lift</label></li>
+</ul>
+<hr />
+<h2>LESSON 2.4 · MATCH ASSESSMENT TO PROGRAM (NO ORPHANS)</h2>
+<p><strong>Time: 15 min · You'll finish with: a clean mapping</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Every movement you assess must be a movement the program actually prescribes. Anything else is data collection as a hobby.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>Tab: MAPPING</strong> in the Working Weight Register:</p>
+<p>Assessed movement | Program movement it feeds | Block it applies to | Orphan? (auto-flags red)</p>
+<p>Two failure directions and both matter:</p>
+<ul>
+<li><strong>Orphan assessment</strong> — you assess a movement the program never uses. Wasted floor time, and it clutters the report card.</li>
+<li><strong>Orphan prescription</strong> — the program prescribes a main lift you never assessed. Now coaches invent weights for that lift, which is the exact problem this module exists to kill.</li>
+</ul>
+<p>Every main lift in your STRUCTURE tab needs a matching assessed movement. No exceptions.</p>
+<h3>EXAMPLE</h3>
+<p>An owner assesses squat, bench, and clean out of habit, then builds a program whose main lifts are squat, trap bar deadlift, and press. Two of the three prescriptions have no anchor and one assessment feeds nothing. On day one of the block, two out of three lanes are guessing.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck7"><label for="m2-ck7">Assessment movements match the program movements — no orphans in either direction</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck8"><label for="m2-ck8">Every main lift in the STRUCTURE tab has an assessed anchor</label></li>
+</ul>
+<hr />
+<h2>LESSON 2.5 · RUN ASSESSMENT DAY</h2>
+<p><strong>Time: 20 min to plan · one session to run</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>A run sheet, not a vibe. Assessment day is the most logistically dense day in your calendar — thirty athletes, multiple movements, real weight, and a number that has to be right.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-21 Assessment Day Run Sheet</strong>:</p>
+<ul>
+<li><strong>Stations</strong> — one per assessed movement, mapped to your lane map</li>
+<li><strong>Rotation</strong> — which lane starts where, and the clock for each station</li>
+<li><strong>Coach assignments</strong> — who stands at which station for the whole session, never floating</li>
+<li><strong>Warm-up ramp</strong> — the standard progression up to the working set, written so it's identical at every station</li>
+<li><strong>Attempts</strong> — how many working sets an athlete gets to land the number (two is enough; three is generous)</li>
+<li><strong>Rest</strong> — specified, not eyeballed</li>
+<li><strong>Recorder</strong> — one named person per station</li>
+<li><strong>Entry deadline</strong> — same day, before the doors close</li>
+</ul>
+<h3>EXAMPLE</h3>
+<p>Twenty-four athletes, three assessed movements, 60 minutes. Prep 5. Three stations of eight, 15 minutes each, one coach per station, two working attempts per athlete. Last five minutes: recorders enter numbers on the tablet at the station. Nobody leaves with a number on paper.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Letting coaches float. A floating coach means no station has a consistent scorer, and your standard drifts inside a single session. One coach, one station, one standard.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck9"><label for="m2-ck9">Run sheet complete with stations, rotation, and coach assignments</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck10"><label for="m2-ck10">Every athlete assessed before week 1</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck11"><label for="m2-ck11">Numbers entered the same day</label></li>
+</ul>
+<hr />
+<h2>LESSON 2.6 · STORE IT WHERE THE PROGRAM CAN REACH IT</h2>
+<p><strong>Time: 20 min · You'll finish with: one register, one location</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>The number is useless in a notebook. It has to sit where the prescription is generated.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-22 Working Weight Register</strong>:</p>
+<p>Athlete | Sport | Group | Movement | Working weight | Date assessed | Assessing coach | Block it anchors | Re-assess date | Can't hit movement (Y/N) | Regression path</p>
+<p>Three rules that keep this file alive:</p>
+<ol>
+<li><strong>One spelling of every name</strong>, matching the ROSTER tab you'll build in Module 4. Not "Mike J" here and "Michael Johnson" there.</li>
+<li><strong>One location.</strong> If two copies exist, both are wrong within a month.</li>
+<li><strong>One owner.</strong> Named. In Module 9's binder.</li>
+</ol>
+<h3>YOUR OPTIONS</h3>
+<table>
+<thead>
+<tr>
+<th>How you could solve it</th>
+<th>Mode</th>
+<th>Buy-in</th>
+<th>Time/wk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coach's eye on the floor — costs nothing up front, costs you every session after</td>
+<td>MANUAL</td>
+<td>HIGH</td>
+<td>0 min</td>
+</tr>
+<tr>
+<td>Max testing plus printed percentage charts — hard numbers, high risk on untrained athletes, slow math</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td>Rep-max estimate into a percentage spreadsheet — safer than maxing, still hand-entered athlete by athlete</td>
+<td>SEMI</td>
+<td>MOD</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Velocity device to set load — objective cutoffs, needs a device per platform and a trained coach</td>
+<td>SEMI</td>
+<td>LOW</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Assessment module that computes the curve and pushes it to the floor — entered once, prescribes every session after</td>
+<td>FULL</td>
+<td>LOW</td>
+<td>5 min</td>
+</tr>
+</tbody>
+</table>
+<h3>COMMON MISTAKE</h3>
+<p>Storing working weights in the same file the athletes can edit. The register is read-only to everyone except the named owner.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck12"><label for="m2-ck12">Working weights entered and stored</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck13"><label for="m2-ck13">Starting prescription set per athlete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck14"><label for="m2-ck14">One file, one spelling, one location, one owner</label></li>
+</ul>
+<hr />
+<h2>LESSON 2.7 · THE INTAKE LANE AND THE RE-ASSESSMENT WINDOW</h2>
+<p><strong>Time: 20 min · You'll finish with: two written processes</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Re-assess at the block change, not on a whim. And build an intake lane so a kid who joins in week nine is assessed inside seven days instead of shadowing someone else's weights for a semester.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p><strong>Re-assessment window.</strong> Put it on the 52-week calendar at each block change. Same movements, same standard, same run sheet. Twice a year. When someone asks mid-block whether to re-test, the answer is already written: no.</p>
+<p><strong>Intake lane.</strong> Three steps, one owner, a seven-day clock:</p>
+<ol>
+<li>New athlete is added to the roster the day they arrive.</li>
+<li>They train at the regression or a conservative starting load for up to seven days — never at a teammate's number.</li>
+<li>They're assessed inside those seven days at the next available session, using the same run sheet at one station.</li>
+</ol>
+<p>Write it into <strong>STS-24 Intake SOP</strong> and name the owner.</p>
+<h3>EXAMPLE</h3>
+<p>A basketball player joins in week nine. Day one he's on the roster and lifting the regression. Day four the assistant runs him through three movements during the first block while lanes rotate. Day four he has real numbers and is on the program properly. Total cost: fifteen minutes of one coach's attention.</p>
+<p>The alternative — he shadows a friend's weights until January — costs him a half-year of training and costs you a report card you can't defend.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Treating flagged athletes as a problem to deal with later. An athlete who can't hit the movement needs a written regression path today, not a note that says "watch him."</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck15"><label for="m2-ck15">Re-assessment window set at the block change</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck16"><label for="m2-ck16">Mid-season intake process defined</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck17"><label for="m2-ck17">New athletes assessed inside their first week</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck18"><label for="m2-ck18">Athletes who can't hit the movement flagged, with a regression path written</label></li>
+</ul>
+<hr />
+<h2>MODULE 2 GATE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck19"><label for="m2-ck19">Assessment movements match the program movements — no orphans</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck20"><label for="m2-ck20">Written standard for "hard but completable"</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck21"><label for="m2-ck21">Coaching standard written per movement</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck22"><label for="m2-ck22">What counts and what doesn't is defined</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck23"><label for="m2-ck23">Every coach scores it the same way</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck24"><label for="m2-ck24">Assessment day on the calendar, not squeezed in</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck25"><label for="m2-ck25">Every athlete assessed before week 1</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck26"><label for="m2-ck26">Working weights entered and stored</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck27"><label for="m2-ck27">Starting prescription set per athlete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck28"><label for="m2-ck28">Re-assessment window set at the block change</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck29"><label for="m2-ck29">Mid-season intake process defined</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck30"><label for="m2-ck30">New athletes assessed inside their first week</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck31"><label for="m2-ck31">Athletes who can't hit the movement flagged</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-ck32"><label for="m2-ck32">Regression path written for those athletes</label></li>
+</ul>
+<h3>MODULE 2 · IF / THEN</h3>
+<ul>
+<li><strong>IF</strong> an athlete can't perform the assessed movement at all → <strong>THEN</strong> flag, don't score. Run the regression, re-test at the block change.</li>
+<li><strong>IF</strong> a group is too large to assess in one session → <strong>THEN</strong> split by lane and run two assessment days in the same week. Never assess half a group and start the block.</li>
+<li><strong>IF</strong> you use velocity devices → <strong>THEN</strong> set your cutoffs in writing and don't mix a velocity-set load and a hand-set load in the same register column. Two kinds of number in one column is one unusable column.</li>
+<li><strong>IF</strong> you inherited maxes from a previous coach → <strong>THEN</strong> treat them as a starting guess. Assess to your standard before the block starts; the old number tells you where to begin the ramp, nothing more.</li>
+</ul>
+<p><strong>Next:</strong> Module 3 · Floor Log. The program is a plan. The log is the truth.</p></section><section class="page" id="page-m3" data-key="m3"><h1>MODULE 3 · FLOOR LOG</h1>
+<p><em>Capturing what actually happened, so progression is built on reality instead of intention.</em></p>
+<p><strong>Desk time:</strong> 90 minutes, plus setup.
+<strong>You finish holding:</strong> logging live at the racks, one named owner per group, and a weekly fifteen-minute review on the calendar.
+<strong>Assets used:</strong> STS-30 Logging Standard · STS-31 Rack Card Template · STS-32 Actual vs. Projected Review · STS-33 Substitution Table · STS-34 Device Failure Backup Kit</p>
+<hr />
+<h2>LESSON 3.1 · THE PROGRAM IS A PLAN, THE LOG IS THE TRUTH</h2>
+<p><strong>Time: 7 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>You can only progress against what's recorded.</p>
+<h3>WHY IT BREAKS</h3>
+<p>The program says one thing and the floor does another. That's normal — equipment gets taken, athletes come in beat up, a group runs long. What isn't normal is having no idea which happened.</p>
+<p>Without a record, every session starts from memory, and memory drifts light. Athletes end the block lifting roughly what they started with and everyone calls it a plateau.</p>
+<h3>WHAT THE LOG IS FOR</h3>
+<p>Not paperwork. Three specific jobs:</p>
+<ol>
+<li><strong>Progression</strong> — you cannot add a set to something you can't confirm happened.</li>
+<li><strong>Diagnosis</strong> — when a group stalls, the log tells you whether it's the program, the clock, or the attendance.</li>
+<li><strong>Proof</strong> — projected vs. actual is the line on the report card that makes a parent or an AD believe you.</li>
+</ol>
+<h3>COMMON MISTAKE</h3>
+<p>Logging for the sake of having data. If nobody reviews it weekly (Lesson 3.6), the log is a chore with no output and it will be abandoned by November. Install the review at the same time you install the log.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck0"><label for="m3-ck0">I know which of the three jobs my log is failing right now</label></li>
+</ul>
+<hr />
+<h2>LESSON 3.2 · LOG WHERE THE WORK HAPPENS</h2>
+<p><strong>Time: 20 min · You'll finish with: your logging standard</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Log at the rack, as it happens. Four fields: <strong>set, weight, reps, tempo.</strong></p>
+<h3>THE RULE THAT DECIDES EVERYTHING</h3>
+<p><strong>Every method that separates where data is written from where data lives eventually gets abandoned.</strong></p>
+<p>Writing on paper at the rack and typing it into a spreadsheet later works for about three weeks. Then a busy week hits, the stack builds, and it never gets caught up. That's not a discipline problem — it's a design problem, and every facility that's ever done it has the same story.</p>
+<p>So you have two honest choices: capture it where it lives (tablets, app, direct entry), or accept that paper is your permanent home and build your review around paper. What you can't do is plan on transcription.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-30 Logging Standard</strong>, one page:</p>
+<ul>
+<li>The four fields and their format</li>
+<li>Where it's written (the device, the card, the app)</li>
+<li>When it's written (between sets, never after the block)</li>
+<li>The deadline (before the group leaves the floor)</li>
+<li>What happens when a field is missing</li>
+</ul>
+<h3>YOUR OPTIONS</h3>
+<table>
+<thead>
+<tr>
+<th>How you could solve it</th>
+<th>Mode</th>
+<th>Buy-in</th>
+<th>Time/wk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Don't log — coach memory. Free. Also means you have workouts, not a training program</td>
+<td>MANUAL</td>
+<td>HIGH</td>
+<td>0 min</td>
+</tr>
+<tr>
+<td>Paper cards in a binder — athletes see their history, you get a filing job and no analysis</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>150 min</td>
+</tr>
+<tr>
+<td>Paper cards typed into a spreadsheet weekly — you finally get data, at the price of a part-time job</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>210 min</td>
+</tr>
+<tr>
+<td>Athletes self-log in an app on their phones — cheap and scalable, compliance swings wildly by group</td>
+<td>SEMI</td>
+<td>MOD</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Tablets at racks, program pre-loaded, logged as they lift — data lands finished, no transcription step exists</td>
+<td>FULL</td>
+<td>LOW</td>
+<td>15 min</td>
+</tr>
+</tbody>
+</table>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck1"><label for="m3-ck1">Logging standard set: set, weight, reps, tempo</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck2"><label for="m3-ck2">Where data is written is where data lives, or I've chosen paper on purpose</label></li>
+</ul>
+<hr />
+<h2>LESSON 3.3 · DECIDE WHO LOGS — AND NEVER MIX IT</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Athlete logs or coach logs. Pick one and hold it. <strong>Mixed systems produce half-populated data that nobody trusts, which is worse than no data at all.</strong></p>
+<h3>THE DECISION TREE</h3>
+<p><strong>Coach logs when:</strong>
+- Athletes are middle school age
+- The group is brand new and no culture exists yet
+- Compliance is unknown or has failed before
+- The group is under 12 athletes and a coach can realistically capture it</p>
+<p><strong>Athletes log when:</strong>
+- High school age and up
+- The standard has already been taught and held for a block
+- Groups are large enough that coach entry would cost coaching attention
+- You've got a device or card at every station</p>
+<p><strong>Nobody logs when:</strong> never. That's the 0-minute row and it means you have workouts, not a training program.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Write it down per group:</p>
+<p>Group | Logging owner | Backup owner | Method | What happens if the owner is out</p>
+<p>The backup matters more than it sounds. One absent coach shouldn't produce a week-shaped hole in your data.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Letting it drift by group without deciding. Group A's athletes log, group B's coach logs, group C does whatever the sub did. Three months later you can't compare any of them.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck3"><label for="m3-ck3">Who logs decided — athlete or coach, not both</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck4"><label for="m3-ck4">Owner and backup named per group</label></li>
+</ul>
+<hr />
+<h2>LESSON 3.4 · BUILD LOGGING INTO THE TIMELINE</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>If logging adds time to the session, it dies. It has to live inside minutes that already exist.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Go back to <strong>STS-11 Session Timeline</strong> from Module 1 and mark where logging happens: <strong>between sets, inside the block.</strong> Not after the block. Not at the end of the session. Not "when you get a chance."</p>
+<p>An athlete finishes a set, walks to the station, enters four fields, and rotates. It costs eight seconds. That's the whole install.</p>
+<h3>EXAMPLE</h3>
+<p>Twenty-minute block, four stations, six athletes. Each athlete does four working sets. Four entries, eight seconds each, inside rest they were already taking. Total added session time: zero.</p>
+<p>The same facility that batches logging to the last three minutes of class loses three minutes of training every day — 15 minutes a week, 10 hours a year — and gets worse data, because by then nobody remembers set two.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Adding a "logging minute" to the end of the timeline. It's the first thing cut on the day you run long, and you run long on the days the data matters most.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck5"><label for="m3-ck5">Logging built into the timeline so it adds no time</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck6"><label for="m3-ck6">Revised timeline printed and posted</label></li>
+</ul>
+<hr />
+<h2>LESSON 3.5 · SUBSTITUTION RULES BEFORE YOU NEED THEM</h2>
+<p><strong>Time: 20 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Equipment conflicts happen weekly. Decide the swaps in advance so a coach doesn't invent one at 6:40am.</p>
+<h3>MACRO VS. MICRO, APPLIED</h3>
+<p>Mid-block substitutions are <strong>micro</strong> — same movement pattern, different implement or stance. Macro changes wait for the block change. If the rack is taken, a back squat becomes a front squat or a goblet squat, not a leg press and definitely not "whatever's open."</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-33 Substitution Table</strong>:</p>
+<p>Prescribed movement | Approved micro swap 1 | Approved micro swap 2 | Never substitute with</p>
+<p>Post it on the wall next to the lane map. Now the decision is made before the coach has to make it, and the log stays comparable because the swap is a known variant, not a mystery.</p>
+<h3>EXAMPLE</h3>
+<p>Trap bar deadlift → approved: DB Romanian deadlift, kettlebell deadlift. Never: back squat. The first two keep the hinge and the load pattern. The third changes what the day was for and quietly turns your volume comparison into noise.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Logging the swap as if it were the prescription. Log what happened, including which swap. A logged substitution is data. An unlogged one is a hole you'll misread as a plateau.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck7"><label for="m3-ck7">Substitution rules defined for equipment conflicts</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck8"><label for="m3-ck8">Macro vs. micro swap decided in advance</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck9"><label for="m3-ck9">Table posted where coaches stand</label></li>
+</ul>
+<hr />
+<h2>LESSON 3.6 · THE WEEKLY FIFTEEN-MINUTE REVIEW</h2>
+<p><strong>Time: 25 min to install · 15 min/week forever</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Actual against projected. Same time every week, on the calendar, with a named owner. <strong>That review is where you find out whether your program is a plan or a wish.</strong></p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-32 Actual vs. Projected Review</strong>:</p>
+<p>Week | Group | Prescribed sets/reps | Logged sets/reps | Completion % | Flag | Cause | Action | Owner</p>
+<p>Fifteen minutes, one sitting, same slot every week. You're looking for one thing: patterns, not individuals. An athlete short a set is life. A whole lane short a set for three weeks is a system message.</p>
+<h3>EXAMPLE</h3>
+<p>A main lift is prescribed at four sets of four. The log shows three sets for three straight weeks across an entire group. Now you know something real: your session is running out of clock, or your block order is wrong.</p>
+<p>Without the log you'd have concluded the athletes weren't trying, and you'd have been wrong and unpopular.</p>
+<h3>THE THREE CAUSES YOU'LL ACTUALLY FIND</h3>
+<ol>
+<li><strong>Clock</strong> — the block doesn't fit. Fix the timeline, not the athletes.</li>
+<li><strong>Capacity</strong> — too many athletes per station. Fix the lanes.</li>
+<li><strong>Attendance</strong> — they weren't there. That's Module 5, and it's the most common answer.</li>
+</ol>
+<h3>COMMON MISTAKE</h3>
+<p>Doing the review "when something looks off." You won't notice something is off, because the drift is small every week and large by March. Put it on the calendar.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck10"><label for="m3-ck10">Actual vs. projected reviewed weekly</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck11"><label for="m3-ck11">Someone owns the weekly review by name</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck12"><label for="m3-ck12">The review has a recurring slot on a real calendar</label></li>
+</ul>
+<hr />
+<h2>LESSON 3.7 · MISSED PRESCRIPTIONS, MISSED SESSIONS, DEAD DEVICES</h2>
+<p><strong>Time: 20 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Write the rules for failure before failure happens, or the floor invents them for you.</p>
+<h3>THE THREE RULES</h3>
+<p><strong>1 · Missing the prescription twice running.</strong> Write what happens. A workable default: two consecutive misses on the same lift means the load drops to the last completed working weight and rebuilds. Nobody negotiates this on the floor.</p>
+<p><strong>2 · Missed sessions get logged as missed, never deleted.</strong> A deleted session becomes invisible volume loss. Later, when a parent asks why the number didn't move, "he missed nine sessions" is the answer — and you can only give it if the misses are in the record.</p>
+<p><strong>3 · Dead device mid-session.</strong> Print <strong>STS-31 Rack Card Template</strong> for every lane and keep a stack in a folder at the front. Device dies, cards come out, entry happens at the end of that one session. This is the one exception to the no-transcription rule, and it exists so a dead battery doesn't cost you a week.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-34 Device Failure Backup Kit</strong>: printed cards for every lane, a pen that works, and a named person who enters them before leaving. Stage it before the day starts, alongside charging the devices.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Charging devices in the morning. Charge them at the end of the previous day, as part of closing. Morning charging means a 6am session on 40% battery.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck13"><label for="m3-ck13">Written rule for missing the prescription twice running</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck14"><label for="m3-ck14">Missed sessions logged as missed, never deleted</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck15"><label for="m3-ck15">Devices staged and charged before the day starts</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck16"><label for="m3-ck16">Backup plan for when a device dies mid-session</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck17"><label for="m3-ck17">Each athlete's session auto-loads (or pre-prints) their program movements</label></li>
+</ul>
+<hr />
+<h2>MODULE 3 GATE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck18"><label for="m3-ck18">Each athlete's session auto-loads their program movements</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck19"><label for="m3-ck19">Logging standard set: set, weight, reps, tempo</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck20"><label for="m3-ck20">Who logs decided — athlete or coach, not both</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck21"><label for="m3-ck21">Logging built into the timeline so it adds no time</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck22"><label for="m3-ck22">Devices staged and charged before the day starts</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck23"><label for="m3-ck23">Backup plan for when a device dies mid-session</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck24"><label for="m3-ck24">Actual vs. projected reviewed weekly</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck25"><label for="m3-ck25">Written rule for missing the prescription twice running</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck26"><label for="m3-ck26">Substitution rules defined for equipment conflicts</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck27"><label for="m3-ck27">Macro vs. micro swap decided in advance</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck28"><label for="m3-ck28">Missed sessions logged as missed, never deleted</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-ck29"><label for="m3-ck29">Someone owns the weekly review</label></li>
+</ul>
+<p><strong>Next:</strong> Module 4 · Testing &amp; Tracker. Now that you have a program and a log, testing has something to be compared against.</p></section><section class="page" id="page-m4" data-key="m4"><h1>MODULE 4 · TESTING &amp; TRACKER</h1>
+<p><em>Proving development happened, with numbers athletes actually care about.</em></p>
+<p><strong>Desk time:</strong> 2 hours, plus one baseline testing day.
+<strong>You finish holding:</strong> a locked battery, a written protocol per test, dates on the 52-week calendar, a completed baseline, and leaderboards on a wall.
+<strong>Assets used:</strong> STS-40 Test Battery Selector · STS-41 Test Protocol Cards · STS-42 Athlete Tracker · STS-43 Leaderboard Templates · STS-44 Test Day Run Sheet</p>
+<hr />
+<h2>LESSON 4.1 · WHY TESTING NEVER HAPPENS</h2>
+<p><strong>Time: 7 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Measure what matters, the same way, on a schedule. Four tests run six times tell you more than twelve tests run once.</strong></p>
+<h3>WHY IT BREAKS</h3>
+<p>Testing gets scheduled when there's time, which is never. So it happens once in August, maybe again in January if things are calm, and the setup is slightly different both times. Now you have two numbers that can't be compared, and no way to answer the only question that matters when a parent or an athletic director asks: <em>did they get better?</em></p>
+<h3>THE TWO FAILURES, NAMED</h3>
+<ol>
+<li><strong>Frequency failure</strong> — testing that isn't on the calendar doesn't happen.</li>
+<li><strong>Method failure</strong> — testing that happens differently each time produces numbers that can't be compared, which is the same as not testing, except it cost you a session.</li>
+</ol>
+<p>This module fixes both, in that order.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck0"><label for="m4-ck0">I know which of the two failures my building has</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.2 · PICK THE BATTERY, THEN STOP PICKING</h2>
+<p><strong>Time: 25 min · You'll finish with: four tests, locked</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Pick a short battery tied to what you actually train.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Four slots. That's the constraint, and the constraint is the point.</p>
+<ol>
+<li><strong>Body mass</strong> — the cheapest, most under-used number in youth performance</li>
+<li><strong>A jump</strong> — vertical or broad, pick one, never both</li>
+<li><strong>A short sprint</strong> — 10, 20, or 40 yards; the distance you'll defend for five years</li>
+<li><strong>One strength marker</strong> — tied to a main lift you actually program</li>
+</ol>
+<p>Open <strong>STS-40 Test Battery Selector</strong>. Fill the four slots. The worksheet enforces one rule: you may only add a fifth test by removing one of the four.</p>
+<h3>COMMON MISTAKE</h3>
+<p><strong>Adding tests.</strong> Every new assessment feels like more rigor and is actually less — more setup, more variance, more data nobody reviews. And the moment your protocol changes, your history resets. <strong>Consistency of method is worth more than sophistication of test.</strong></p>
+<h3>THE TEST THAT DOESN'T EARN ITS SLOT</h3>
+<p>If you can't name what decision a test result changes, it isn't a test — it's a number you collect. Every slot has to answer: <em>what would I do differently if this number moved, or didn't?</em></p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck1"><label for="m4-ck1">Test battery selected — short, repeatable, tied to what I train</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck2"><label for="m4-ck2">Every test can name the decision it informs</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.3 · WRITE THE PROTOCOL SO SETUP NEVER DRIFTS</h2>
+<p><strong>Time: 35 min · You'll finish with: laminated cards in the equipment case</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>The protocol lives with the equipment, not in a drive folder. A written protocol taped inside the equipment case is why your January number can be compared to your August number.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-41 Test Protocol Cards</strong> — one card per test, five fields:</p>
+<ol>
+<li><strong>Setup</strong> — where the equipment goes, measured from a fixed landmark in your building. Not "by the wall." Fifteen feet from the north door, on the third turf seam.</li>
+<li><strong>Distance / height</strong> — exact</li>
+<li><strong>Attempts</strong> — how many, and whether best or average counts</li>
+<li><strong>Rest</strong> — between attempts and between tests</li>
+<li><strong>What counts as a valid attempt</strong> — the specific things that void a rep</li>
+</ol>
+<p>Then add the <strong>order of tests</strong>, which does not change: body mass first, jump before sprint, sprint before strength, and nothing after conditioning. Fatigue ruins comparability faster than any measurement error.</p>
+<h3>EXAMPLE</h3>
+<p>Sprint card: start line at the third turf seam, gates at 10 and 20 yards, athlete starts from a two-point stance with front foot on the line, no rocking start, three attempts, 90 seconds rest, best counts, any false start voids the attempt. Same card, same case, every test day, for five years.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Trusting memory for setup. Six months is long enough to forget whether the gate was at 10 or 12 yards, and one changed number silently resets your entire history.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck3"><label for="m4-ck3">Written protocol per test</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck4"><label for="m4-ck4">Setup, distance, attempts, rest all specified</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck5"><label for="m4-ck5">What counts as a valid attempt is defined</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck6"><label for="m4-ck6">Cards printed and stored with the equipment</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck7"><label for="m4-ck7">Test order written and fixed</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.4 · PUT THE DATES ON THE CALENDAR BEFORE THE YEAR STARTS</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Testing is a scheduled event, not an interruption.</strong></p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-12 52-Week Calendar</strong> from Module 1 and place your test weeks. Three per year is a workable default: start of block one, block change, end of block two.</p>
+<p>Every test date carries three attachments:</p>
+<ul>
+<li><strong>Setup day</strong> — who sets the equipment and when</li>
+<li><strong>Same-day entry deadline</strong> — data goes in before anyone leaves</li>
+<li><strong>Report trigger</strong> — the report send date that follows it (Module 6 fills this in; block the week now)</li>
+</ul>
+<h3>EXAMPLE</h3>
+<p>Week 1 baseline, week 20 block change, week 40 end of block two. Reports go out in weeks 2, 21, and 41. Those six weeks are the only weeks of the year where your admin load spikes, and they're all visible in September.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Scheduling testing in the same week as a season peak or a school exam block. Test weeks compete with everything else, so place them in the calm weeks on purpose.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck8"><label for="m4-ck8">Test dates on the calendar before the year starts</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck9"><label for="m4-ck9">Same-day entry deadline attached to each</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck10"><label for="m4-ck10">Report weeks blocked to follow</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.5 · RUN THE BASELINE ON THE FULL ROSTER</h2>
+<p><strong>Time: 20 min to plan · one session to run</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>A baseline on 80% of the roster is not a baseline. The 20% you missed are exactly the athletes whose progress you'll be asked about.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-44 Test Day Run Sheet</strong> — same shape as assessment day:</p>
+<ul>
+<li>Station map, tied to your lane map</li>
+<li>Coach per station, fixed for the whole session</li>
+<li>Rotation order and the clock</li>
+<li>Warm-up: the standard Core 4 prep, plus the sprint ramp</li>
+<li>Recorder per station, named</li>
+<li>Entry deadline: same day</li>
+<li>Make-up plan: the named session where absent athletes get tested inside seven days</li>
+</ul>
+<h3>EXAMPLE</h3>
+<p>Twenty-four athletes, four tests, 50 minutes. Prep 5. Body mass at the door as they enter — costs nothing. Three stations of eight, 12 minutes each, one coach per station. Last three minutes: entry. Two athletes absent; both get tested Thursday during first block.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Testing the group that's easy and getting to the rest "next week." Next week has different weather, different fatigue, and often a different setup. All comparisons inside that cycle are now soft.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck11"><label for="m4-ck11">Baseline completed on the full roster</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck12"><label for="m4-ck12">Equipment set up identically to the protocol cards</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck13"><label for="m4-ck13">Data entered same day, no clipboard piles</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck14"><label for="m4-ck14">Make-up window used for anyone absent</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.6 · BUILD THE TRACKER</h2>
+<p><strong>Time: 40 min · You'll finish with: the file everything else reads from</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>One roster, one spelling, one file. The tracker is the source of truth for the entire department — attendance, the log, and every report card read names from it.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-42 Athlete Tracker</strong>. Five tabs:</p>
+<p><strong>ROSTER</strong> — Athlete | Sport | Grad year or age group | Group | Status (active/inactive). This is the single source of name spelling for the whole department. Every other file references it.</p>
+<p><strong>RAW</strong> — Athlete | Test | Date | Attempt 1 | Attempt 2 | Attempt 3 | Best | Valid? | Recorder. Raw entries only. Never edit RAW to make a number look right; that's what the flag column is for.</p>
+<p><strong>TRENDS</strong> — auto-calculated: latest, best, change from baseline, change from last cycle, direction. This is the tab that feeds report cards.</p>
+<p><strong>COMPARE</strong> — comparison groups defined by sport, level, and class. Set these once. An athlete's number means nothing without the group it sits in.</p>
+<p><strong>FLAGS</strong> — auto-flags outliers to re-test before you believe them, plus any athlete with no data this cycle. The second flag is the more useful one.</p>
+<h3>EXAMPLE</h3>
+<p>A 10-yard time drops 0.34 seconds in one cycle. FLAGS catches it. You re-test that athlete on the make-up day and get a 0.09 improvement. The 0.34 was a timing gate that got bumped. Without the flag, that number goes on a report card, a parent frames it, and your credibility is spent when it regresses.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Building a tracker with a tab per team or per year. Within two years you have fourteen tabs and no trends. One RAW tab, filtered by columns, forever.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck15"><label for="m4-ck15">Roster built once, spelled one way, used everywhere</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck16"><label for="m4-ck16">Comparison groups defined — sport, level, class</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck17"><label for="m4-ck17">RAW, TRENDS, COMPARE, and FLAGS populated from the baseline</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck18"><label for="m4-ck18">Rule set for retesting outliers before I believe them</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.7 · LEADERBOARDS ON A WALL THEY WALK PAST</h2>
+<p><strong>Time: 25 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>A number an athlete can see is a number an athlete will chase.</strong></p>
+<p>This is the highest-leverage buy-in move in the entire course, and it costs a print job.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Use <strong>STS-43 Leaderboard Templates</strong>. Four decisions:</p>
+<ol>
+<li><strong>Placement</strong> — where athletes walk past it without choosing to look. The entry, not the office.</li>
+<li><strong>Refresh</strong> — same day as entry, every cycle. A stale leaderboard is worse than none; it tells athletes nobody is watching.</li>
+<li><strong>Categories</strong> — top overall, top by class, and <strong>most improved</strong>. Most improved matters more than top overall for buy-in, because it's the only board a mid-roster athlete can realistically get on.</li>
+<li><strong>Depth</strong> — top ten, not top three. Three names means twenty-seven athletes stop reading it.</li>
+</ol>
+<h3>EXAMPLE</h3>
+<p>A facility runs three boards: top vertical by class, fastest 10-yard by class, and most improved across all tests. The third board turns over almost completely every cycle. That's the one athletes photograph.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Boards that only ever crown the same three athletes. If your board hasn't changed a name in two cycles, it has stopped being a motivator and started being a ceiling. Add a most-improved board or split by class.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck19"><label for="m4-ck19">Leaderboards live and visible in the facility</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck20"><label for="m4-ck20">Most improved is one of the categories</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck21"><label for="m4-ck21">Refresh happens same day as entry</label></li>
+</ul>
+<hr />
+<h2>LESSON 4.8 · REVIEW THE CYCLE</h2>
+<p><strong>Time: 20 min per cycle</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Three numbers per athlete, every cycle: <strong>latest, best, direction.</strong> Direction is the one that changes what you do.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>At each test cycle, review the TRENDS tab by group and answer three questions in writing:</p>
+<ol>
+<li>Which groups moved and which didn't?</li>
+<li>Of the groups that didn't, what does the log say about completion, and what does attendance say about volume?</li>
+<li>What one change do I make for the next block — and is it a program change or a participation change?</li>
+</ol>
+<p>That third question is the one that saves owners from rewriting a program that was never the problem.</p>
+<h3>EXAMPLE</h3>
+<p>Group A's jump improved across the board. Group B's is flat. The log shows Group B at 71% completion and attendance shows 68%. Group B doesn't have a programming problem. Rewriting their program would have cost a weekend and changed nothing.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Reviewing results without opening the log and the attendance file in the same sitting. A test result on its own is an outcome with no cause attached, and you'll attach the wrong one.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck22"><label for="m4-ck22">Change reviewed each cycle: latest, best, direction</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck23"><label for="m4-ck23">Log and attendance reviewed alongside test results</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck24"><label for="m4-ck24">One written change decided per cycle</label></li>
+</ul>
+<hr />
+<h2>MODULE 4 · YOUR OPTIONS</h2>
+<table>
+<thead>
+<tr>
+<th>How you could solve it</th>
+<th>Mode</th>
+<th>Buy-in</th>
+<th>Time/wk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stopwatch, clipboard, leaderboard written on the wall — works, but human reaction time makes small changes unreadable</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>120 min</td>
+</tr>
+<tr>
+<td>Clipboard, then spreadsheet, then hand-built charts — you get trends and a second job on Sundays</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td>Timing gates and jump mat exporting to a spreadsheet — trustworthy numbers, manual export and merge every cycle</td>
+<td>SEMI</td>
+<td>LOW</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>Testing devices feeding a tracker with automatic leaderboards — test, walk away, standings update themselves</td>
+<td>FULL</td>
+<td>LOW</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<h2>MODULE 4 GATE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck25"><label for="m4-ck25">Test battery selected — short, repeatable, tied to what you train</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck26"><label for="m4-ck26">Written protocol per test</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck27"><label for="m4-ck27">Setup, distance, attempts, rest all specified</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck28"><label for="m4-ck28">What counts as a valid attempt is defined</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck29"><label for="m4-ck29">Test dates on the calendar before the year starts</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck30"><label for="m4-ck30">Baseline completed on the full roster</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck31"><label for="m4-ck31">Comparison groups defined — sport, level, class</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck32"><label for="m4-ck32">Leaderboards live and visible in the facility</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck33"><label for="m4-ck33">Data entered same day, no clipboard piles</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck34"><label for="m4-ck34">Equipment set up identically every test date</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck35"><label for="m4-ck35">Change reviewed each cycle: latest, best, direction</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-ck36"><label for="m4-ck36">Rule set for retesting outliers before you believe them</label></li>
+</ul>
+<p><strong>Next:</strong> Module 5 · Attendance. The cheapest module in the course, and the one that explains most of your results.</p></section><section class="page" id="page-m5" data-key="m5"><h1>MODULE 5 · ATTENDANCE</h1>
+<p><em>Protecting the variable that decides whether any of the rest of it works.</em></p>
+<p><strong>Desk time:</strong> 60 minutes. This is the cheapest module here and the highest return per minute.
+<strong>You finish holding:</strong> four statuses, a named owner per group, a threshold, and a written conversation.
+<strong>Assets used:</strong> STS-50 Attendance Grid · STS-51 Threshold and Escalation SOP · STS-52 Conversation Script</p>
+<hr />
+<h2>LESSON 5.1 · YOU CANNOT FIX A PARTICIPATION PROBLEM WITH A PROGRAMMING SOLUTION</h2>
+<p><strong>Time: 7 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Volume is the most important variable in training. And volume requires attendance.</strong> Everything else is a distant second.</p>
+<h3>WHY IT BREAKS</h3>
+<p>Nobody tracks it, so results get blamed on the program. The director rewrites the programming, changes the exercise selection, buys new equipment — and none of it moves the needle, because the actual problem was that a third of the group trained twice a week instead of four times.</p>
+<h3>EXAMPLE</h3>
+<p>Two athletes, same program, same block. One trains at 95% attendance, the other at 60%. They will not produce the same result and it has nothing to do with the program's quality.</p>
+<p>Without the attendance number in front of you, you'll conclude the program failed one of them. Then you'll change the program for both.</p>
+<h3>WHAT THIS MODULE COSTS AND RETURNS</h3>
+<p>Sixty minutes of desk work and two minutes per session on the floor. In return, every result in your building gets a cause attached to it. There is no better trade in this course.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck0"><label for="m5-ck0">I accept that attendance data changes how I read every other number</label></li>
+</ul>
+<hr />
+<h2>LESSON 5.2 · FOUR STATUSES AND A CLOCK</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Four statuses: <strong>present, late, absent, excused.</strong> And <strong>"late" is defined by a clock, not by a mood</strong>, so it means the same thing on every coach's shift.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Write the four definitions in your own words, with the exact minute that makes someone late.</p>
+<p>A usable version:</p>
+<ul>
+<li><strong>Present</strong> — on the floor, in lane, before the prep starts</li>
+<li><strong>Late</strong> — arrives after the prep has begun. After [X] minutes, late converts to absent for volume purposes.</li>
+<li><strong>Absent</strong> — not on the floor, no approved reason</li>
+<li><strong>Excused</strong> — not on the floor, approved reason on file, still counts as a missed session</li>
+</ul>
+<p>That last clause is Lesson 5.4 and it's the one people fight.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Leaving "late" to coach discretion. One coach counts a two-minute late as present; another counts it as absent. Now your rate means nothing, and the athlete learns that the standard depends on who's working.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck1"><label for="m5-ck1">Statuses defined: present, late, absent, excused</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck2"><label for="m5-ck2">"Late" defined by a clock, not by a mood</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck3"><label for="m5-ck3">Definitions posted where coaches can see them</label></li>
+</ul>
+<hr />
+<h2>LESSON 5.3 · TWO MINUTES, ONE OWNER</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Taken in the first two minutes of every session by a named owner per group. Those two minutes already exist in your Module 1 timeline.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill the top of <strong>STS-50 Attendance Grid</strong>:</p>
+<p>Group | Attendance owner | Backup | Method | Deadline</p>
+<p>Then choose your method honestly:</p>
+<table>
+<thead>
+<tr>
+<th>How you could solve it</th>
+<th>Mode</th>
+<th>Buy-in</th>
+<th>Time/wk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Head count, no record — you'll swear you know who's missing; you won't be able to show it</td>
+<td>MANUAL</td>
+<td>HIGH</td>
+<td>0 min</td>
+</tr>
+<tr>
+<td>Paper sign-in sheet on a clipboard — a record exists, lives in a stack, never gets read</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Sign-in sheet typed into a spreadsheet weekly — usable rates, one more transcription job to abandon</td>
+<td>MANUAL</td>
+<td>MOD</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td>QR code or form check-in on arrival — cheap and fast, only as honest as the athletes are</td>
+<td>SEMI</td>
+<td>MOD</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Tablet at the door, tap-to-cycle grid feeding reports — two minutes on the floor; rates and flags build themselves</td>
+<td>FULL</td>
+<td>LOW</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<h3>THE TAP-TO-CYCLE GRID</h3>
+<p>If you go the tablet route, the mechanic that makes it work is simple: the whole group on one screen, every name a button, tapping cycles present → late → absent → excused. One coach, thirty athletes, under two minutes, no typing.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Taking attendance at the end of the session, because it's calmer. By then the athlete who left after prep is recorded as present, and you've lost the one status that predicts everything.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck4"><label for="m5-ck4">Taken every session, first two minutes</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck5"><label for="m5-ck5">Owner assigned per group, with a backup</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck6"><label for="m5-ck6">Method chosen and its weekly cost known</label></li>
+</ul>
+<hr />
+<h2>LESSON 5.4 · EXCUSED IS NOT FREE</h2>
+<p><strong>Time: 10 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>An excused absence is a legitimate reason and a missed training session at the same time. <strong>Both things are true.</strong></p>
+<h3>WHY THIS MATTERS MORE THAN IT SOUNDS</h3>
+<p>If excused disappears from your totals, your attendance rate will look healthy while your training volume quietly collapses. You'll report 94% attendance to leadership and wonder why the numbers didn't move — because the real training exposure was 71%.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Write the excused process so it isn't a loophole:</p>
+<ol>
+<li><strong>Who approves it</strong> — one named person, not whoever's standing there</li>
+<li><strong>What counts</strong> — school function, illness, injury, family. Write the list.</li>
+<li><strong>How it's recorded</strong> — as excused, in the grid, visible</li>
+<li><strong>How it shows up in totals</strong> — two rates, always reported together:</li>
+<li><strong>Attendance rate</strong> — present + late ÷ scheduled</li>
+<li><strong>Training exposure</strong> — present + late ÷ scheduled, with excused counted as missed</li>
+</ol>
+<h3>EXAMPLE</h3>
+<p>A team has 91% attendance and 74% training exposure. Both numbers go on the leadership report. The first says the culture is fine. The second explains why the block underdelivered — and it changes the conversation from "the program isn't working" to "these athletes trained three-quarters of the time."</p>
+<h3>COMMON MISTAKE</h3>
+<p>Letting sport coaches excuse athletes verbally in the hallway. If it isn't recorded, it isn't excused, and the volume loss becomes invisible.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck7"><label for="m5-ck7">Excused process defined so it isn't a loophole</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck8"><label for="m5-ck8">Both rates calculated and reported together</label></li>
+</ul>
+<hr />
+<h2>LESSON 5.5 · SET THE THRESHOLD AND NAME THE CONVERSATION</h2>
+<p><strong>Time: 20 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Reviewed weekly against a threshold you set in advance. When an athlete crosses it, <strong>a specific person has a specific conversation.</strong> Not "we should talk to him." A name and a script.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-51 Threshold and Escalation SOP</strong>:</p>
+<ul>
+<li><strong>Threshold</strong> — the rate that triggers action. 80% is a workable default.</li>
+<li><strong>Review day</strong> — the same day as your weekly log review. One sitting, both files.</li>
+<li><strong>Escalation ladder</strong> — athlete conversation → sport coach → parent or leadership. Each rung has a named owner and a timeframe.</li>
+</ul>
+<p>Then use <strong>STS-52 Conversation Script</strong>. Three versions, all written, all short:</p>
+<p><strong>Athlete version</strong> — non-punitive, three beats: here's your number, here's what it costs you in results, what's making it hard? Never opens with discipline. An athlete missing sessions usually has a schedule conflict, a ride problem, or something they haven't told anyone.</p>
+<p><strong>Sport coach version</strong> — here's your group's rate, here are the flagged athletes, here's what it means for their numbers at the next test.</p>
+<p><strong>Parent version</strong> — factual, warm, no blame. Rate, what's been missed, what happens next.</p>
+<h3>EXAMPLE</h3>
+<p>Threshold 80%, reviewed Fridays. Three athletes cross it. The assistant coach has the athlete conversation Monday during first block. One is a ride problem — solved in a week. One is a schedule conflict with a sport practice — solved with the sport coach. One just drifted — the fact that someone noticed fixes it, which is exactly the DP term of the ABIR formula doing its work.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Reviewing attendance and doing nothing. A tracked number that produces no conversation is just a more organized way to be surprised in March.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck9"><label for="m5-ck9">Rate reviewed weekly by group and by athlete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck10"><label for="m5-ck10">Threshold set that triggers a conversation</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck11"><label for="m5-ck11">Who has that conversation is decided</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck12"><label for="m5-ck12">Three conversation scripts written</label></li>
+</ul>
+<hr />
+<h2>LESSON 5.6 · ONE ROSTER, ONE SPELLING</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>The ROSTER tab in your tracker is the single source of truth. Attendance, the log, and every report read from it.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<ol>
+<li>Reconcile every system against ROSTER today. One spelling per athlete, one athlete per row.</li>
+<li>Write the <strong>adds and drops rule</strong>: new athletes and departures are handled the same week, by a named person. Not at semester. Not "when I get to it."</li>
+<li>Set the <strong>reporting cadence to sport coaches</strong> — they see attendance numbers on a schedule, not when there's a problem. A sport coach who only hears from you when something's wrong learns to dread your emails.</li>
+</ol>
+<h3>EXAMPLE</h3>
+<p>A facility discovers 14 duplicate athletes across three files — "Jon," "Jonathan," and "J. Rivera" all being the same kid. Their attendance rate reads 62% because his presence is split across three rows. Reconciled, he's at 93%. That's not a data problem, it's a conversation that shouldn't have happened.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Maintaining the roster in the attendance file instead of the tracker. Then testing and attendance disagree about who exists, and reports won't build.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck13"><label for="m5-ck13">Roster unified across every system — one spelling, one athlete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck14"><label for="m5-ck14">Adds and drops handled the same week</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck15"><label for="m5-ck15">Attendance tied into reports</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck16"><label for="m5-ck16">Sport coaches see the numbers on a cadence</label></li>
+</ul>
+<hr />
+<h2>MODULE 5 GATE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck17"><label for="m5-ck17">Roster unified across every system — one spelling, one athlete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck18"><label for="m5-ck18">Statuses defined: present, late, absent, excused</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck19"><label for="m5-ck19">"Late" defined by a clock, not by a mood</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck20"><label for="m5-ck20">Taken every session, first two minutes</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck21"><label for="m5-ck21">Owner assigned per group</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck22"><label for="m5-ck22">Rate reviewed weekly by group and by athlete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck23"><label for="m5-ck23">Threshold set that triggers a conversation</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck24"><label for="m5-ck24">Who has that conversation is decided</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck25"><label for="m5-ck25">Attendance tied into reports</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck26"><label for="m5-ck26">Sport coaches see the numbers on a cadence</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck27"><label for="m5-ck27">Excused process defined so it isn't a loophole</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-ck28"><label for="m5-ck28">Adds and drops handled the same week</label></li>
+</ul>
+<p><strong>Next:</strong> Module 6 · Reports. Make it visible and keep it funded.</p></section><section class="page" id="page-m6" data-key="m6"><h1>MODULE 6 · REPORTS</h1>
+<p><em>Making the work visible to the three audiences who decide whether it continues.</em></p>
+<p><strong>Desk time:</strong> 2.5 hours.
+<strong>You finish holding:</strong> three locked report versions, a cadence on the calendar, one named sender, and a first send completed.
+<strong>Assets used:</strong> STS-60 Athlete Report Card · STS-61 Coach Group Update · STS-62 Leadership One-Pager · STS-63 Report Cadence Calendar</p>
+<hr />
+<h2>LESSON 6.1 · GOOD WORK DONE INVISIBLY LOSES BUDGET</h2>
+<p><strong>Time: 7 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>If nobody sees it, it didn't happen.</strong> Reporting isn't self-promotion — it's the proof layer the other five components exist to produce.</p>
+<h3>WHY IT BREAKS</h3>
+<p>Good work done invisibly loses budget to mediocre work that got seen. The department that produced real development but never showed anybody gets cut in favor of the one that made a highlight video. That isn't unfair — it's predictable. If nobody can see what the room produced, nobody can defend it, including the people who want to.</p>
+<h3>WHY THIS MODULE IS LAST</h3>
+<p>It has nothing to report until the five above it are running. But do it. A facility that installs five components and skips this one has built a department nobody outside the room knows exists.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck0"><label for="m6-ck0">I understand reports are the output of the other five components, not a separate job</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.2 · THREE AUDIENCES, THREE VERSIONS, ONE CADENCE</h2>
+<p><strong>Time: 20 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Three audiences, three versions, one cadence.</p>
+<ul>
+<li><strong>Athletes</strong> see change over time and their own attendance.</li>
+<li><strong>Sport coaches</strong> see group trends and flagged athletes.</li>
+<li><strong>Leadership</strong> sees participation, results, and what the room is producing for the money it costs.</li>
+</ul>
+<h3>COMMON MISTAKE</h3>
+<p><strong>One report for all three audiences.</strong> It's built to satisfy everybody and lands with nobody — athletes skip it because it's dense, sport coaches can't find their group, and leadership can't tell in ten seconds whether the program is working. Three short versions beat one long one.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Set your cadence now, before you build anything:</p>
+<table>
+<thead>
+<tr>
+<th>Audience</th>
+<th>Version</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Athletes</td>
+<td>Report card</td>
+<td>Monthly, or every test cycle</td>
+</tr>
+<tr>
+<td>Sport coaches</td>
+<td>Group update</td>
+<td>Per cycle</td>
+</tr>
+<tr>
+<td>Leadership</td>
+<td>One-pager</td>
+<td>Per semester</td>
+</tr>
+</tbody>
+</table>
+<h3>YOUR OPTIONS</h3>
+<table>
+<thead>
+<tr>
+<th>How you could solve it</th>
+<th>Mode</th>
+<th>Buy-in</th>
+<th>Time/wk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verbal updates in the hallway — free, forgettable, unusable in a budget meeting</td>
+<td>MANUAL</td>
+<td>HIGH</td>
+<td>0 min</td>
+</tr>
+<tr>
+<td>Build each athlete's report by hand in a doc — looks great and works; does not survive past thirty athletes</td>
+<td>MANUAL</td>
+<td>LOW</td>
+<td>300 min</td>
+</tr>
+<tr>
+<td>Spreadsheet mail-merge into a template — scales, breaks every time a column moves</td>
+<td>SEMI</td>
+<td>LOW</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Report cards generated from live data, exported or shared by link — pull it any day, for any athlete, in seconds</td>
+<td>FULL</td>
+<td>LOW</td>
+<td>15 min</td>
+</tr>
+</tbody>
+</table>
+<p>Note the second row. <strong>This is the one component where the fully manual option carries LOW buy-in risk.</strong> Hand-built reports work beautifully. They just cost you five hours a week to produce, which is exactly why almost nobody is still doing it by November. Time cost and buy-in are two separate columns, and this row is the proof.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck1"><label for="m6-ck1">Cadence set for all three audiences</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.3 · BUILD THE ATHLETE REPORT CARD</h2>
+<p><strong>Time: 40 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>One page. Their name on it. Change they can point at.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-60 Athlete Report Card</strong>. Six blocks on one page:</p>
+<ol>
+<li><strong>Header</strong> — name, group, block, date range</li>
+<li><strong>Test results</strong> — each test: baseline, latest, change, direction arrow</li>
+<li><strong>Attendance</strong> — their rate and their training exposure, plotted against the group</li>
+<li><strong>Training</strong> — projected vs. actual completion on the main lift, and the working weight change across the block</li>
+<li><strong>One coach line</strong> — written by a human, about this athlete specifically. This is the line they read first.</li>
+<li><strong>One next step</strong> — a single thing to do in the next block</li>
+</ol>
+<h3>WHAT THEY SEE AND WHAT THEY DON'T</h3>
+<p><strong>Include:</strong> their own numbers, their own change, their own attendance, their placement in a class-wide band if you use one.</p>
+<p><strong>Exclude:</strong> direct comparison to named teammates, raw percentile without context, anything about another athlete. A report card that ranks a kid against his friend produces one motivated athlete and one who stops showing up.</p>
+<h3>EXAMPLE</h3>
+<p>Vertical 24.5 → 26.1 (+1.6 ↑). 10-yard 1.81 → 1.76 (−0.05 ↑). Squat working weight 135 → 185 (+50 ↑). Attendance 91%, exposure 84%. Coach line: <em>"Your bar speed on the last set of squats stopped falling apart in week 12. That's why the number moved."</em> Next step: <em>hit 90% exposure next block — you missed six sessions and three of them were the heavy days.</em></p>
+<h3>COMMON MISTAKE</h3>
+<p>Making it pretty before making it true. Reconcile the names and the numbers first. A beautiful report card with the wrong attendance number costs you more credibility than no report card at all.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck2"><label for="m6-ck2">Athlete version defined — what they see and what they don't</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck3"><label for="m6-ck3">Tests, change, projected vs. actual, and attendance all included</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck4"><label for="m6-ck4">One human line per athlete built into the format</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.4 · BUILD THE COACH UPDATE</h2>
+<p><strong>Time: 30 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Sport coaches need two things: what's happening with their group, and which athletes need their help.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-61 Coach Group Update</strong>. Four blocks, one page:</p>
+<ol>
+<li><strong>Group trends</strong> — each test, group average change, direction, and how many athletes improved</li>
+<li><strong>Flagged athletes</strong> — by name, with the reason: attendance below threshold, movement flagged, or a number that regressed</li>
+<li><strong>Attendance by athlete</strong> — the full list, sorted low to high. Sorted low to high is deliberate; the top of the list is the part they need.</li>
+<li><strong>One ask</strong> — the single thing you need from that coach this cycle</li>
+</ol>
+<h3>EXAMPLE</h3>
+<p><em>"Volleyball, cycle 2: vertical up 1.2 inches on average, 14 of 18 improved. Flagged: three athletes under 80% attendance, listed below. One ask: can we move the Thursday film session so the 3:15 group can train the full block?"</em></p>
+<p>That email gets read and answered. A four-page data dump doesn't.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Sending coaches raw data. They don't want your tracker; they want the two names that matter and one clear ask.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck5"><label for="m6-ck5">Coach version defined — group trends and flags</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck6"><label for="m6-ck6">One ask built into the format</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.5 · BUILD THE LEADERSHIP ONE-PAGER</h2>
+<p><strong>Time: 35 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Leadership sees participation, results, and what the room is producing for the money it costs. Ten seconds to the answer.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-62 Leadership One-Pager</strong>. Five blocks:</p>
+<ol>
+<li><strong>Participation</strong> — athletes served, sessions delivered, attendance rate across the department</li>
+<li><strong>Results</strong> — three to four headline numbers with change, department-wide</li>
+<li><strong>What the room produced</strong> — the plain-language sentence. <em>"Every athlete in the building was assessed, trained on a written plan, tested three times, and received a report card."</em></li>
+<li><strong>Cost per athlete</strong> — total program cost ÷ athletes served. Own this number before someone else calculates it.</li>
+<li><strong>Next cycle</strong> — what you're doing next and what you need</li>
+</ol>
+<h3>WHY YOU BUILD THIS BEFORE THE BUDGET MEETING</h3>
+<p>Because the budget meeting is not the time to start assembling evidence. This document exists so that when the question comes, the answer is already three semesters deep and formatted the same way every time.</p>
+<h3>EXAMPLE</h3>
+<p><em>"237 athletes, 4 sessions/week, 89% attendance. Vertical +1.4" average, 10-yard −0.04s average, squat working weight +38 lbs average. Every athlete assessed, programmed, tested three times, and issued a report card. Cost per athlete per semester: $XX. Next cycle: adding the middle school block, needs one additional coaching period."</em></p>
+<h3>COMMON MISTAKE</h3>
+<p>Leading with training philosophy. Leadership isn't evaluating your methodology. They're deciding whether the room is producing value for what it costs. Answer that question in the first block.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck7"><label for="m6-ck7">Leadership version defined — participation and value</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck8"><label for="m6-ck8">Cost per athlete calculated</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.6 · LOCK THE FORMAT AND NAME THE SENDER</h2>
+<p><strong>Time: 20 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Same format every time, one named person responsible for hitting send. <strong>When testing week ends, reports go out that week</strong> — not when someone eventually finds a free evening in March.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Fill <strong>STS-63 Report Cadence Calendar</strong>:</p>
+<p>Audience | Version | Frequency | Send date | Owner | Sent? (Y/N)</p>
+<p>Then place every send date on the 52-week calendar, one week after each test date. Those weeks are already blocked from Module 4.</p>
+<h3>WHY THE FORMAT GETS LOCKED</h3>
+<p>A format that changes every cycle costs you build time every cycle and costs your reader re-orientation every cycle. Locked format means the third one takes twenty minutes instead of three hours, and leadership can compare semester to semester without thinking about it.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Owning the send yourself and letting it slide when you're busy — which is always the week after testing. Name the owner even if the owner is you, and put the send on the calendar as an appointment with a person's name on it.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck9"><label for="m6-ck9">Report format locked</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck10"><label for="m6-ck10">Cadence dates on the calendar</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck11"><label for="m6-ck11">One person owns hitting send</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.7 · RECONCILE NAMES, TEST THE EXPORT, TEST THE SHARE</h2>
+<p><strong>Time: 25 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>A report that won't open on the AD's phone is not a report.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Three checks, done once, before your first send:</p>
+<ol>
+<li><strong>Names</strong> — reconcile across the tracker, the log, and attendance. Every report pulls from ROSTER. Any name that doesn't match produces a blank or a duplicate, and one blank report card destroys trust in all of them.</li>
+<li><strong>Export</strong> — print one and PDF one. Check margins, check that nothing cuts off, check that it's readable in grayscale because someone will print it that way.</li>
+<li><strong>Share</strong> — send one to yourself and open it on a phone. Then send one to a coach and confirm they can open it without an account, a login, or a request-access screen. Permissions are the single most common failure here.</li>
+</ol>
+<h3>COMMON MISTAKE</h3>
+<p>Testing the share process on the day you need it. Test it on a Tuesday with a fake athlete, not on the morning of a leadership meeting.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck12"><label for="m6-ck12">Names reconciled across every system</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck13"><label for="m6-ck13">Print and PDF export tested before I need it</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck14"><label for="m6-ck14">Share process tested, permissions understood</label></li>
+</ul>
+<hr />
+<h2>LESSON 6.8 · REVIEW IT WITH THE ATHLETE, DON'T JUST HAND IT OVER</h2>
+<p><strong>Time: 20 min · 2 min per athlete on the floor</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>A handed-over report is paper. A reviewed report is buy-in. The difference is two minutes.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>The two-minute structure, same every time:</p>
+<ol>
+<li><strong>One number that moved</strong> — name it, and name the thing they did that produced it</li>
+<li><strong>One number that didn't</strong> — no blame, just the number and the likely cause from the log or attendance</li>
+<li><strong>One thing to do</strong> — a single, specific action for the next block</li>
+</ol>
+<p>Run these during a block while lanes rotate, two athletes per session. A group of 24 takes about two weeks and costs no training time.</p>
+<h3>EXAMPLE</h3>
+<p><em>"Your squat went up fifty pounds — that's the highest jump in your class, and it happened because you didn't miss a heavy day all block. Your ten-yard didn't move. You missed four of the six speed days. Next block: be here on Tuesdays."</em></p>
+<p>Ninety seconds. That athlete now knows the room is watching, which is the entire DP term of the ABIR formula handled in one conversation.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Reviewing only with the athletes who improved. The flat ones are the conversation that changes something.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck15"><label for="m6-ck15">Report reviewed with the athlete, not just handed over</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck16"><label for="m6-ck16">Two-minute structure written into the SOP</label></li>
+</ul>
+<hr />
+<h2>MODULE 6 GATE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck17"><label for="m6-ck17">Report format locked</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck18"><label for="m6-ck18">Tests, change, projected vs. actual, attendance all included</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck19"><label for="m6-ck19">Names reconciled across every system</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck20"><label for="m6-ck20">Cadence set for all three audiences</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck21"><label for="m6-ck21">Athlete version defined — what they see and what they don't</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck22"><label for="m6-ck22">Coach version defined — group trends and flags</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck23"><label for="m6-ck23">Leadership version defined — participation and value</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck24"><label for="m6-ck24">Print and PDF export tested before you need it</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck25"><label for="m6-ck25">Share process tested, permissions understood</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck26"><label for="m6-ck26">One person owns hitting send</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck27"><label for="m6-ck27">Cadence dates on the calendar</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-ck28"><label for="m6-ck28">Report reviewed with the athlete, not just handed over</label></li>
+</ul>
+<p><strong>Next:</strong> Module 7 · Install Order &amp; The First 90 Days.</p></section><section class="page" id="page-m7" data-key="m7"><h1>MODULE 7 · INSTALL ORDER &amp; THE FIRST 90 DAYS</h1>
+<p><strong>Desk time:</strong> 60 minutes.
+<strong>You finish holding:</strong> a dated 90-day install plan on your real calendar, and your before-and-after hours number.
+<strong>Assets used:</strong> STS-70 90-Day Install Plan · STS-71 Day-90 Audit</p>
+<hr />
+<h2>LESSON 7.1 · ORDER MATTERS MORE THAN SPEED</h2>
+<p><strong>Time: 12 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Each component depends on the one above it. Build them out of sequence and you'll rebuild them.</p>
+<h3>THE ORDER, AND WHY EACH ONE SITS WHERE IT DOES</h3>
+<p><strong>1 · PROGRAM BUILD</strong> — Constraints first. Everything downstream depends on a program that physically fits the floor. Buying tracking technology before this step is how facilities end up with a timing system and nothing to feed it.</p>
+<p><strong>2 · ASSESSMENT</strong> — Set the standard before week one. Without a starting number the program can't prescribe anything, and your coaches will spend the block inventing weights.</p>
+<p><strong>3 · FLOOR LOG</strong> — Capture what actually happens or you're guessing. This is the component that converts a program from a document into a training history.</p>
+<p><strong>4 · TESTING &amp; TRACKER</strong> — Measure what matters, on schedule. Now that you have a program and a log, testing has something to be compared against.</p>
+<p><strong>5 · ATTENDANCE</strong> — Protect the most important variable. Cheap to install, and it's the number that explains most of the results you can't otherwise explain.</p>
+<p><strong>6 · REPORTS</strong> — Make it visible and keep it funded. Do it last, because it has nothing to report until the five above it are running. But do it.</p>
+<h3>WHY PEOPLE VIOLATE THIS ORDER</h3>
+<p>They start with the component that embarrassed them most recently. An AD asked for numbers, so they start with reports. A parent asked about progress, so they start with testing. Both build a roof with no walls under it.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Starting with testing because you already own the equipment. Owning a jump mat is not a reason to install component four before component one.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck0"><label for="m7-ck0">I can state the install order from memory and explain what each one depends on</label></li>
+</ul>
+<hr />
+<h2>LESSON 7.2 · PICK THE MODE YOU CAN SUSTAIN</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Standards before complexity.</strong> A simple system run consistently beats a sophisticated one nobody follows — and the sophisticated one always looks better on the day you buy it.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>You don't have to automate all six at once. Most facilities shouldn't.</p>
+<p>Go back to the TARGET tab of <strong>STS-01 Price Tag Audit</strong>. For each of the six, answer one question: <em>can I run this every week in February, when I'm tired and short-staffed and the schedule changed?</em></p>
+<p>If the answer is no, drop to the simpler row. A MANUAL row you actually run beats a FULL row you bought and abandoned.</p>
+<h3>THE UPGRADE RULE</h3>
+<p>Pick the mode you can actually sustain for each component, know what it's charging you in hours, and <strong>upgrade the one that's costing you the most first.</strong> That's what your fix order from Module 0 was for. One upgrade per quarter is a fast pace.</p>
+<h3>EXAMPLE</h3>
+<p>An owner targets: program build FULL, assessment SEMI, log FULL, testing SEMI, attendance FULL, reports SEMI. Total target: about 2.5 hours a week, down from 8.5. He doesn't automate testing because his device budget is next year, and he says so out loud instead of pretending.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Automating the component you enjoy and leaving the expensive one manual. The fix order exists precisely because your preference and your cost are usually different components.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck1"><label for="m7-ck1">Target mode confirmed for all six, with the February test applied</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck2"><label for="m7-ck2">Upgrade order set from my fix order</label></li>
+</ul>
+<hr />
+<h2>LESSON 7.3 · THE FIRST 90 DAYS</h2>
+<p><strong>Time: 25 min · You'll finish with: every task dated</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>A realistic install schedule for an owner who still has to run the floor while building this.</p>
+<p>Open <strong>STS-70 90-Day Install Plan</strong> and put a real date on every line.</p>
+<h3>DAYS 1–14 · COUNT AND DECIDE</h3>
+<ul>
+<li>Full equipment inventory and true simultaneous capacity</li>
+<li>Session length, training days, and group sizes locked</li>
+<li>Roster built once, spelled one way, used everywhere</li>
+<li>Pick your mode for all six components — write down what each will cost you weekly</li>
+</ul>
+<h3>DAYS 15–30 · BUILD THE PROGRAM</h3>
+<ul>
+<li>Session timeline and daily structure built to your real constraints</li>
+<li>Movement prep standardized to one five-minute prep</li>
+<li>Main lifts chosen and committed to a 20-week block</li>
+<li>52-week calendar stamped, sessions coded, test dates placed</li>
+</ul>
+<h3>DAYS 31–45 · ASSESS AND OPEN</h3>
+<ul>
+<li>Movement standards written and taught to every coach</li>
+<li>Whole roster assessed and working weights stored</li>
+<li>Baseline testing run on the full battery</li>
+<li>Week one begins with weights already prescribed</li>
+</ul>
+<h3>DAYS 46–70 · LOG AND TRACK</h3>
+<ul>
+<li>Logging live at the racks with one owner per group</li>
+<li>Attendance taken in the first two minutes, every session</li>
+<li>Weekly fifteen-minute review of actual against projected</li>
+<li>Leaderboards up on a wall athletes walk past</li>
+</ul>
+<h3>DAYS 71–90 · REPORT AND ADJUST</h3>
+<ul>
+<li>First athlete report cards built and reviewed in person</li>
+<li>First sport-coach update sent on the cadence</li>
+<li>Leadership one-pager delivered with participation and results</li>
+<li>Audit your actual weekly hours against the plan and fix the worst row</li>
+</ul>
+<h3>COMMON MISTAKE</h3>
+<p>Trying to compress this into 30 days because you're motivated. The assess-and-open phase has a floor: you cannot assess a full roster faster than your session schedule allows. Motivation doesn't create sessions.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck3"><label for="m7-ck3">Every phase has real dates</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck4"><label for="m7-ck4">Every task has an owner</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck5"><label for="m7-ck5">The plan is on the same calendar as everything else</label></li>
+</ul>
+<hr />
+<h2>LESSON 7.4 · THE DAY-90 AUDIT</h2>
+<p><strong>Time: 20 min, on day 90</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>You started this by pricing the department. You finish it the same way. The delta is the whole point.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-71 Day-90 Audit</strong>. It reads your Module 0 numbers and asks for today's. Fill three things:</p>
+<ol>
+<li><strong>Current row</strong> per component — where you're actually standing now</li>
+<li><strong>Total hours per week</strong> — now</li>
+<li><strong>Which components are live</strong>, meaning they run whether or not you're in the building</li>
+</ol>
+<p>Then answer the three questions from Module 0 again:</p>
+<ul>
+<li>Which component would collapse first if you were out for two weeks?</li>
+<li>Which one is costing the most hours for the least return?</li>
+<li>Which one would your athletes notice within a week if you fixed it?</li>
+</ul>
+<h3>EXAMPLE</h3>
+<p>Day 0: 8.5 hours a week, two components not running at all. Day 90: 3.1 hours a week, all six running, report cards issued to 140 athletes. The number that matters isn't 3.1 — it's the 5.4 hours a week that came back, which is 280 hours a year.</p>
+<h3>WHAT TO DO WITH THE DELTA</h3>
+<p>Two things. Put it in front of whoever funds the room — that's the leadership one-pager's strongest line. And use it to pick the next upgrade: the highest remaining row on your audit is your next quarter's project.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck6"><label for="m7-ck6">Day-90 audit complete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck7"><label for="m7-ck7">Before and after hours written side by side</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-ck8"><label for="m7-ck8">Next upgrade chosen</label></li>
+</ul>
+<p><strong>Next:</strong> Module 8 · Why Systems Drive Buy-In.</p></section><section class="page" id="page-m8" data-key="m8"><h1>MODULE 8 · WHY SYSTEMS DRIVE BUY-IN</h1>
+<p><em>Every component in this course is also a buy-in lever. That's not a side effect — it's most of the value.</em></p>
+<p><strong>Desk time:</strong> 60 minutes.
+<strong>You finish holding:</strong> an ABIR score for your room and a buy-in fix list mapped to the six components.
+<strong>Asset used:</strong> STS-80 ABIR Scorecard</p>
+<hr />
+<h2>LESSON 8.1 · BUY-IN IS A VISIBILITY PROBLEM</h2>
+<p><strong>Time: 10 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Athletes don't disengage because the programming was suboptimal. They disengage because they can't see the standard, can't see the number, and can't see themselves improving. All three of those are visibility problems, and <strong>visibility is what a system produces.</strong></p>
+<h3>THE THING MOST OWNERS GET BACKWARD</h3>
+<p>The instinct when buy-in drops is to add energy: more music, more competition, a speech, a challenge board that lasts three weeks. Those aren't wrong, they're just downstream. An athlete who doesn't know what the session is, what weight to use, or whether anyone noticed they missed three sessions isn't an athlete with a motivation problem. <strong>They're an athlete in a room without a system.</strong></p>
+<h3>EXAMPLE</h3>
+<p>Two rooms, same coach energy. Room A: the prep changes daily, weights are "go by feel," nothing is written down, and nobody's tracked attendance since September. Room B: same prep every day, weight prescribed on the screen, number on the wall, report card with their name on it.</p>
+<p>Room B's athletes look more motivated. They're not. They're better informed.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-ck0"><label for="m8-ck0">I can name the three things athletes need to see</label></li>
+</ul>
+<hr />
+<h2>LESSON 8.2 · THE FORMULA</h2>
+<p><strong>Time: 15 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p><strong>Athlete Buy-In Rate: P × RI − DP = ABIR</strong></p>
+<p>Participation × Real Investment − Distraction Points.</p>
+<p>Two terms multiply and one subtracts. That's the important structure: if either P or RI goes to zero, nothing else matters — and distraction subtracts from whatever the first two produce.</p>
+<h3>HOW THE SIX COMPONENTS MAP ONTO IT</h3>
+<p><strong>Raises P (Participation).</strong> A clear program and a standardized prep. Athletes know what's happening and can execute it. Nobody stalls at the door, nobody stands around waiting to be told, nobody opts out of a movement they don't understand.
+→ Program Build, Core 4 Prep, Attendance</p>
+<p><strong>Raises RI (Real Investment).</strong> Assessment, logging, and testing. Progress becomes something an athlete can point at instead of something they're told. An athlete who can see his squat go 135 → 185 across a block is invested in the next block before you ask him to be.
+→ Assessment, Floor Log, Testing &amp; Tracker</p>
+<p><strong>Removes DP (Distraction Points).</strong> Attendance and reports. The confusion, the drifting, and the sense that nobody's keeping track. Every unanswered question in your room is a distraction point: what am I doing, what weight, does anyone notice.
+→ Attendance, Reports, session standards</p>
+<h3>THE INVERSE</h3>
+<p>Chaos works the other way on every term at once. It lowers participation, prevents investment, and adds distraction simultaneously. That's why a disorganized room feels like a motivation problem — one cause is hitting three terms.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-ck1"><label for="m8-ck1">I can map each of the six components to a term in the formula</label></li>
+</ul>
+<hr />
+<h2>LESSON 8.3 · SCORE YOUR ROOM</h2>
+<p><strong>Time: 25 min</strong></p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-80 ABIR Scorecard</strong>. Score each group separately — buy-in is rarely uniform across a building.</p>
+<p><strong>P — Participation (1–5).</strong> Do athletes arrive on time, start the prep without prompting, and execute the session without being individually directed?</p>
+<p><strong>RI — Real Investment (1–5).</strong> Can an athlete tell you, unprompted, one number of theirs that improved this block?</p>
+<p><strong>DP — Distraction Points (count them).</strong> List every recurring question or friction point: unclear weights, equipment conflicts, unclear start time, athletes unsure which lane, no visible standard, no idea whether absences are noticed.</p>
+<p>Run the formula. Then read the component column next to each term — the scorecard names which of the six components drives each score.</p>
+<h3>EXAMPLE</h3>
+<p>A group scores P4, RI2, DP5. That's a room where athletes show up and work but can't name a number of their own, with five friction points. The RI score is the constraint. The components that raise RI are assessment, logging, and testing — so this owner's buy-in problem is fixed in Modules 2, 3, and 4, not with a speech.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Scoring the room you want. Ask three athletes the RI question directly. Their answers are your score.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-ck2"><label for="m8-ck2">Each group scored on all three terms</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-ck3"><label for="m8-ck3">Distraction points listed, not estimated</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-ck4"><label for="m8-ck4">Fix list ranked by which component drives the weakest term</label></li>
+</ul>
+<hr />
+<h2>LESSON 8.4 · WHAT THIS LOOKS LIKE ON THE FLOOR</h2>
+<p><strong>Time: 10 min</strong></p>
+<h3>THE PICTURE</h3>
+<p>The prep is the same every day, so nobody stalls at the door. The weight is prescribed, so nobody wanders. The number is on the wall, so somebody chases it. Attendance is taken, so missing gets noticed. A report shows up with their name on it, so the work has a witness.</p>
+<p><strong>None of that is a motivational speech — it's infrastructure doing the job motivation gets credit for.</strong></p>
+<h3>THE FIVE-MINUTE VERSION</h3>
+<p>If you only ever do five things for buy-in, do these, in this order:</p>
+<ol>
+<li>One prep, unchanged, every day</li>
+<li>A prescribed weight for every athlete on every main lift</li>
+<li>One number on a wall they walk past</li>
+<li>Attendance taken where athletes can see it being taken</li>
+<li>A report card with their name and one human sentence on it</li>
+</ol>
+<p>Every one of those is already built if you finished Modules 1 through 6. You don't add a buy-in program on top of your system. The system is the buy-in program.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-ck5"><label for="m8-ck5">All five of the above are true in my building, or I know which one is next</label></li>
+</ul>
+<p><strong>Next:</strong> Module 9 · The Department Operating Manual.</p></section><section class="page" id="page-m9" data-key="m9"><h1>MODULE 9 · THE DEPARTMENT OPERATING MANUAL</h1>
+<p><em>Everything before this installs the system. This module is what makes it survive you.</em></p>
+<p><strong>Desk time:</strong> 2 hours.
+<strong>You finish holding:</strong> a written binder somebody else could run the department from, and a two-week test on the calendar.
+<strong>Assets used:</strong> STS-90 Operating Manual Template · STS-91 New Coach Onboarding · STS-92 Owner Handoff Checklist</p>
+<hr />
+<h2>LESSON 9.1 · A SYSTEM THAT ONLY WORKS WHEN YOU'RE IN THE ROOM IS A DEPENDENCY</h2>
+<p><strong>Time: 8 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>Whatever you build, build it so somebody else could run it. A system that only works when you're standing in the room isn't a department — it's a dependency. <strong>The whole point of installing infrastructure is that the standard holds on the days you're not there.</strong></p>
+<h3>THE TEST THAT MATTERS</h3>
+<p>Not "is it written down." The test is: <strong>could a competent coach who has never worked here run Tuesday, using only what's in the binder?</strong></p>
+<p>Most facilities fail this on details nobody thinks to write: which weights are in which rack, where the prep card lives, what "late" means, who to text when a device dies, where the roster is.</p>
+<h3>WHY THIS IS THE MODULE THAT'S WORTH THE MOST</h3>
+<p>The first eight modules make the room work. This one makes the room sellable, scalable, and survivable. It's the difference between a facility that grows and a facility that's capped at the owner's presence.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck0"><label for="m9-ck0">I've accepted that undocumented knowledge is a liability, not job security</label></li>
+</ul>
+<hr />
+<h2>LESSON 9.2 · BUILD THE BINDER</h2>
+<p><strong>Time: 60 min</strong></p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Open <strong>STS-90 Operating Manual Template</strong>. Twelve sections. Most of them are already written — you built them in Modules 1 through 6. This lesson is mostly assembly.</p>
+<ol>
+<li><strong>Facility constraints</strong> — equipment count, clock, true simultaneous capacity <em>(Module 1)</em></li>
+<li><strong>Session timeline and daily structure</strong> — one page per group type <em>(Module 1)</em></li>
+<li><strong>Core 4 prep card</strong> <em>(Module 1)</em></li>
+<li><strong>Movement standards and the assessment standard</strong> <em>(Module 2)</em></li>
+<li><strong>Working weight register</strong> — where it lives, who can edit it <em>(Module 2)</em></li>
+<li><strong>Logging standard and substitution table</strong> <em>(Module 3)</em></li>
+<li><strong>Attendance definitions, owners, threshold, escalation</strong> <em>(Module 5)</em></li>
+<li><strong>Test battery, protocol cards, calendar dates</strong> <em>(Module 4)</em></li>
+<li><strong>Report versions, cadence, and sender</strong> <em>(Module 6)</em></li>
+<li><strong>Operating cadence</strong> — daily, weekly, per cycle, per block, per semester <em>(Lesson 9.3)</em></li>
+<li><strong>Named owners</strong> — every component, plus a backup for each</li>
+<li><strong>File map</strong> — where every file lives and who has access</li>
+</ol>
+<h3>THE THREE THINGS PEOPLE FORGET</h3>
+<ul>
+<li><strong>Access.</strong> A binder that references files nobody else can open is a list of things that exist.</li>
+<li><strong>Backups.</strong> Every named owner has a named backup. One absence shouldn't stop a component.</li>
+<li><strong>Physical location.</strong> One printed copy in the building. Devices die, wifi drops, and the person covering for you may not have a login yet.</li>
+</ul>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck1"><label for="m9-ck1">All twelve sections complete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck2"><label for="m9-ck2">Every component has a named owner and a named backup</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck3"><label for="m9-ck3">One printed copy is in the building</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck4"><label for="m9-ck4">File access tested with someone who isn't me</label></li>
+</ul>
+<hr />
+<h2>LESSON 9.3 · THE OPERATING CADENCE</h2>
+<p><strong>Time: 25 min</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>A system is a set of things that happen on a schedule. Write the schedule down and the department runs itself; leave it implied and it runs on whoever remembers.</p>
+<h3>THE CADENCE</h3>
+<p><strong>Daily</strong>
+- Attendance in the first two minutes
+- Prep unchanged
+- Logging at the rack, inside the block
+- Devices charged at close, not at open</p>
+<p><strong>Weekly</strong>
+- Fifteen-minute actual vs. projected review, same slot
+- Attendance rate reviewed against the threshold
+- Flagged-athlete conversations assigned</p>
+<p><strong>Per test cycle</strong>
+- Testing to protocol
+- Same-day entry
+- Leaderboard refresh
+- Athlete report cards issued and reviewed
+- Sport coach updates sent</p>
+<p><strong>Per block (20 weeks)</strong>
+- Re-assessment
+- Main lift change — macro, not micro
+- Block debrief: what the log and the tests say, one written change</p>
+<p><strong>Per semester</strong>
+- Leadership one-pager delivered
+- Hours audit against the plan
+- Roster reconciliation across every system</p>
+<p><strong>Annually</strong>
+- Re-stamp the 52-week calendar
+- Re-price all six components
+- Upgrade the row that's costing the most</p>
+<h3>PRACTICAL APPLICATION</h3>
+<p>Put every recurring item on a real calendar with a named owner. Recurring appointments, not reminders. The weekly review and the report sends are the two that die first when they're not scheduled.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck5"><label for="m9-ck5">Every cadence item on a real calendar with an owner</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck6"><label for="m9-ck6">The weekly review and the report sends are recurring appointments</label></li>
+</ul>
+<hr />
+<h2>LESSON 9.4 · ONBOARD A NEW COACH IN ONE WEEK</h2>
+<p><strong>Time: 20 min to set up</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>If onboarding a coach takes a semester of shadowing, you don't have a system — you have an apprenticeship. Five days is enough when the standards are written.</p>
+<h3>THE FIVE-DAY PATH</h3>
+<p>Use <strong>STS-91 New Coach Onboarding</strong>.</p>
+<p><strong>Day 1 — Read.</strong> Binder sections 1, 2, 3. Walk the floor with the lane map. Learn where everything is. Run the prep themselves, coached by you.</p>
+<p><strong>Day 2 — Standards.</strong> Binder section 4. Score five athletes on one movement alongside you. Compare scores. Discuss every disagreement. This is the single most important hour of the week — it's where your standard either transfers or doesn't.</p>
+<p><strong>Day 3 — Shadow a lane.</strong> They run one lane with you in the room. They log. They coach the one cue.</p>
+<p><strong>Day 4 — Own a lane.</strong> They run a lane unsupervised. You watch the room, not them.</p>
+<p><strong>Day 5 — Own the block.</strong> They take attendance, run prep, run their lane, log, and hand off. You debrief for ten minutes against the checklist.</p>
+<p>By Friday they own a lane. Not the department — a lane. That's the right size.</p>
+<h3>COMMON MISTAKE</h3>
+<p>Teaching philosophy in week one. New coaches need the standard, the cue, and where the equipment is. Philosophy lands in month two, once they've seen the standard hold.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck7"><label for="m9-ck7">Five-day path written and printed</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck8"><label for="m9-ck8">Day 2 scoring calibration built in</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck9"><label for="m9-ck9">A checklist exists for the Friday debrief</label></li>
+</ul>
+<hr />
+<h2>LESSON 9.5 · THE TWO-WEEK TEST</h2>
+<p><strong>Time: 15 min to plan · two weeks to run</strong></p>
+<h3>CORE PRINCIPLE</h3>
+<p>This is the graduation exercise. You built a department so it wouldn't depend on you. Now confirm it.</p>
+<h3>PRACTICAL APPLICATION</h3>
+<ol>
+<li>Pick a two-week window in the next quarter.</li>
+<li>Pick <strong>one component</strong> and step back from it entirely. Don't take attendance. Don't run the review. Don't send the report. The named owner runs it.</li>
+<li>Tell the owner it's happening and give them the binder section.</li>
+<li>At the end of two weeks, answer four questions in writing:</li>
+<li>Did it happen every time it was supposed to?</li>
+<li>Did the standard hold, or did it drift?</li>
+<li>What question did they have to ask you that should have been in the binder?</li>
+<li>What breaks if we do four weeks instead of two?</li>
+</ol>
+<p>Then write the missing answer into the binder. That's the loop: every question you get asked becomes a line in the manual, and the manual gets more complete every time you step away.</p>
+<h3>EXAMPLE</h3>
+<p>An owner steps back from the weekly review. Week one it happens on time. Week two it happens two days late because the assistant wasn't sure which tab to read. That's not a failure — that's one sentence missing from section 10. It gets written, and the component is now genuinely owned.</p>
+<h3>THE FINAL CHECK</h3>
+<p>Use <strong>STS-92 Owner Handoff Checklist</strong>. Six rows, one per component. Each one either has a named owner who has run it without you, or it doesn't. That's your dependency map, and it's the truest picture of your department you'll ever have.</p>
+<h3>DONE MEANS</h3>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck10"><label for="m9-ck10">Two-week window on the calendar</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck11"><label for="m9-ck11">One component stepped back from</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck12"><label for="m9-ck12">Four debrief questions answered in writing</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck13"><label for="m9-ck13">Missing answers written into the binder</label></li>
+</ul>
+<hr />
+<h2>MODULE 9 GATE — AND THE END OF THE COURSE</h2>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck14"><label for="m9-ck14">All twelve binder sections complete</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck15"><label for="m9-ck15">Every component has a named owner and backup</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck16"><label for="m9-ck16">Operating cadence on a real calendar</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck17"><label for="m9-ck17">Five-day coach onboarding path written</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck18"><label for="m9-ck18">Two-week test scheduled or completed</label></li>
+<li class="checkitem"><input type="checkbox" class="ck" id="m9-ck19"><label for="m9-ck19">Day-90 audit complete with before and after hours</label></li>
+</ul>
+<hr />
+<h2>WHERE TO START MONDAY</h2>
+<p>You don't need all six components perfect. You need to know which one is bleeding the most time and buy-in, and fix that one first.</p>
+<p>Go back through the six option tables and circle the row you're currently standing in for each component. Add up the minutes. That's your real number — the hours this department is costing you every week on top of coaching, whether you'd budgeted for them or not.</p>
+<p>Then pick the single worst row and put a date on changing it. Not all six. One. <strong>A facility that fully installs one component this quarter is further ahead than one that half-installs all six and abandons four by spring.</strong></p>
+<p>Whatever you build, build it so somebody else could run it.</p>
+<p><strong>SYSTEMS DRIVE SUCCESS.</strong></p></section><section class="page" id="page-sit" data-key="sit"><h1>MY SITUATION IS DIFFERENT</h1>
+<p><em>Every question that would normally require a phone call, answered. Find your constraint, read the fix, go back to the module you were in.</em></p>
+<hr />
+<h2>STAFFING</h2>
+<p><strong>I'm the only coach.</strong>
+Your capacity is eyes, not equipment. Run two lanes maximum on any technical main lift, regardless of how many racks you own. Athletes log — coach logging is not available to you. Attendance goes on a tablet or a QR at the door, because you cannot take it manually and start the prep at the same time. Reports drop to per-semester for athletes, not monthly. Everything else installs the same.</p>
+<p><strong>My staff is part-time or volunteer.</strong>
+Section 4 of the binder becomes the most important thing you own. Volunteers can run a lane perfectly if the standard is written and the cue is one sentence. What they can't do is make judgment calls — so pre-decide substitutions, thresholds, and "what counts" so no volunteer ever has to invent a rule.</p>
+<p><strong>My assistant leaves every year.</strong>
+Module 9 is your whole business. Build the binder before you need it, run the five-day onboarding every August, and treat the two-week test as an annual event rather than a one-off.</p>
+<p><strong>My coaches disagree with the standard.</strong>
+Have the argument once, in a room, before it's written. Then it's written and the argument is over. A standard nobody argued about usually means nobody read it.</p>
+<hr />
+<h2>SIZE</h2>
+<p><strong>I have fewer than 40 athletes.</strong>
+Everything gets faster and one thing gets more important: reports. A small roster means hand-built report cards are genuinely viable — 40 athletes at 7 minutes each is under five hours a cycle, and they carry LOW buy-in risk. You may be the one facility where the manual row is the right row.</p>
+<p><strong>I have more than 400 athletes.</strong>
+Manual is off the table for the log and attendance; the math doesn't work at any staffing level you'll get approved. Prioritize automating those two before anything else. Also: build your comparison groups (sport, level, class) with care on day one, because at 400 athletes a department-wide average tells you nothing.</p>
+<p><strong>I run multiple locations.</strong>
+One roster, one spelling, one file — across both buildings. Session codes carry a location prefix. Test protocols must specify setup per building, because your two floors are not the same floor. Reports break out by location and by department.</p>
+<hr />
+<h2>SCHEDULE AND SPACE</h2>
+<p><strong>I share the floor with sport teams.</strong>
+Build to your worst equipment day. Write your substitution table before the season starts, not the week the turf disappears. If a team takes the floor on a fixed day, label that day differently in the 52-week calendar and give it its own timeline.</p>
+<p><strong>Athletes arrive across a 20-minute window.</strong>
+Rolling prep: the prep card is on the wall, athletes run it on arrival without a coach. Attendance moves to a check-in at the door rather than a group call. Your first block starts on a hard clock regardless of who's in the room — otherwise the on-time athletes learn that being on time is optional.</p>
+<p><strong>My sessions are 30 minutes.</strong>
+Cut the finisher and one block, not the main lift. Structure: 2 attendance, 4 prep, 20 single block, 4 out. One main lift plus two accessories. Your volume comes from frequency, so attendance matters even more than usual.</p>
+<p><strong>I'm a school with an 8-period day.</strong>
+Your constraint is period length and staffing per period, and the two vary. Build a timeline per period type — double-coached and single-coached — and label them in the calendar. Assessment day is the hardest thing you'll schedule; run it across a week, one period at a time, with the same run sheet.</p>
+<hr />
+<h2>BUDGET AND TECH</h2>
+<p><strong>I have no budget for devices this year.</strong>
+Then your target row is SEMI or MANUAL and that's a legitimate plan. The two highest-return manual choices: attendance on a tap sheet at the door (60 min/wk) and a spreadsheet program build (120 min/wk). Skip mail-merge reports until you have clean data; a per-semester leadership one-pager built by hand is enough for year one.</p>
+<p><strong>There's no wifi in the weight room.</strong>
+Offline-first or paper. Any device solution that requires a live connection at the rack will fail on the week it matters. Rack cards plus one same-day entry step is the honest fallback, and it's the only place in this course where transcription is acceptable — because it's same-day and it's one person.</p>
+<p><strong>I already pay for programming software.</strong>
+Keep it. Your gap is almost certainly the log, attendance, or reports, not delivery. Run the Module 0 audit before you change anything; most owners with software still score 6+ hours a week because the other five components are manual.</p>
+<p><strong>I inherited data from a previous coach.</strong>
+Treat old maxes as a starting guess for the ramp, not as working weights. Treat old test data as unusable unless you can confirm the protocol — a sprint time with an unknown start distance is not a data point. Start your baseline fresh, and say so plainly to parents: <em>we re-baselined so every number from here is comparable.</em></p>
+<hr />
+<h2>ATHLETES AND CULTURE</h2>
+<p><strong>My athletes won't log honestly.</strong>
+That's a compliance answer to a visibility problem. Athletes log honestly when the log visibly drives something they care about — the weight they get next week and the number on their report card. If the log feeds nothing they see, expect drift. Switch to coach-logging until the report cards are running, then hand it back.</p>
+<p><strong>My athletes don't care about testing.</strong>
+Check three things: is the leaderboard where they walk past it, does it include most-improved, and did they get their number the same week they tested? A number delivered three weeks later is a number that belongs to you, not them.</p>
+<p><strong>Attendance is a sport-coach problem, not mine.</strong>
+Correct, and that's why the escalation ladder exists. Your job is to hand the sport coach a number, by name, on a cadence. Their job is what happens next. A sport coach who gets attendance data for the first time is usually surprised, not defensive.</p>
+<p><strong>Parents ask for individualized programs.</strong>
+Answer with the system: the program is individualized where it matters — the weight on the bar is set by their athlete's assessment, and their progression is driven by their athlete's log. What isn't individualized is the movement selection, and that's deliberate: a small number of movements run long enough to progress beats novelty every time.</p>
+<hr />
+<h2>THE COURSE ITSELF</h2>
+<p><strong>I've fallen behind my 90 days.</strong>
+Move the dates, don't shrink the scope. The order can't compress — assessment can't happen faster than your session schedule allows. A 120-day install is a successful install.</p>
+<p><strong>I've stalled and can't restart.</strong>
+Open your Module 0 audit and read your hours number. Then do the single smallest thing in the next unfinished module — usually a 15-minute task. Momentum comes back from finishing something, not from planning to finish everything.</p>
+<p><strong>I did Modules 1–3 and stopped.</strong>
+You've installed the hard half. Modules 4 through 6 are what make it visible, and visible is what protects your budget and your athletes' buy-in. Module 5 takes sixty minutes. Do that one tonight.</p></section><section class="page" id="page-ex" data-key="ex"><h1>THREE COMPLETE INSTALLS</h1>
+<p><em>Every number filled in. Find the one closest to your building and read it end to end — most people stall because they can't picture the finished thing.</em></p>
+<hr />
+<h2>EXAMPLE 1 · 60-ATHLETE PRIVATE FACILITY, ONE COACH</h2>
+<p><strong>Constraints.</strong> 4 racks, 3 usable bars, 6 dumbbell pairs, 2 benches, one 20-yard turf lane. 60 athletes across four groups of 15, four days a week, 60-minute sessions. One coach, no assistant.</p>
+<p><strong>Capacity.</strong> True simultaneous capacity: 3 barbell stations. Lanes: 3 lanes of 5. Eyes constraint binds before equipment — with one coach, only one lane runs the technical main lift at a time, so the structure staggers.</p>
+<p><strong>Timeline.</strong> 2 attendance · 5 prep · 5 coordination · 22 block one · 20 block two · 6 finisher.</p>
+<p><strong>Structure.</strong> Block 1: main lift back squat, accessories DB RDL, split squat, half-kneeling press. Block 2: main lift trap bar deadlift, accessories DB bench, row, carry. Same for 20 weeks.</p>
+<p><strong>Progression.</strong> 3×5 → 4×5 → 5×5, load moves when all reps complete to standard. Weeks 13–20 drop to 5×4 and 5×3 at higher load.</p>
+<p><strong>Assessment.</strong> Two movements, run on one Saturday morning across three sessions. Working weights stored in one register.</p>
+<p><strong>Log.</strong> Athletes self-log on rack cards; one same-day entry pass at close, 12 minutes. This facility is the exception to the no-transcription rule — same day, one person, 60 athletes.</p>
+<p><strong>Testing.</strong> Body mass, vertical, 10-yard, squat working weight. Three cycles: weeks 1, 20, 40.</p>
+<p><strong>Attendance.</strong> QR at the door, reviewed Fridays, threshold 80%, the owner has every conversation.</p>
+<p><strong>Reports.</strong> Hand-built athlete report cards — 60 athletes, 7 minutes each, once per cycle. LOW buy-in risk, and at this roster size the math works. Leadership version not needed; the owner is leadership. Parent version sent per cycle instead.</p>
+<p><strong>Hours per week:</strong> 3.4 · <strong>Down from:</strong> 9.0</p>
+<hr />
+<h2>EXAMPLE 2 · 150-ATHLETE FACILITY, TWO COACHES</h2>
+<p><strong>Constraints.</strong> 8 racks, 6 usable bars, 12 dumbbell pairs, 4 benches, 2 sled lanes, 1,400 sq ft open floor. 150 athletes, six groups of 25, four days a week, 60-minute sessions, two coaches on the floor.</p>
+<p><strong>Capacity.</strong> True simultaneous capacity: 6 barbell stations, capped at 4 stations by benches for accessories. Lanes: 4 lanes of 6.</p>
+<p><strong>Timeline.</strong> 2 attendance · 5 prep · 5 coordination · 20 block one · 20 block two · 8 finisher.</p>
+<p><strong>Structure.</strong> Four lanes rotating one main plus three accessories per block. Two coaches, each owning two lanes. Main lifts: squat and trap bar deadlift, block one; press and chin variation, block two. Committed 20 weeks.</p>
+<p><strong>Assessment.</strong> Three movements, dedicated assessment day per group across one week, two stations per session, one coach fixed per station. All 150 assessed before week one.</p>
+<p><strong>Log.</strong> Tablets at four racks, program pre-loaded, athletes log between sets. 15 min/wk. Weekly 15-minute actual-vs-projected review, Friday 7:15am, owned by the assistant.</p>
+<p><strong>Testing.</strong> Body mass, vertical (jump mat), 10-yard (gates), squat working weight. Three cycles. Protocol cards taped inside the gate case. Leaderboards at the entry: top by class and most improved.</p>
+<p><strong>Attendance.</strong> Tablet at the door, tap-to-cycle. Threshold 80%. Reviewed Fridays alongside the log. Assistant runs athlete conversations; owner handles sport coach escalations.</p>
+<p><strong>Reports.</strong> Athlete cards monthly from live data. Coach updates per cycle to seven sport coaches. Leadership one-pager per semester with cost per athlete.</p>
+<p><strong>Hours per week:</strong> 2.6 · <strong>Down from:</strong> 11.5</p>
+<hr />
+<h2>EXAMPLE 3 · 400-ATHLETE HIGH SCHOOL, DIRECTOR PLUS ASSISTANT</h2>
+<p><strong>Constraints.</strong> 12 racks, 10 usable bars, 16 dumbbell pairs, 6 benches. 8-period day, weight room capacity 30, class caps 24. Five class periods plus two after-school groups. 240 in-season high school athletes, plus middle school blocks. Director plus one assistant; three periods are single-coached.</p>
+<p><strong>Capacity.</strong> True simultaneous capacity: 10 barbell stations. Lanes: 4 lanes of 6 for a 24-athlete class. Single-coached periods drop to 3 lanes of 8 with a lower-skill main lift, written as a separate timeline.</p>
+<p><strong>Timeline (47-minute period, 40 honest minutes).</strong> 2 attendance · 5 prep · 3 coordination · 14 block one · 13 block two · 3 out. No finisher.</p>
+<p><strong>Structure.</strong> Two timelines, double-coached and single-coached, labeled in the calendar. Main lifts held 20 weeks across both. Middle school groups run the same prep and a Build-stage structure with two accessories.</p>
+<p><strong>Assessment.</strong> Run across a full week, one period at a time, same run sheet, two stations per period. New athletes assessed inside seven days via the intake lane — critical at this size, because roster churn is constant.</p>
+<p><strong>Log.</strong> Tablets at racks. Athletes log. Owner per period named, backup named. Weekly review owned by the director, 15 minutes, Thursday planning period.</p>
+<p><strong>Testing.</strong> Four tests, three cycles, dates locked before the school year. Comparison groups by sport, level, and class — a department-wide average would be meaningless at 400.</p>
+<p><strong>Attendance.</strong> Tablet at the door, tap-to-cycle, taken by the period owner. Both rates tracked: attendance and training exposure. Excused approved by the director only. Sport coaches receive rates per cycle.</p>
+<p><strong>Reports.</strong> Athlete cards per cycle. Coach updates per cycle to 14 sport coaches, generated by group. Leadership one-pager per semester, with participation, results, and cost per athlete — this is the document that protects the position and the budget.</p>
+<p><strong>Hours per week:</strong> 4.1 · <strong>Down from:</strong> 18.0</p>
+<hr />
+<h2>WHAT ALL THREE HAVE IN COMMON</h2>
+<ul>
+<li>The program was built off a counted room, not a template</li>
+<li>One prep, five minutes, unchanged</li>
+<li>Main lifts held 20 weeks</li>
+<li>Every athlete assessed before week one</li>
+<li>Data captured where it's created</li>
+<li>Four tests, same protocol, dates locked in advance</li>
+<li>Attendance in the first two minutes by a named owner</li>
+<li>Three report versions, one sender, dates on the calendar</li>
+<li>A binder somebody else could run it from</li>
+</ul></section>
+
+<div class="pagenav"><button id="prevbtn">&larr; Previous</button><button id="nextbtn">Next &rarr;</button></div></main>
+</div>
+<script>
+const KEYS = ["start", "m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9", "sit", "ex"];
+function keyOf(el){return el.closest('.page').dataset.key}
+function save(){
+  const st={};document.querySelectorAll('.ck').forEach(c=>st[c.id]=c.checked);
+  try{localStorage.setItem('sts_install_progress',JSON.stringify(st))}catch(e){}
+}
+function load(){
+  let st={};try{st=JSON.parse(localStorage.getItem('sts_install_progress')||'{}')}catch(e){}
+  document.querySelectorAll('.ck').forEach(c=>{if(st[c.id])c.checked=true});
+}
+function tally(){
+  let all=0,done=0;
+  KEYS.forEach(k=>{
+    const boxes=document.querySelectorAll('#page-'+k+' .ck');
+    const d=[...boxes].filter(b=>b.checked).length;
+    all+=boxes.length;done+=d;
+    const lbl=document.getElementById('prog-'+k);
+    const btn=document.querySelector('.navbtn[data-target="'+k+'"]');
+    if(boxes.length===0){lbl.textContent='';}
+    else{lbl.textContent=d+'/'+boxes.length;btn.classList.toggle('done',d===boxes.length);}
+  });
+  const pct=all?Math.round(done/all*100):0;
+  document.getElementById('barfill').style.width=pct+'%';
+  document.getElementById('pcttxt').textContent=pct+'% installed — '+done+' of '+all+' checks';
+}
+function show(k){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById('page-'+k).classList.add('on');
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.target===k));
+  window.scrollTo({top:0,behavior:'instant'});
+  try{localStorage.setItem('sts_install_page',k)}catch(e){}
+  const i=KEYS.indexOf(k);
+  document.getElementById('prevbtn').disabled=(i<=0);
+  document.getElementById('nextbtn').disabled=(i>=KEYS.length-1);
+}
+document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>show(b.dataset.target));
+document.getElementById('prevbtn').onclick=()=>{const i=KEYS.indexOf(cur());if(i>0)show(KEYS[i-1])};
+document.getElementById('nextbtn').onclick=()=>{const i=KEYS.indexOf(cur());if(i<KEYS.length-1)show(KEYS[i+1])};
+function cur(){return document.querySelector('.page.on').dataset.key}
+document.addEventListener('change',e=>{if(e.target.classList.contains('ck')){save();tally();}});
+load();tally();
+let start='start';try{start=localStorage.getItem('sts_install_page')||'start'}catch(e){}
+if(!KEYS.includes(start))start='start';
+show(start);
+</script>
+</body></html>

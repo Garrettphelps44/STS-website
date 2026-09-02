@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Strength Coach's Operating System | Strength Through Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A0A; --panel:#111111; --line:#2A2A2A;
+  --green:#4CAF50; --green-dim:#388E3C; --white:#FFFFFF; --mute:#888888;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--ink);color:var(--white);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.brand,.tag,.navbtn .ttl{font-family:'Inter',Helvetica,Arial,sans-serif}
+
+.sitenav{position:sticky;top:0;z-index:200;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;line-height:0}
+.nav-logo img{height:40px;width:auto;display:block}
+.nav-links{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:14px;font-weight:600;color:var(--mute);letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.btn-primary{display:inline-block;background:var(--green);color:var(--ink);font-weight:800;font-size:14px;letter-spacing:.04em;padding:10px 22px;border-radius:6px;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--green-dim);transform:translateY(-1px)}
+@media(max-width:768px){.nav-links{display:none}}
+.install-strip{background:#111;border-bottom:1px solid var(--line);padding:18px 0}
+.install-strip-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.install-strip p{margin:0;font-size:14px;color:var(--mute)}
+.install-strip p strong{color:var(--white);font-weight:700}
+.install-strip a.btn-outline{display:inline-block;background:transparent;color:var(--white);font-weight:700;font-size:13px;letter-spacing:.04em;padding:8px 18px;border-radius:6px;border:1.5px solid var(--line);text-decoration:none}
+.install-strip a.btn-outline:hover{border-color:var(--green);color:var(--green)}
+
+.wrap{display:flex;min-height:calc(100vh - 64px)}
+
+aside{width:310px;flex:0 0 310px;background:#050505;border-right:1px solid var(--line);
+  position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding:26px 0 40px}
+.brandbox{padding:0 22px 20px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.all-courses{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700;margin-bottom:12px;text-decoration:none}
+.all-courses:hover{color:var(--green)}
+.logo{display:inline-flex;align-items:center;line-height:0;margin-bottom:14px}
+.logo img{width:44px;height:44px;display:block}
+.brand{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.brand b{color:var(--green)}
+.coursename{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-top:8px;line-height:1.2}
+.overall{padding:0 22px 16px}
+.bar{height:4px;background:#1A1A1A;border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green);width:0%;transition:width .3s}
+.overall small{display:block;color:var(--mute);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:8px}
+nav{padding:0 12px}
+.navbtn{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;
+  color:var(--white);padding:11px 12px;border-radius:4px;cursor:pointer;font-size:14px;line-height:1.3;position:relative}
+.navbtn:hover{background:#1A1A1A}
+.navbtn.active{background:#1A1A1A;box-shadow:inset 2px 0 0 var(--green)}
+.navbtn .tag{font-size:10px;letter-spacing:.1em;color:var(--green);font-weight:800;min-width:26px}
+.navbtn .ttl{flex:1;font-weight:600}
+.navbtn .prog{font-size:10px;color:var(--mute);letter-spacing:.06em}
+.navbtn.done .prog{color:var(--green)}
+
+main{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;padding:52px 40px 120px}
+.page{display:none;max-width:760px;width:100%}
+.page.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+h1{font-size:clamp(30px,4.6vw,46px);line-height:1.03;letter-spacing:-.02em;font-weight:800;
+  text-transform:uppercase;margin:0 0 26px;border-bottom:3px solid var(--green);padding-bottom:18px}
+h2{font-size:22px;text-transform:uppercase;letter-spacing:.01em;font-weight:800;margin:52px 0 6px;line-height:1.15}
+h2::before{content:"";display:block;width:34px;height:3px;background:var(--green);margin-bottom:14px}
+h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:800;margin:30px 0 8px}
+p{margin:0 0 16px;color:#E8E8E8}
+strong{color:#fff;font-weight:700}
+em{font-family:'Inter';font-style:italic;color:var(--mute)}
+a{color:var(--green)}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+ul,ol{margin:0 0 18px;padding-left:20px}
+li{margin-bottom:7px;color:#E8E8E8}
+blockquote{margin:18px 0;padding:16px 20px;border-left:3px solid var(--green);background:#111111;color:#D8D8D8}
+blockquote p{margin:0}
+
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{text-align:left;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--green);padding:9px 10px 9px 0;font-weight:800}
+td{padding:11px 10px 11px 0;border-bottom:1px solid var(--line);vertical-align:top;color:#E8E8E8}
+td:last-child,th:last-child{text-align:right;padding-right:0;white-space:nowrap}
+
+.lesson{margin:0 0 44px;padding:0 0 8px 20px;border-left:2px solid var(--line)}
+.lesson-num{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:6px}
+h2.lesson-title{font-size:22px;text-transform:none;letter-spacing:-.01em;margin:0 0 14px;line-height:1.2}
+h2.lesson-title::before{display:none}
+.lesson-body p:last-of-type{margin-bottom:16px}
+
+.checkitem{list-style:none;margin-left:-20px;display:flex;gap:11px;align-items:flex-start;
+  padding:9px 12px;border:1px solid var(--line);border-radius:4px;margin-bottom:7px;background:#141414}
+.checkitem input{appearance:none;width:17px;height:17px;flex:0 0 17px;border:1.5px solid #2A2A2A;
+  border-radius:3px;margin-top:3px;cursor:pointer;position:relative}
+.checkitem input:checked{background:var(--green);border-color:var(--green)}
+.checkitem input:checked::after{content:"";position:absolute;left:5px;top:1px;width:4px;height:9px;
+  border:solid #000;border-width:0 2px 2px 0;transform:rotate(43deg)}
+.checkitem label{cursor:pointer;flex:1;color:#D8D8D8}
+.checkitem input:checked + label{color:var(--mute);text-decoration:line-through}
+
+.pagenav{display:flex;justify-content:space-between;gap:14px;max-width:760px;width:100%;margin-top:64px;padding-top:26px;border-top:1px solid var(--line)}
+.pagenav button{background:none;border:1px solid var(--line);color:var(--white);padding:13px 20px;border-radius:4px;
+  cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:800}
+.pagenav button:hover{border-color:var(--green);color:var(--green)}
+.pagenav button[disabled]{opacity:.25;cursor:default}
+
+@media(max-width:920px){
+  .wrap{flex-direction:column}
+  aside{position:static;width:100%;flex:none;height:auto;max-height:none;padding:18px 0 22px}
+  main{padding:30px 20px 90px}
+  nav{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .navbtn .ttl{font-size:13px}
+  h1{font-size:29px}
+  table{font-size:13px}
+  td:last-child,th:last-child{white-space:normal}
+}
+</style>
+</head><body>
+<header class="sitenav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/sts-logo.png" alt="Strength Through Systems" width="40" height="40" /></a>
+    <ul class="nav-links">
+      <li><a href="consulting.html">Facility Install</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="courses.html" class="active">Courses</a></li>
+      <li><a href="apps.html">Apps</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="free-resources.html">Free Resources</a></li>
+    </ul>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZXLuwIzKmSpeOZajB43ggGBFJFqdnAP4lUXa74pP3M9V_7Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-primary">Apply for an Install</a>
+  </div>
+</header>
+<div class="install-strip">
+  <div class="container install-strip-inner">
+    <p><strong>Want this installed in the building, not just learned?</strong> The Facility System Install puts the same system on the floor with your staff.</p>
+    <a href="consulting.html" class="btn-outline">See the Facility Install →</a>
+  </div>
+</div>
+<div class="wrap">
+<aside>
+  <div class="brandbox">
+    <a href="courses.html" class="all-courses">← All Courses</a>
+    <a href="index.html" class="logo" aria-label="Strength Through Systems — Home"><img src="images/sts-logo.png" alt="Strength Through Systems" width="44" height="44" /></a>
+    <div class="brand">STRENGTH THROUGH <b>SYSTEMS</b></div>
+    <div class="coursename">The Strength Coach's OS</div>
+  </div>
+  <div class="overall">
+    <div class="bar"><i id="barfill"></i></div>
+    <small id="pcttxt">0% complete</small>
+  </div>
+  <nav><button class="navbtn" data-target="start"><span class="tag">00</span><span class="ttl">Start Here</span><span class="prog" id="prog-start"></span></button><button class="navbtn" data-target="m1"><span class="tag">M1</span><span class="ttl">The System Foundation</span><span class="prog" id="prog-m1"></span></button><button class="navbtn" data-target="m2"><span class="tag">M2</span><span class="ttl">Coach Communication Mastery</span><span class="prog" id="prog-m2"></span></button><button class="navbtn" data-target="m3"><span class="tag">M3</span><span class="ttl">Exercise Selection That Transfers</span><span class="prog" id="prog-m3"></span></button><button class="navbtn" data-target="m4"><span class="tag">M4</span><span class="ttl">Programming Infrastructure</span><span class="prog" id="prog-m4"></span></button><button class="navbtn" data-target="m5"><span class="tag">M5</span><span class="ttl">Core 4 Movement Prep</span><span class="prog" id="prog-m5"></span></button><button class="navbtn" data-target="m6"><span class="tag">M6</span><span class="ttl">Data to Action</span><span class="prog" id="prog-m6"></span></button><button class="navbtn" data-target="m7"><span class="tag">M7</span><span class="ttl">Recovery Habits Hierarchy</span><span class="prog" id="prog-m7"></span></button><button class="navbtn" data-target="m8"><span class="tag">M8</span><span class="ttl">Build–Blend–Express</span><span class="prog" id="prog-m8"></span></button></nav>
+</aside>
+<main>
+<section class="page" id="page-start" data-key="start"><h1>THE STRENGTH COACH'S OPERATING SYSTEM</h1>
+<p><strong>A complete written course for coaches who are done guessing and ready to build. Eight modules. Forty lessons. One system.</strong></p>
+<hr />
+<h2>WHAT THIS IS</h2>
+<p>The written operating system for the coach on the floor: how you think, how you communicate, how you select exercises, how you program a year, how a session actually runs, how data becomes a decision, how athletes recover, and how the whole thing outlasts you.</p>
+<p>You already have a system. The only question is whether you built it on purpose or it built itself out of habit, mood, and whatever happened last time something went wrong.</p>
+<p>Chaos on the floor is almost never a lack of effort. It's a lack of structure. Effort without a system just produces tired coaches.</p>
+<hr />
+<h2>WHO IT'S FOR</h2>
+<ul>
+<li>Coaches who already run a program and know it's living in their head</li>
+<li>Coaches who are done re-explaining the same standard five times a week</li>
+<li>Coaches who want buy-in as an output they can manage, not a personality trait they hope for</li>
+<li>Coaches building something an assistant could run without them standing there</li>
+</ul>
+<hr />
+<h2>HOW TO USE IT</h2>
+<p><strong>Read the module you're in. Do the work. Check the boxes. Move on.</strong></p>
+<p>Every lesson ends with a check. Reading doesn't unlock anything; installing does. Don't read it front to back and then do nothing. <strong>One system installed beats eight modules understood.</strong></p>
+<hr />
+<h2>THE COURSE</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>What you build</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · The System Foundation</strong></td>
+<td>The unstructured-system list, ABIR baseline, one disruption point eliminated</td>
+<td>5 lessons</td>
+</tr><tr>
+<td><strong>2 · Coach Communication Mastery</strong></td>
+<td>TEEL in every session, cue stacks in writing, your current coaching stage</td>
+<td>5 lessons</td>
+</tr><tr>
+<td><strong>3 · Exercise Selection That Transfers</strong></td>
+<td>Workout vs. training audit, progression ladders, constraint-first selection</td>
+<td>5 lessons</td>
+</tr><tr>
+<td><strong>4 · Programming Infrastructure</strong></td>
+<td>Volume as the lever, ROP calendar, IF/THEN plan, 12-week planner</td>
+<td>6 lessons</td>
+</tr><tr>
+<td><strong>5 · Core 4 Movement Prep</strong></td>
+<td>Core 4 prep, sensory starter, CLS sequencing, session flow scorecard</td>
+<td>5 lessons</td>
+</tr><tr>
+<td><strong>6 · Data to Action</strong></td>
+<td>3-part coaching loop, ESL + tonnage scorecard, master dashboard</td>
+<td>5 lessons</td>
+</tr><tr>
+<td><strong>7 · Recovery Habits Hierarchy</strong></td>
+<td>Recovery hierarchy taught in order, energy zones labeled, non-action as training</td>
+<td>4 lessons</td>
+</tr><tr>
+<td><strong>8 · Build–Blend–Express</strong></td>
+<td>Build–Blend–Express on every movement, L3 documentation, 90-day roadmap</td>
+<td>5 lessons</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>THE NUMBER THIS IS ABOUT</h2>
+<p>Thirty hours a week, fifty weeks a year, is 1,500 hours. If five of those hours a week are recoverable — re-explaining, re-deciding, searching, fixing what a system would have prevented — that's 250 hours a year sitting inside the current chaos. This course is how you take them back.</p>
+<hr />
+<p>SYSTEMS DRIVE SUCCESS.</p></section><section class="page" id="page-m1" data-key="m1"><h1>MODULE 1 · THE SYSTEM FOUNDATION — WHY CHAOS IS KILLING YOUR PROGRAM</h1>
+<p><em>Structured vs. unstructured thinking · The ABIR formula · Your origin story framework</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 1.1</div>
+<h2 class="lesson-title">Why Every Coach Has a System (But Most Are Unstructured)</h2>
+<div class="lesson-body">
+      <p>Every coach already runs a system. It's not optional. The only question is whether you built it on purpose or it built itself out of habit, mood, and whatever happened last time something went wrong. An unstructured system still runs — it just runs on you, every single day, from scratch.</p>
+      <p>That's the hidden cost most coaches never total up. Re-explaining the same standard five times a week. Re-deciding things that should already be settled. Reacting instead of executing. None of that shows up as a line item, but it eats hours you don't have.</p>
+      <p>Run this test on your own week: every time you catch yourself explaining a standard, a rule, or a process out loud that you've already explained before, write it down. By Friday you'll have a list. That list is your unstructured system, in plain view — and it's the raw material for everything you'll build in this course.</p>
+      <p>The common mistake is believing you don't have time to build a system. In reality, the missing system is what's consuming the time. You're not too busy to build one — you're too busy <em>because</em> you haven't.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-l1"><label for="m1-l1">Lesson 1.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 1.2</div>
+<h2 class="lesson-title">The ABIR Formula: P × RI − DP = Athlete Buy-In Rate</h2>
+<div class="lesson-body">
+      <p>Buy-in isn't a personality trait some athletes have and others don't. It's an output of an equation you control: <strong>P × RI − DP</strong>. P is Performance Experience — how competent and well-run your sessions feel. RI is Results and Interaction — the visible progress athletes see and the quality of contact they get from you. DP is Disruption Points — anything that breaks trust or consistency.</p>
+      <p>The formula means two things have to happen at once: you raise the product of Performance, Results, and Interaction, and you separately drive down Disruption Points. Improving one side while ignoring the other caps your ceiling. An athlete can experience great sessions and real progress and still disengage because of a handful of disruption points quietly working against you in the background.</p>
+      <p>Score your current program honestly, one to ten, on each factor. That score is your baseline ABIR audit — the number you're building against for the rest of this course.</p>
+      <p>The mistake most coaches make is obsessing over P and RI — better sessions, better programming, better relationships — while never auditing DP at all. You can't outperform a disruption point. You have to eliminate it.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-l2"><label for="m1-l2">Lesson 1.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 1.3</div>
+<h2 class="lesson-title">Disruption Points: The Silent Killers of Buy-In</h2>
+<div class="lesson-body">
+      <p>Disruption points are the invisible tax on every program. They rarely look dramatic. They look like overcoaching — so many cues an athlete can't process any of them. Inconsistency — a standard that applies Monday but not Thursday. Favoritism — visible preferential treatment, even unintentional. And the quiet one: no follow-through, the promises made in passing that never get kept.</p>
+      <p>Run a five-step audit. List every promise you've made in the last month. Check honestly which ones you kept. Review your correction language for consistency across athletes and across days. Watch athlete faces during your sessions — disengagement shows up there before it shows up anywhere else. Then pick one disruption point and eliminate it this week, not someday.</p>
+      <p>The common mistake is treating disengagement as a personality problem — "that kid just doesn't buy in" — instead of a system failure. Almost every buy-in problem traces back to a disruption point you can name once you go looking.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-l3"><label for="m1-l3">Lesson 1.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 1.4</div>
+<h2 class="lesson-title">Systems vs. Structure vs. Speech — The Three Layers</h2>
+<div class="lesson-body">
+      <p>These are three different layers, and most coaches are strong in exactly one of them. <strong>Systems</strong> is how you think — the underlying logic and decision-making framework you use in the moment. <strong>Structure</strong> is how organized that thinking is — whether it's written down, repeatable, and consistent. <strong>Speech</strong> is how efficiently it's communicated — whether someone else could pick it up and run it without you standing there.</p>
+      <p>Most experienced coaches have strong Systems. They know exactly what they'd do in almost any situation. But that knowledge lives only in their head, which means Structure and Speech are missing — nothing is written down, and nothing can be handed off.</p>
+      <p>Here's the test: could an assistant run your session cold, using only what you've written down? If the answer is no, you don't have a real system yet. You have good instincts, which is not the same thing, and instincts don't scale past you.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-l4"><label for="m1-l4">Lesson 1.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 1.5</div>
+<h2 class="lesson-title">The 1,500 Hours — Building Your Case for Systems</h2>
+<div class="lesson-body">
+      <p>Thirty hours a week, fifty weeks a year, is 1,500 hours. That's the number most coaches never sit down and calculate — and once you do, the question changes from "do I have time to build a system" to "where is all this time actually going."</p>
+      <p>Track one real week. Every hour spent planning, re-explaining, searching for something you should already have, or fixing a problem a system would have prevented. If five of those hours a week are recoverable, that's 250 hours a year — six full work weeks — sitting inside your current chaos.</p>
+      <p>This is also an identity check. Are you coaching, or are you administrating chaos day to day? Most of the frustration coaches feel isn't from the coaching itself — it's from carrying an entire unstructured operation in their head, alone, every day. This lesson is the internal case you make to yourself for why the upfront work of building a system is worth it. Everything after this module is you building it.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m1-l5"><label for="m1-l5">Lesson 1.5 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 2 · Coach Communication Mastery.</p></section><section class="page" id="page-m2" data-key="m2"><h1>MODULE 2 · COACH COMMUNICATION MASTERY — THE TEEL FRAMEWORK</h1>
+<p><em>Teach · Energy · Encourage · Lead · Cue stacking · The 4 energy types</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 2.1</div>
+<h2 class="lesson-title">TEEL Overview — The 4 Ways You Influence an Athlete in Real Time</h2>
+<div class="lesson-body">
+      <p>Every interaction you have with an athlete falls into one of four categories: <strong>Teach</strong>, <strong>Energy</strong>, <strong>Encourage</strong>, or <strong>Lead</strong>. Teach is technical instruction. Energy is how you shift an athlete's state, up or down. Encourage is belief delivered in the moment. Lead is direction — telling an athlete what happens next and why.</p>
+      <p>Most coaches default to one or two of these, inconsistently, depending on mood and mode. A coach who only teaches produces technically sound athletes who never feel led. A coach who only encourages produces athletes who feel good but never improve.</p>
+      <p>Running all four, deliberately, in every session is what separates a coach who influences athletes on purpose from one who influences them by accident. The rest of this module builds the specific tools for each of the four.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-l1"><label for="m2-l1">Lesson 2.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 2.2</div>
+<h2 class="lesson-title">Cue Stacking — The 3-Stage Method</h2>
+<div class="lesson-body">
+      <p>Cue stacking is how you teach a movement without overwhelming an athlete's attention. Stage one is the basic movement plus a single cue — nothing else. Stage two layers in the next cue once the first is automatic. Stage three adds a refinement cue that sharpens the movement toward its final expression.</p>
+      <p>The mistake almost every coach makes is stacking too early — giving three or four cues on rep one, before the athlete has any capacity left to process them. An athlete can only absorb so much cognitive load per rep. Stack too fast and none of the cues stick; stack in order and each one compounds on the last.</p>
+      <p>Build a cue stack for every major movement in your program, in writing, before the season starts. That's the system: know your three stages for every lift before you ever need to teach it live.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-l2"><label for="m2-l2">Lesson 2.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 2.3</div>
+<h2 class="lesson-title">The 4 Energy Cue Types — Universal, Unique, Personal, Precise</h2>
+<div class="lesson-body">
+      <p>Energy isn't one thing you either have or don't — it's four distinct types of cue you layer through a session. <strong>Universal</strong> cues work on the whole group at once. <strong>Unique</strong> cues call out something specific to one athlete in front of everyone. <strong>Personal</strong> cues are quiet, one-on-one, and build trust. <strong>Precise</strong> cues are timed to land at the exact moment they'll matter most.</p>
+      <p>An athlete who only ever hears universal cues never feels individually seen. An athlete who only hears personal cues misses the shared energy of the group. Running all four across a session is what makes every athlete in the room feel like the session was built for them.</p>
+      <p>Pair this with a sensory starter — one drill at the top of the session that forces the nervous system to fire before the first working set. It wires the brain in, not just the body, and it sets the tone for how energy gets delivered the rest of the session.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-l3"><label for="m2-l3">Lesson 2.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 2.4</div>
+<h2 class="lesson-title">The Encourage Protocol — Catching Hesitation Before It Becomes Disengagement</h2>
+<div class="lesson-body">
+      <p>Hesitation is the earliest visible sign of a disengaging athlete, and it's almost always catchable before it becomes a real problem — if you have a system for spotting it. The Encourage Protocol is a one-question check-in: something short, specific, and asked in the moment, not saved for later.</p>
+      <p>The goal is delivering belief without softening your standard. Encouragement that lowers the bar isn't encouragement — it's a signal that the standard was negotiable all along. The best encouragement pulls an athlete toward a standard that never moved, rather than pushing them from behind.</p>
+      <p>That distinction — pulling forward versus pushing from behind — is the whole lesson. Pushing creates compliance. Pulling creates buy-in.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-l4"><label for="m2-l4">Lesson 2.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 2.5</div>
+<h2 class="lesson-title">The 6 Stages of Coaching Evolution — Where Are You Right Now?</h2>
+<div class="lesson-body">
+      <p>Coaches move through six identifiable stages: Impulsive, Hesitant, Timid, Discerning, Reinvesting, and Innovating. Impulsive coaches react without a framework. Hesitant coaches know something's off but don't act. Timid coaches have a framework but are afraid to enforce it. Discerning coaches enforce standards but haven't systematized them. Reinvesting coaches take what works and build it into a repeatable structure. Innovating coaches build systems other coaches can run.</p>
+      <p>Identify your current stage honestly — not where you want to be, where you actually are. Each stage has a specific next move: an Impulsive coach needs a framework before anything else; a Discerning coach needs to write down what's already working in their head.</p>
+      <p>This isn't a one-time assessment. Revisit it every season. Most coaches move up one stage at a time, and knowing exactly which stage you're leaving tells you exactly what to build next.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m2-l5"><label for="m2-l5">Lesson 2.5 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 3 · Exercise Selection That Transfers.</p></section><section class="page" id="page-m3" data-key="m3"><h1>MODULE 3 · EXERCISE SELECTION THAT TRANSFERS — THE VARIATION MYTH</h1>
+<p><em>Macro vs. micro selection · Movement over muscle · ESL system · Workout vs. training</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 3.1</div>
+<h2 class="lesson-title">Workout vs. Training — Why This Distinction Changes Everything</h2>
+<div class="lesson-body">
+      <p>Training is deliberate and targeted — every set has a purpose that connects to a phase goal. A workout is effort without developmental intent — it's hard, athletes sweat, but nothing is actually being built on purpose. The two can look identical from the outside and be completely different in outcome.</p>
+      <p>The test is simple: if you can't explain why today's session is structured the way it is, in terms of what phase it serves and what it's building toward, you're running a workout, not training. That's true even if the session is well-coached, well-organized, and athletes love it.</p>
+      <p>Audit your own program with this lens. Most coaches find at least a portion of their sessions are workouts wearing a training program's clothes — and closing that gap is one of the highest-leverage changes available.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-l1"><label for="m3-l1">Lesson 3.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 3.2</div>
+<h2 class="lesson-title">The Variation Myth — Why Novelty Is Not Progress</h2>
+<div class="lesson-body">
+      <p>There is no exercise you're required to do — but there are movements you're required to train. That distinction matters because most coaches chase novelty, swapping exercises constantly in the name of "keeping it fresh," when repeated exposure to the same core movement is what actually drives adaptation.</p>
+      <p>An athlete doesn't need twelve variations of a squat. They need enough reps on the same squat pattern to actually get stronger at it, with load progressing predictably over time. Staying on the same exercise for roughly twenty weeks — while progressing load, volume, or execution quality — produces more transfer than novelty ever will.</p>
+      <p>The common mistake is confusing engagement with adaptation. New exercises feel exciting and can boost short-term energy, but excitement isn't the goal. Long-term development is, and long-term development is built on repetition, not variety.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-l2"><label for="m3-l2">Lesson 3.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 3.3</div>
+<h2 class="lesson-title">Macro vs. Micro Exercise Selection</h2>
+<div class="lesson-body">
+      <p><strong>Macro</strong> selection is changing to a genuinely new exercise. <strong>Micro</strong> selection is a small variation within the same movement — a stance width, a tempo, a grip, a range of motion tweak. The two require completely different justifications.</p>
+      <p>Macro changes should be rare and deliberate — a new phase, a new training age, a real limitation being addressed. Micro changes are how you keep progressing an athlete on the same movement without needing to abandon it. Most of the "variety" a program actually needs should come from micro adjustments, not macro swaps.</p>
+      <p>Build a progression ladder for your core movements: what micro adjustments come first, and at what point — if ever — a macro change is actually warranted. Having that ladder written down removes the guesswork and stops exercise selection from becoming an emotional, in-the-moment decision.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-l3"><label for="m3-l3">Lesson 3.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 3.4</div>
+<h2 class="lesson-title">ESL — Exercise Skill Level: How to Actually Measure Session Difficulty</h2>
+<div class="lesson-body">
+      <p>Exercise Skill Level, or ESL, is stability demand multiplied by load implementation. It gives you a real number for how demanding a given exercise actually is — instead of guessing based on how heavy the bar looks. ESL multiplied by tonnage gives you Total Stress for a session, a real figure you can track across a week instead of relying on feel alone.</p>
+      <p>Two sessions can look identical on paper — same sets, same reps — and carry completely different stress totals once you factor in stability demand. A single-leg, high-load movement carries a very different ESL than a stable, bilateral one at the same weight.</p>
+      <p>Use ESL to manage fatigue across a training week deliberately: stack high-ESL days away from each other, and know your actual weekly stress number instead of assuming athletes are fine because they finished the reps.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-l4"><label for="m3-l4">Lesson 3.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 3.5</div>
+<h2 class="lesson-title">Build the Exercise Selection System — Constraint-First Decision Tree</h2>
+<div class="lesson-body">
+      <p>Exercise selection should start with constraints, not preference. Time, space, equipment, group size, athlete skill level, fatigue cost, and transfer value all narrow the field before you ever ask "what exercise do I want to run." Selecting on preference first and constraints second is how programs end up with exercises that look good on paper and fail on the floor.</p>
+      <p>Run every exercise decision through the constraint list, in order. What does today's time and space actually allow. What equipment is genuinely available for this group size. What's the athlete's current skill level for this movement. What's the fatigue cost relative to the training day's purpose. What's the actual transfer value to the sport.</p>
+      <p>An exercise that clears every constraint and still allows for maximal loading and long-term progression is a good selection. An exercise that requires you to compromise multiple constraints to make it work is usually the wrong one, no matter how effective it looks in isolation.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m3-l5"><label for="m3-l5">Lesson 3.5 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 4 · Programming Infrastructure.</p></section><section class="page" id="page-m4" data-key="m4"><h1>MODULE 4 · PROGRAMMING INFRASTRUCTURE — BUILD ONCE, RUN FOREVER</h1>
+<p><em>Volume as king · The ROP Calculator · The IF/THEN model · Yearly programming builder</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 4.1</div>
+<h2 class="lesson-title">Why Volume Is the Most Important Variable (Not Frequency or Exercise Selection)</h2>
+<div class="lesson-body">
+      <p>Most coaches obsess over exercise selection and session frequency while volume — the actual driver of adaptation — gets the least deliberate attention. Volume sits above both in the hierarchy of programming variables. Get volume right on an average exercise and you'll out-progress a program with perfect exercise selection and mismanaged volume.</p>
+      <p>This requires patience most coaches don't naturally have. Volume decisions play out over a full training year, not a single session, which means the payoff isn't visible day to day. Daily urgency has to give way to yearly patience — trusting a volume progression even when a single week doesn't feel dramatic.</p>
+      <p>Before adjusting exercise selection or session frequency to "fix" a plateau, check volume first. It's almost always the actual lever, and it's the one coaches check last.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-l1"><label for="m4-l1">Lesson 4.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 4.2</div>
+<h2 class="lesson-title">Phase Goal vs. Session Goal — How to Stack Intent Across a Year</h2>
+<div class="lesson-body">
+      <p>Every training year moves through phases with a clear purpose: Foundation, Output, Power, Speed. Every phase has a goal, and every individual session inside that phase needs its own goal that ladders up to it. A session without a stated goal is a session with no place in the year — it's just activity.</p>
+      <p>Build the yearly structure first, then work backward into what each phase requires, then forward into what each session inside that phase needs to accomplish. This ordering matters: sessions built without a phase in mind tend to drift toward whatever feels productive that day, not what the year actually needs.</p>
+      <p>When every session has a place and a purpose inside the year, athletes feel the program moving somewhere — even if they can't articulate the phase language themselves.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-l2"><label for="m4-l2">Lesson 4.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 4.3</div>
+<h2 class="lesson-title">The ROP Calculator — Turning Season Length Into a Programming Plan</h2>
+<div class="lesson-body">
+      <p>A sport's competition calendar should determine your programming structure, not the other way around. The ROP approach maps the season backward from the first competition date — counting available weeks, then assigning phases to those weeks before a single session is written.</p>
+      <p>This flips the usual order. Instead of programming forward and hoping it lines up with the season, you start with the fixed end date and build the plan to arrive there on time, with the right phase active at the right moment.</p>
+      <p>Do this for every sport you program for, individually. A shared calendar approach across sports with different season lengths is one of the most common infrastructure gaps in multi-sport programs.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-l3"><label for="m4-l3">Lesson 4.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 4.4</div>
+<h2 class="lesson-title">The IF/THEN Lift Model — Building Flexibility Into Structure</h2>
+<div class="lesson-body">
+      <p>Schedules shift. Competitions move. Weather cancels a session. A rigid program breaks the first time reality doesn't match the plan, and then you're reacting live, under pressure, with no framework. The IF/THEN model preloads that flexibility before it's needed.</p>
+      <p>For every major disruption you can reasonably predict — a shortened week, a missed session, a compressed schedule — decide in advance what the program does. If the week is cut to three sessions, then this is the adjusted structure. If a competition moves up, then this is how volume gets redistributed.</p>
+      <p>Deciding this in advance means you're never improvising your program's response to change. You're just executing a decision you already made.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-l4"><label for="m4-l4">Lesson 4.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 4.5</div>
+<h2 class="lesson-title">The 12-Week Programming Planner — Fill-In Framework</h2>
+<div class="lesson-body">
+      <p>A twelve-week block is long enough to see real adaptation and short enough to plan with confidence. The planning framework needs five things locked in before week one: phase, day-by-day structure, session code, ESL targets, and tonnage — all mapped against the sport's actual calendar.</p>
+      <p>Fill this in once, at the start of the block, and the twelve weeks execute themselves. The value isn't the plan looking good on paper — it's removing the daily guesswork of "what are we doing today" so every session is a known quantity before you walk into the room.</p>
+      <p>Revisit and rebuild the planner at the start of every new block. A twelve-week plan that's never updated becomes a static document instead of a living system.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-l5"><label for="m4-l5">Lesson 4.5 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 4.6</div>
+<h2 class="lesson-title">The Yearly Programming Builder + ROP Toolkit</h2>
+<div class="lesson-body">
+      <p>Zoom out from the twelve-week block to the full year. Every sport's season gets mapped against lifting phases — in-season and off-season — so the entire calendar is visible at once, not sport by sport in isolation. This is what makes it possible to run a large multi-sport roster on one standard instead of a different improvised plan for every team.</p>
+      <p>The ROP structure from lesson 4.3 becomes the backbone here, applied across every sport simultaneously. Overlaps, conflicts, and shared training windows become visible early, when they're still easy to solve, instead of showing up as a surprise mid-season.</p>
+      <p>The result is one system running underneath every sport in the building, even though each sport's calendar looks completely different on the surface.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m4-l6"><label for="m4-l6">Lesson 4.6 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 5 · Core 4 Movement Prep.</p></section><section class="page" id="page-m5" data-key="m5"><h1>MODULE 5 · CORE 4 MOVEMENT PREP — THE SESSION FLOW SYSTEM</h1>
+<p><em>The Core 4 framework · The sensory starter · Cognitive Load Score · Daily session scorecard</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 5.1</div>
+<h2 class="lesson-title">Core 4 Movement Prep — The Framework That Gets Athletes Ready Fast</h2>
+<div class="lesson-body">
+      <p>A twenty-five-minute warm-up kills the momentum of a session before it starts. Core 4 is a four-component prep system built to hit the nervous system, the joints, and the movement patterns an athlete actually needs — in a fraction of the time a traditional warm-up takes.</p>
+      <p>The four components work together, not as a checklist to rush through but as a deliberate sequence: something that wakes the nervous system, something that opens the joints the session will demand, something that grooves the day's primary movement pattern, and something that raises intensity into the first working set.</p>
+      <p>Done right, Core 4 takes under ten minutes and leaves an athlete more genuinely prepared than a long, unfocused warm-up ever does — because every minute inside it has a specific job.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-l1"><label for="m5-l1">Lesson 5.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 5.2</div>
+<h2 class="lesson-title">The Sensory Starter — Wiring the Brain Before Loading the Bar</h2>
+<div class="lesson-body">
+      <p>A warmed-up body is not the same thing as a wired brain. Athletes can be physically loose and still mentally checked out walking into the first set. The Sensory Starter is a single drill placed at the very top of the session, built specifically to force the nervous system to fire before anything else happens.</p>
+      <p>This isn't about elevating heart rate — traditional warm-ups already do that. It's about attention. A drill with a reaction component, a coordination demand, or a decision point pulls an athlete's focus into the room in a way that static stretching or slow jogging never will.</p>
+      <p>The payoff shows up immediately in buy-in and in the quality of the first working sets, because the athlete arrives at the bar already present instead of still arriving mentally three sets in.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-l2"><label for="m5-l2">Lesson 5.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 5.3</div>
+<h2 class="lesson-title">Cognitive Load Score (CLS) — Managing Mental Demand Across a Session</h2>
+<div class="lesson-body">
+      <p>Not every exercise carries the same mental demand. A complex, multi-step movement with a lot of moving parts asks more of an athlete's attention than a simple, well-grooved pattern — even at a lighter physical load. Cognitive Load Score is how you account for that instead of treating every exercise as mentally equal.</p>
+      <p>Sequence a session with CLS in mind: place the highest cognitive-demand movements early, while attention is fresh, and let simpler, more automatic movements carry the back half of the session when mental fatigue has already accumulated.</p>
+      <p>Ignore this and you'll see execution quality fall apart late in a session — not because athletes are physically gassed, but because they've run out of mental bandwidth to execute complex movements well. That's a sequencing problem, not an effort problem, and it's solved with CLS.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-l3"><label for="m5-l3">Lesson 5.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 5.4</div>
+<h2 class="lesson-title">Session Flow Design — From Entry to Exit</h2>
+<div class="lesson-body">
+      <p>A session that runs itself doesn't happen by accident. It's built, in advance, down to rack assignments, transition timing, and the specific windows where coaching actually happens versus where athletes are simply executing. Without this, a coach spends the session managing logistics instead of coaching.</p>
+      <p>Map the entire flow from the moment athletes enter the room to the moment they leave: where they go first, how groups rotate, when transitions happen and how long they're allowed to take, and where in that flow you're actually free to coach instead of direct traffic.</p>
+      <p>The daily session scorecard captures this on paper so the flow is repeatable — by you, and by anyone else running the session in your place.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-l4"><label for="m5-l4">Lesson 5.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 5.5</div>
+<h2 class="lesson-title">Scaling for Any Group Size — The Class Size Decision Matrix</h2>
+<div class="lesson-body">
+      <p>The same underlying system should be able to run a group of ten or a group of forty — what changes is execution, not philosophy. Rack assignments, tablet or device deployment, assistant coach roles, and session flow all need to adjust based on group size, while the core structure stays intact.</p>
+      <p>Build a decision matrix in advance: at this group size, this many racks, this assistant role split, this flow adjustment. Deciding these things ahead of time means a sudden roster change or a combined-group day doesn't require rebuilding the session from scratch.</p>
+      <p>The goal is a system flexible enough to scale without becoming a different system every time the number of athletes in the room changes.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m5-l5"><label for="m5-l5">Lesson 5.5 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 6 · Data to Action.</p></section><section class="page" id="page-m6" data-key="m6"><h1>MODULE 6 · DATA TO ACTION — TESTING, TRACKING, AND MAKING NUMBERS MEAN SOMETHING</h1>
+<p><em>Velocity-based training · Jump testing · Speed · Daily stress · The data-to-coaching loop</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 6.1</div>
+<h2 class="lesson-title">The 3-Part Coaching Loop — Athlete Input, Coach Observation, Data Feedback</h2>
+<div class="lesson-body">
+      <p>Most coaching conversations run on two inputs: what the athlete says, and what the coach observes. That's a two-part loop, and it leaves out the most objective voice available. Adding data as a genuine third input — not a nice-to-have, but a real part of the loop — changes the conversation from opinion versus opinion to something both parties can actually look at together.</p>
+      <p>The loop works in real time. An athlete reports how a set felt. You observe execution quality. The data — bar speed, jump height, whatever the session is tracking — either confirms or contradicts both. When it contradicts, that's the most useful moment in the session, because it surfaces something neither subjective input caught on its own.</p>
+      <p>Coaches who only run the two-part loop are missing the adjustment data would have forced. Building data in as a standing third voice is what makes real-time adaptation possible instead of accidental.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-l1"><label for="m6-l1">Lesson 6.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 6.2</div>
+<h2 class="lesson-title">PC vs. PV — Production Capability vs. Production Value</h2>
+<div class="lesson-body">
+      <p>Production Capability is what an athlete can produce under controlled conditions — a clean environment, no fatigue, no chaos, a weight room. Production Value is what actually shows up in competition, under real pressure and real fatigue. The two are related but not the same, and the gap between them explains why an athlete can look elite in training and fall apart in competition.</p>
+      <p>A high PC with a low PV points to a transfer problem — the training environment isn't demanding enough of the qualities competition actually requires. Chasing more PC in that case makes the gap worse, not better.</p>
+      <p>Diagnosing which side of the gap an athlete is on tells you exactly what to change: build more capability if PC itself is the limiter, or build more chaotic, unpredictable, game-like conditions into training if the gap is a transfer problem instead.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-l2"><label for="m6-l2">Lesson 6.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 6.3</div>
+<h2 class="lesson-title">Daily Stress Tracking — The ESL + Tonnage Scorecard</h2>
+<div class="lesson-body">
+      <p>Combining Exercise Skill Level with tonnage gives you a real daily stress number instead of a guess based on how a session felt. Tracked across a week, that number tells you when to push and when to pull back with actual evidence instead of instinct alone.</p>
+      <p>Build the scorecard into every session: log ESL, log tonnage, multiply them out, track the running weekly total. Over time this creates a baseline for what a normal week looks like for a given athlete or group — which makes an abnormal week immediately visible instead of hidden inside "they just seem tired today."</p>
+      <p>This is the tool that removes guessing from recovery decisions. Instead of debating whether to back off, you're looking at a number that already answered the question.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-l3"><label for="m6-l3">Lesson 6.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 6.4</div>
+<h2 class="lesson-title">VBT, Jump, and Speed Testing — Building Your Master Dashboard</h2>
+<div class="lesson-body">
+      <p>Body mass, velocity-based training data, jump height, sprint speed, and coordination all matter — but tracked separately, across separate tools, they become a time sink instead of a resource. A single master dashboard is what makes testing sustainable across a full roster without consuming the week.</p>
+      <p>Build the dashboard around a fixed testing cadence and a single place every metric lands, regardless of which device produced it. The goal isn't collecting more data — it's collecting the right data, consistently, in one place you can actually act on.</p>
+      <p>A dashboard nobody looks at is worse than no dashboard at all. The system only works if reviewing it is built into your weekly rhythm, not treated as an occasional extra task.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-l4"><label for="m6-l4">Lesson 6.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 6.5</div>
+<h2 class="lesson-title">Publishing Data — How to Show Athletes and Parents What the Numbers Mean</h2>
+<div class="lesson-body">
+      <p>Data only drives buy-in when athletes can actually see their own progress in it. A dashboard that lives only on a coach's laptop does nothing for the athlete standing in the weight room. Publishing the right numbers, at the right level of clarity, is what turns tracking into culture.</p>
+      <p>The key is clarity over completeness. Showing every metric you track creates confusion, not motivation. Showing the two or three numbers that actually matter to that athlete, displayed clearly and updated consistently, is what makes data feel like proof of progress instead of noise.</p>
+      <p>The same principle applies to parents. They don't need the full dashboard — they need a clear, simple answer to "is my kid getting better," backed by real numbers instead of a subjective impression.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m6-l5"><label for="m6-l5">Lesson 6.5 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 7 · Recovery Habits Hierarchy.</p></section><section class="page" id="page-m7" data-key="m7"><h1>MODULE 7 · RECOVERY HABITS HIERARCHY — BUILDING ATHLETES WHO LAST</h1>
+<p><em>Nutrition tiers · Sleep systems · The recovery hierarchy · The Energy Zone framework</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 7.1</div>
+<h2 class="lesson-title">The Recovery Hierarchy — Why You Can't Out-Supplement a Broken Foundation</h2>
+<div class="lesson-body">
+      <p>Recovery follows a strict order, and most athletes are starting at the wrong tier. Tier one is hydration and total calories — the foundation everything else sits on. Tier two is macronutrient balance. Tier three is micronutrients. Tier four is supplementation, which is the tier athletes and parents ask about first and matters least until the first three are solid.</p>
+      <p>No supplement fixes a foundation that isn't there. An athlete under-hydrated and under-fed will not recover meaningfully better from adding a supplement on top of that gap — the supplement is being asked to do a job the first tier was supposed to handle.</p>
+      <p>Teach the hierarchy in order, and audit athletes in order too. Before any conversation about tier four, confirm tier one and two are actually in place.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-l1"><label for="m7-l1">Lesson 7.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 7.2</div>
+<h2 class="lesson-title">The Nutrition Tier System — Teaching Fueling Without Being a Dietitian</h2>
+<div class="lesson-body">
+      <p>Coaches sit in a specific role when it comes to nutrition — able to teach the fundamentals of fueling, not equipped or authorized to prescribe individualized nutrition plans. Knowing exactly where that line sits protects both the athlete and the coach.</p>
+      <p>What you can teach: hydration habits, basic meal timing around training, and general macro awareness. What you should refer out: individualized plans, medical nutrition needs, disordered eating concerns, or anything requiring a licensed professional's judgment.</p>
+      <p>Build this into program culture as a standing, low-pressure conversation rather than a one-time lecture — short, repeated reminders about the fundamentals do more for a roster's habits than a single detailed nutrition talk ever will.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-l2"><label for="m7-l2">Lesson 7.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 7.3</div>
+<h2 class="lesson-title">The Energy Zone System — Labeling Sessions So Athletes Show Up Right</h2>
+<div class="lesson-body">
+      <p>Every session falls into a high, moderate, or low energy zone, and telling athletes which zone they're walking into — before the session starts, not during it — changes how they show up. An athlete who knows today is a low-energy day arrives with different expectations than one who assumes every day is maximal effort.</p>
+      <p>Communicate the zone label ahead of time, consistently, whether that's posted, announced, or built into how the session is framed at the door. This single habit does more to manage output across a training week than almost any other single tool, because it sets expectations before fatigue and mood have a chance to distort them.</p>
+      <p>Without labeled zones, athletes default to treating every day as maximal — which is exactly what burns a roster out over a full season.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-l3"><label for="m7-l3">Lesson 7.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 7.4</div>
+<h2 class="lesson-title">Process vs. Non-Action — Getting Athletes to Understand Where Progress Actually Happens</h2>
+<div class="lesson-body">
+      <p>The process doesn't happen in the action. It happens in the non-action — sleep, meals, the hours between sessions where adaptation actually occurs. Most athletes believe progress happens in the weight room. It's triggered there, but it's built everywhere else.</p>
+      <p>This is a belief shift, not just an information shift, which means it has to be built into program culture repeatedly rather than stated once. Athletes who genuinely internalize this treat recovery as part of training, not as time off from it.</p>
+      <p>Reinforce it in how you talk about results: when an athlete improves, credit the non-action alongside the session. That framing, repeated consistently, is what gets recovery taken seriously instead of treated as optional.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m7-l4"><label for="m7-l4">Lesson 7.4 complete</label></li>
+</ul>
+</div>
+<p><strong>Next:</strong> Module 8 · Build–Blend–Express.</p></section><section class="page" id="page-m8" data-key="m8"><h1>MODULE 8 · BUILD–BLEND–EXPRESS — THE SYSTEM FOR ATHLETE EXPERIENCE AND LONG-TERM DEVELOPMENT</h1>
+<p><em>Athlete experience · The L3 System · Coordination training · The long-term arc</em></p>
+<hr />
+<div class="lesson">
+<div class="lesson-num">Lesson 8.1</div>
+<h2 class="lesson-title">Build–Blend–Express — The Skill Acquisition Arc for the Weight Room</h2>
+<div class="lesson-body">
+      <p>Every skill an athlete acquires moves through three stages. <strong>Build</strong> is pattern acquisition — clean, controlled, low-distraction reps that establish the movement. <strong>Blend</strong> introduces complexity — combining the pattern with other demands. <strong>Express</strong> is full output under real, competition-like conditions.</p>
+      <p>Rushing straight from Build to Express is one of the most common and most costly errors in athletic development. A movement pattern that hasn't been blended — tested under some complexity before being asked to perform under full pressure — tends to break down exactly when it matters most.</p>
+      <p>Every movement in your program should have an identifiable stage. Knowing whether an athlete is still in Build, ready for Blend, or genuinely prepared for Express tells you exactly what today's session should ask of them.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-l1"><label for="m8-l1">Lesson 8.1 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 8.2</div>
+<h2 class="lesson-title">Predictable vs. Unpredictable Coordination — Training the Nervous System, Not Just the Muscle</h2>
+<div class="lesson-body">
+      <p>Coordination training splits into two categories that serve different stages of Build–Blend–Express. Predictable drills — fixed patterns, known sequences — belong in the Build stage, where the goal is establishing clean movement. Unpredictable drills — reactive, decision-based, variable — belong in the Express stage, where the goal is transfer to genuinely unpredictable competition.</p>
+      <p>Training only predictable coordination produces athletes who move beautifully in a controlled setting and struggle the moment a decision has to be made under pressure. Training only unpredictable coordination, too early, before the underlying pattern is solid, produces sloppy movement that never gets cleaned up.</p>
+      <p>Match the coordination demand to the stage the athlete is actually in, not to what looks impressive in a session.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-l2"><label for="m8-l2">Lesson 8.2 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 8.3</div>
+<h2 class="lesson-title">Athlete Experience Design — What Athletes Remember and What Keeps Them Coming Back</h2>
+<div class="lesson-body">
+      <p>The weight room itself is a culture asset, not just a place training happens. Standards posted visibly, scoreboards, performance boards, and the physical environment all communicate what the program values before you say a single word. Athletes remember the environment as much as they remember any individual session.</p>
+      <p>Design the space deliberately: what's visible on the walls, what's tracked publicly, what a new athlete sees walking in for the first time. All of it either reinforces your standards or quietly undermines them.</p>
+      <p>Programs athletes talk about outside the room are almost never built on a single great session. They're built on a consistent environment that made the standard visible every single day.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-l3"><label for="m8-l3">Lesson 8.3 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 8.4</div>
+<h2 class="lesson-title">The L3 System — Build the Program That Outlasts You</h2>
+<div class="lesson-body">
+      <p>The highest level of coaching isn't running a great session yourself. It's building a system that holds the same standard whether you're in the room or not. That's the L3 System — the point where your program's structure, not your personal presence, is what's actually enforcing quality.</p>
+      <p>Getting there requires everything from earlier modules to actually be documented — not just understood by you, but written down clearly enough that an assistant, a substitute coach, or your eventual successor could run it and produce the same standard.</p>
+      <p>Build it in layers: document the session flow first, then the standards, then the correction language, then the full decision trees behind exercise selection and programming. A program that depends entirely on one person in the room was never actually a system — it was a habit with your name on it.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-l4"><label for="m8-l4">Lesson 8.4 complete</label></li>
+</ul>
+</div>
+<div class="lesson">
+<div class="lesson-num">Lesson 8.5</div>
+<h2 class="lesson-title">Your 90-Day System Builder — Implementation Roadmap</h2>
+<div class="lesson-body">
+      <p>Everything in this course means nothing until it's actually implemented, and implementing all of it at once is how most coaches abandon the attempt within a month. A ninety-day roadmap sequences the work so it's built in the right order, at a pace your actual schedule and constraints can absorb.</p>
+      <p>Prioritize based on where your ABIR audit and your systems audit showed the biggest gaps — not on whichever module felt most interesting to read. The first thirty days should target the single highest-leverage disruption point. The next thirty build the programming infrastructure underneath it. The final thirty document the system well enough that it survives without you standing over it every day.</p>
+      <p>Ninety days from now, the goal isn't a finished program — programs are never finished. The goal is a program running on a real system instead of your memory, your mood, and whatever you can reconstruct on the fly.</p>
+</div>
+<ul>
+<li class="checkitem"><input type="checkbox" class="ck" id="m8-l5"><label for="m8-l5">Lesson 8.5 complete</label></li>
+</ul>
+</div>
+<p><strong>SYSTEMS DRIVE SUCCESS.</strong></p></section>
+<div class="pagenav"><button id="prevbtn">&larr; Previous</button><button id="nextbtn">Next &rarr;</button></div></main>
+</div>
+<script>
+const KEYS = ["start", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8"];
+function save(){
+  const st={};document.querySelectorAll('.ck').forEach(c=>st[c.id]=c.checked);
+  try{localStorage.setItem('sts_os_progress',JSON.stringify(st))}catch(e){}
+}
+function load(){
+  let st={};try{st=JSON.parse(localStorage.getItem('sts_os_progress')||'{}')}catch(e){}
+  document.querySelectorAll('.ck').forEach(c=>{if(st[c.id])c.checked=true});
+}
+function tally(){
+  let all=0,done=0;
+  KEYS.forEach(k=>{
+    const boxes=document.querySelectorAll('#page-'+k+' .ck');
+    const d=[...boxes].filter(b=>b.checked).length;
+    all+=boxes.length;done+=d;
+    const lbl=document.getElementById('prog-'+k);
+    const btn=document.querySelector('.navbtn[data-target="'+k+'"]');
+    if(boxes.length===0){lbl.textContent='';}
+    else{lbl.textContent=d+'/'+boxes.length;btn.classList.toggle('done',d===boxes.length);}
+  });
+  const pct=all?Math.round(done/all*100):0;
+  document.getElementById('barfill').style.width=pct+'%';
+  document.getElementById('pcttxt').textContent=pct+'% complete — '+done+' of '+all+' checks';
+}
+function show(k){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById('page-'+k).classList.add('on');
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.target===k));
+  window.scrollTo({top:0,behavior:'instant'});
+  try{localStorage.setItem('sts_os_page',k)}catch(e){}
+  const i=KEYS.indexOf(k);
+  document.getElementById('prevbtn').disabled=(i<=0);
+  document.getElementById('nextbtn').disabled=(i>=KEYS.length-1);
+}
+document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>show(b.dataset.target));
+document.getElementById('prevbtn').onclick=()=>{const i=KEYS.indexOf(cur());if(i>0)show(KEYS[i-1])};
+document.getElementById('nextbtn').onclick=()=>{const i=KEYS.indexOf(cur());if(i<KEYS.length-1)show(KEYS[i+1])};
+function cur(){return document.querySelector('.page.on').dataset.key}
+document.addEventListener('change',e=>{if(e.target.classList.contains('ck')){save();tally();}});
+load();tally();
+let start='start';try{start=localStorage.getItem('sts_os_page')||'start'}catch(e){}
+if(!KEYS.includes(start))start='start';
+show(start);
+</script>
+</body></html>
